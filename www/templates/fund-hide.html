@@ -1,0 +1,68 @@
+<ion-view view-title="隐藏">
+    <ion-header-bar class="dark-bg light">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="fund"></a>
+        <h1 class="title light">请选择要隐藏的列</h1>
+      <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="hide()"></a>
+    </ion-header-bar>
+
+
+    <ion-content>
+        <ul class="list">
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.accValue">
+            </label>
+              账面金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.fundClear">
+            </label>
+              资金净额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.freeMoney">
+            </label>
+              可用自由款
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.totMoney">
+            </label>
+              总收款金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.occupyMoney">
+            </label>
+              出库占用金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.totBalance">
+            </label>
+              总结算金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="fund_flag.creditAmount">
+            </label>
+              信用金额
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="fund_flag.paidCredit">
+                </label>
+              已用信用
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="fund_flag.leftCredit">
+                </label>
+              剩余信用
+            </li>
+
+        </ul>
+    </ion-content>
+</ion-view>

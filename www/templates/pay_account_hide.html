@@ -1,0 +1,83 @@
+<ion-view view-title="隐藏">
+    <ion-header-bar class="dark-bg light">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="pay_account"></a>
+        <h1 class="title light">请选择要隐藏的列</h1>
+        <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="commit()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <ul class="list">
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.username">
+                </label>
+                供应商名称
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.invoiceManageNum">
+                </label>
+                发票管理号
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.invoiceNature">
+                </label>
+                发票性质
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.invoiceCode">
+                </label>
+                发票代码
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.invoiceNum">
+                </label>
+                发票号码
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.currencies">
+                </label>
+                币种
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.billNum">
+                </label>
+                结算单号
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.invoiceMoney">
+                </label>
+                发票金额
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.applicationMoney">
+                </label>
+                申请金额
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.payMoney">
+                </label>
+                付款金额
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.surplusMoney">
+                </label>
+                剩余金额
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.status">
+                </label>
+                发票状态
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,72 @@
+<ion-view view-title="销售合同信息" >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+    <h1 class="title light">销售合同信息</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字查询" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+    <ion-list ng-repeat="item in orders|filter:data.criteria">
+      <ion-item  class="receive_bill_margin" ng-click="detail(item)">
+        <div class="sale_account_itemTitle" ng-hide=sale_flag.username>订货客户名称：{{item.orderCusName}}</div><hr class="sale_hr">
+        <div class="row sale_item">
+          <div class="col col-20  crl_bgcolor text-center light">{{item.orderCusName.substring(0,1)}}</div>
+          <div class="col col-40 col-offset-10 sale_attributes">
+            <i >订单号：<br></i>
+            <i ng-hide=sale_flag.salesMan>销售业务员：<br></i>
+            <i ng-hide=sale_flag.recCusName>收货客户名称：<br></i>
+            <i ng-hide=sale_flag.univalence>销售单价（含税）：</i></div>
+          <div class="col col-40">
+            <i ng-hide=sale_flag.formInvoiceNum>{{item.orderNum}}<br></i>
+            <i ng-hide=sale_flag.salesMan>{{item.salesMan}}<br></i>
+            <i ng-hide=sale_flag.recCusName>{{item.recCusName}}<br></i>
+          <i ng-hide=sale_flag.univalence>{{item.univalence}}</i></div>
+        </div>
+        <div class="row sale_item">
+          <div class="col col-20 sale_attributes">
+            <i ng-hide=sale_flag.type>品种：<br></i>
+            <i ng-hide=sale_flag.steelGrade>钢种：<br></i>
+            <i ng-hide=sale_flag.standard>规格：<br></i>
+          <i >单据日期：<br></i>
+          <i >状态：</i></div>
+
+          <div class="col col-40 col-offset-10">
+            <i ng-hide=sale_flag.type>{{item.type}}<br></i>
+            <i ng-hide=sale_flag.steelGrade>{{item.steelGrade}}<br></i>
+            <i ng-hide=sale_flag.standard>{{item.standard}}<br></i>
+          <i>{{item.billDate}}<br></i>
+          <i>待审核</i></div>
+          <div class="col col-40"></div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+  </ion-content>
+  <img ng-src="img/popover.jpg" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+
+</ion-view>
+<!--浮动框-->
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/search.png" ui-sref="sale-search" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/search-history.png" ui-sref="sale-history"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/hide.png" ui-sref="sale-hide" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+

@@ -1,0 +1,17 @@
+<ion-view view-title="明细">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="receive_account"></a>
+        <h1 class="title light">{{mingxi.USERNAME}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-item class="detailed ">客户名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.USERNAME}}</span></ion-item>
+        <ion-item class="detailed ">形式发票号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.FORMINVOICENUM}}</span></ion-item>
+        <ion-item class="detailed ">开票日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.DATE}}</span></ion-item>
+        <ion-item class="detailed ">发票号码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.INVOICENUM}}</span></ion-item>
+        <ion-item class="detailed ">发票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.INVOICECODE}}</span></ion-item>
+        <ion-item class="detailed ">币种&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.CURRENCIES}}</span></ion-item>
+        <ion-item class="detailed ">结算金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.BILLMONEY}}</span></ion-item>
+        <ion-item class="detailed ">核销金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.VERIFICATIONMONEY}}</span></ion-item>
+        <ion-item class="detailed ">待核销金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.VERIFICATIONIONGMONEY}}</span></ion-item>
+    </ion-content>
+</ion-view>

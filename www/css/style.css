@@ -1,0 +1,154 @@
+/* Empty. Add your own CSS if you like */
+
+/*============================蔚文彪=================================*/
+.crl_bgcolor {
+    max-width: 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: gold;
+    font-size: 20px;
+    line-height: 46px;
+
+}
+.sale_item {
+    margin-top: 10px;
+    color: #000000;
+    font-size: 12px;
+}
+.sale_account_key {
+    max-width: 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: gold;
+    font-size: 20px;
+    line-height: 46px;
+
+}
+.sale_hr{
+    margin-top: 10px;
+}
+.sale_account_itemTitle {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+.sale_attributes{
+    color:darkgray;
+}
+.source_row{
+    vertical-align:center;
+    height:30px
+
+}
+
+
+/*=============================贾文光======================================*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑" !important;
+}
+.receive_bill_fixed{
+    width:50px;
+    height:50px;
+    background-color:greenyellow;
+    position:fixed;
+    top:80%;
+    right:50px;
+    border-radius: 100%;
+}
+.receive_bill_popover{
+    background-color: rgba(251,251,240,0.9);
+    width:100%;
+    height:70%;
+}
+.content-margin{
+    margin-top: 20px;
+}
+.receive_bill_itemTitle {
+    color: red;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 6px;
+}
+
+.receive_item {
+    /*margin-top: 10px;*/
+    color: #000000;
+    font-size: 12px;
+}
+
+.receive_bill_margin {
+    margin-top: 16px;
+}
+.receive_bill_col {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: red;
+    color: #ffffff;
+    text-align: center;
+    line-height: 60px;
+}
+
+.popover_img {
+    width: 57px;
+    height: 57px;
+}
+
+.receive_account_key {
+    max-width: 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: gold;
+    font-size: 20px;
+    line-height: 46px;
+
+}
+
+.receive_account_itemTitle {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+.hr{
+    margin-top: 10px;
+}
+.attributes{
+    color:darkgray;
+}
+.detailed{
+    color: darkgray;
+}
+.history_delete{
+    height: 30px;
+    width: 70%;
+    position: fixed;
+    top: 94%;
+    right: 50px;
+    color: red;
+    border: gray solid 1px;
+    text-align: center;
+    line-height: 30px;
+}
+.checkItem{
+  color:gray;
+  margin-left: 44px;
+  margin-top: 20px;
+}
+/*===================沈腾飞=============*/
+.select2{
+    margin-left:60px;
+}
+
+.select2 ul li{
+    border-right:1px solid #FFFFFF;
+    float:left;
+    width:40%
+}
+
+.tb_team_select tr{
+    line-height:50px;
+
+}

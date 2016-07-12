@@ -1,0 +1,45 @@
+<ion-view view-title="采购付款信息">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if=!flag2></a>
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="pay_bill_search" ng-click="state()" ng-if=flag2></a>
+        <h1 class="title light" ng-if=!flag2>采购付款信息</h1>
+        <h1 class="title light" ng-if=flag2>采购付款查询结果</h1>
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+        <div class="bar item-input-inset" >
+            <label class="item-input-wrapper" >
+                <input type="search" placeholder="关键字查询" ng-model="data.name">
+            </label>
+            <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+        </div>
+    </div>
+    <ion-content class="stable-bg content-margin">
+        <ion-list ng-repeat="item in resp|filter:data.criteria">
+            <ion-item  class="receive_bill_margin" ui-sref="pay_bill_detailed({id:item.id})">
+                <div class="receive_bill_itemTitle" ng-if=!hide.payRequisitionNum>付款申请单号:{{item.payRequisitionNum}}</div><hr class="hr">
+                <div class="row receive_item">
+                    <div class="col col-60"><i ng-if=!hide.invoiceCode>发票代码:{{item.invoiceCode}}<br></i><i ng-if=!hide.invoiceNum>发票号码:{{item.invoiceNum}}<br></i><i ng-if=!hide.reportNum>报支单号:{{item.reportNum}}<br></i><i ng-if=!hide.contractNum>合同号:{{item.contractNum}}<br></i><i ng-if=!hide.applicationMoney>申请金额:{{item.applicationMoney}}<br></i><i ng-if=!hide.invoiceMoney>发票金额:{{item.invoiceMoney}}</i></div>
+                    <div class="col col-40"><i ng-if=!hide.payNum>付款单号:{{item.payNum}}<br></i><i ng-if=!hide.payDate>付款日期:{{item.payDate}}<br></i><i ng-if=!hide.payUse>付款方式:{{item.payUse}}<br></i><i ng-if=!hide.originMoney>原币金额:{{item.originMoney}}<br></i><i ng-if=!hide.currencies>币种:{{item.currencies}}<br></i><i ng-if=!hide.renmingbi>人民币金额:{{item.renmingbi}}</i></div>
+                </div>
+            </ion-item>
+        </ion-list>
+      <ion-infinite-scroll
+        on-infinite="loadMore()"
+        ng-if="run"
+        distance="1%">
+      </ion-infinite-scroll>
+    </ion-content>
+    <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view class="receive_bill_popover">
+        <ion-content>
+            <div class="row">
+                <div class="col col-30 text-center"><img ng-src="img/chaxun.png" ui-sref="pay_bill_search" class="popover_img"><div>查询</div></div>
+                <div class="col col-30 text-center"><img ng-src="img/chaxunlishi.png" ui-sref="pay_bill_history"  class="popover_img"><div>查询历史</div></div>
+                <div class="col col-30 text-center"><img ng-src="img/yincang.png" ui-sref="pay_bill_hide" class="popover_img"><div>隐藏</div></div>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>

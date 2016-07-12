@@ -1,0 +1,60 @@
+<ion-view >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="source"></a>
+    <h1 class="title light">能源系统数据添加</h1>
+  </ion-header-bar>
+
+<ion-content>
+  <ion-item>
+    <div class="row source_row">
+      <div class="col col-35"><h2>使用日期</h2></div>
+
+      <div class="col col-60 col-offset-10">
+        <ionic-datepicker input-obj="datepickerObject">
+          <ion-item class="item item-input ion-calendar ">
+            <p>{{condition.useDateStart | date:datepickerObject.dateFormat}}</p>
+          </ion-item>
+        </ionic-datepicker>
+      </div>
+    </div>
+
+  </ion-item>
+  <!-- <div ng-bind="condition.billDateEnd | date:'yyyy-MM-dd'" align="right"></div>-->
+  <ion-item>
+
+    <div class="row source_row">
+      <div class="col col-35" style="vertical-align:bottom"><h2>水</h2></div>
+
+      <div class="col col-60 " >
+        <input type="text" placeholder="请输入用水消费" ng-model="source2.water"></div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="row source_row" >
+      <div class="col col-35" style="vertical-align:bottom"><h2>煤</h2></div>
+
+      <div class="col col-60 " >
+        <input type="text" placeholder="请输入用煤消费" ng-model="source2.coal"></div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="row source_row" >
+      <div class="col col-35" style="vertical-align:bottom"><h2>电</h2></div>
+
+      <div class="col col-60 " >
+        <input type="text" placeholder="请输入用电消费" ng-model="source2.electric"></div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="row source_row" >
+      <div class="col col-35" style="vertical-align:bottom"><h2>天然气</h2></div>
+
+      <div class="col col-60 " >
+        <input type="text" placeholder="请输入天然气消费" ng-model="source2.gas"></div>
+    </div>
+  </ion-item>
+  <div  class="padding" >
+    <button class="button button-block button-dark" style="margin-top:30px"ng-click="addSource()">提交</button>
+  </div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,63 @@
+
+<ion-tabs class="tabs-top  tabs-striped tabs-light tabs-color-active-calm">
+
+  <ion-tab title="库明细查询">
+
+    <ion-view>
+
+      <ion-content>
+
+        <ion-item>
+          <div class="row">
+            <div class="col col-25"><h2>库区</h2></div>
+            <div class="col col-25">
+              <select ng-model="req.stocktype" ng-options="m for m in stocktype" style="height: 26px">
+                <option value=""></option>
+              </select>
+            </div>
+
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <div class="row">
+            <div class="col col-25"><h2>制令单号</h2></div>
+            <div class="col col-25">
+              <input type="text"  placeholder="请输入单号"  ng-model="req.danno"  />
+            </div>
+
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <div class="row">
+              <div class="col col-25"><h2>客户名称</h2></div>
+              <div class="col col-25">
+              <input type="text"  placeholder="请输入客户名称"  ng-model="req.username"  />
+            </div>
+
+          </div>
+        </ion-item>
+
+
+
+
+      </ion-content>
+
+      <ion-footer-bar>
+        <a class="button button-icon" ng-click="commit()">查询</a>
+        <i class="title">|</i>
+        <a class="button button-icon" ng-click="remeber()">记住本次查询</a>
+      </ion-footer-bar>
+    </ion-view>
+  </ion-tab>
+
+  <ion-tab
+    title="查询历史"
+    href="#/sselect1"
+    >
+  </ion-tab>
+</ion-tabs>
+
+
+

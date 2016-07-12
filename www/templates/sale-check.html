@@ -1,0 +1,38 @@
+<ion-view view-title="销售合同审批">
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale-detail"></a>
+    <h1 class="title light">审批</h1>
+    <a class="button button-icon button-clear ion-android-done button-light" ng-click="commit()"></a>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="item item-divider" style="margin-bottom: 20px;">基本信息</div>
+      <div class="checkItem">订货客户名称：{{mingxi.orderCusName}}</div>
+      <div class="checkItem">销售业务员：{{mingxi.salesMan}}</div>
+      <div class="checkItem">收货客户名称：{{mingxi.recCusName}}</div>
+      <div class="checkItem">销售单价（含税）：{{mingxi.univalence}}</div>
+      <div class="checkItem">单据日期：{{mingxi.billDate}}</div>
+      <div class="checkItem">交货日期：{{mingxi.deliveryDate}}</div>
+      <div class="checkItem">状态：{{mingxi.status}}</div>
+
+
+
+    <div class="item item-divider" style="margin-top: 20px;">审批意见</div>
+    <textarea rows="5" cols="50" style="border-top:1px solid #b2b2b2;border-bottom:1px solid #b2b2b2;margin-top:10px"
+              ng-model="data.opinion"></textarea>
+
+    <!--<div style="width:280px;height: 50px;;position:fixed;top:90%;left:50%;margin-left: -140px;border: 1px solid gray" class="text-center">
+      <img ng-src="img/agree.png" style="margin-top:9px;border-right: 1px solid gray;" ng-click="checkCommit('A')">
+      <img ng-src="img/noAgree.png" style="margin-top:6px;border-right: 1px solid gray" ng-click="checkCommit('B')">
+       <img ng-src="img/exit.png" style="margin-top:6px" ng-click="checkCommit('C')"></div>
+
+    </div>-->
+  </ion-content>
+
+  <ion-footer-bar>
+    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('A')"> <img ng-src="img/agree.png" style="margin-top:5px"></div>
+    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('B')"><img ng-src="img/noAgree.png" style="margin-top:6px"></div>
+    <div style="width:50%;text-align:center;margin:0 auto;" ng-click="checkCommit('C')"><img ng-src="img/exit.png" style="margin-top:6px"></div>
+  </ion-footer-bar>
+</ion-view>
+

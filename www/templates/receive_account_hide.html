@@ -1,0 +1,65 @@
+<ion-view view-title="隐藏">
+    <ion-header-bar class="dark-bg light">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="receive_account"></a>
+        <h1 class="title light">请选择要隐藏的列</h1>
+        <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="commit()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <ul class="list">
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.username">
+                </label>
+                客户名称
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="data.formInvoiceNum">
+                </label>
+                形式发票号
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.date">
+            </label>
+                开票日期
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.invoiceNum">
+            </label>
+                发票号码
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.invoiceCode">
+            </label>
+                发票代码
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.currencies">
+            </label>
+                币种
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.billMoney">
+            </label>
+                结算金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.verificationMoney">
+            </label>
+                核销金额
+            </li>
+            <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="data.verificationingMoney">
+            </label>
+                待核销金额
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

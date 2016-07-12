@@ -1,0 +1,41 @@
+<ion-view view-title="库存统计信息">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+        <h1 class="title light">库存统计信息</h1>
+    </ion-header-bar>
+  <ion-content>
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+    <ion-list ng-repeat="k in stocks|filter:data.criteria" >
+
+      <div class="receive_bill_itemTitle" style="margin-top:20px" ng-if=!hide.NAME>客户名称:{{k.NAME}}</div>
+      <hr class="hr">
+        <ion-item ng-repeat="item in k">
+          <!--<ion-item  class="receive_bill_margin">-->
+
+            <div class="row receive_item">
+              <div class="col col-60"><i ng-if=!hide.LASTTEXT1>制令单号:{{item.LASTTEXT1}}<br></i><i ng-if=!hide.GANG1>钢种:{{item.GANG1}}<br></i><i ng-if=!hide.KUIGE1>规格:{{item.KUIGE1}}<br></i><i ng-if=!hide.GONGYI11>工艺:{{item.GONGYI11}}</i></div>
+              <div class="col col-40"><i ng-if=!hide.PANSHU1>盘数:{{item.PANSHU1}}<br></i><i ng-if=!hide.ZHONGLIANG1>重量:{{item.ZHONGLIANG1}}<br></i><i ng-if=!hide.RUKUTIME1>入库日期:{{item.RUKUTIME1}}<br></i></div>
+            </div>
+          </ion-item>
+        <!--</ion-item>-->
+
+    </ion-list>
+  </ion-content>
+  <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<script id="my-popover2.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/chaxun.png" ui-sref="sselect" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/chaxunlishi.png" ui-sref="sselect1"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/yincang.png" ui-sref="syingcuang" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

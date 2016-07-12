@@ -1,0 +1,17 @@
+<ion-view view-title="查询历史">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="pay_account"></a>
+        <h1 class="title light">查询历史</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="item in history">
+                {{item.recordName}}
+                <ion-option-button class="button-calm" ng-click="remove(item.id)">
+                    删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
+</ion-view>

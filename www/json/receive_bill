@@ -1,0 +1,73 @@
+ 应收票据信息
+         //收款单号
+        "number"
+        //单据日期
+        "date"
+        //客户名称
+        "username"
+        //收款方式
+        "way":
+        //收款性质
+        "nature"
+        //收款用途
+        "use"
+        //收款金额
+        "receiveMoney"
+        //贴息金额
+        "discountMoney"
+        //转退款金额
+        "turnOrBackMoney"
+        //核销金额
+        "verification"
+        //币种
+        "currencies"
+        //汇率
+        "exchange"
+        //币种对应金额
+        "currenciesMoney"
+
+
+应收账款
+         "username"//客户名称
+         "formInvoiceNum"//形式发票号
+         "date"//开票日期
+         "invoiceNum"//发票号码
+         "invoiceCode"//发票代码
+         "currencies"//币种
+         "billMoney"//结算金额
+         "verificationMoney"//核销金额
+         "verificationingMoney"//待核销金额
+
+
+
+应付票据信息
+                 "payRequisitionNum":"张三",//付款申请单号
+                 "invoiceCode":"54125",//发票代码
+                 "invoiceNum":"125215",//发票号码
+                 "reportNum":"11203",//报支单号
+                 "contractNum":"1234412",//合同号
+                 "applicationMoney":"300000",//申请金额
+                 "invoiceMoney":"200000",//发票金额
+                 "payNum":"64423",//付款单号
+                 "payDate":"2016-04-08",//付款日期
+                 "payUse":"现金",//付款方式
+                 "originMoney":"200000",//原币金额
+                 "currencies":"人民币",//币种
+                 "renmingbi":"200000"//人民币金额
+应付账款
+
+                "username":"张三",//供应商名称
+                 "invoiceManageNum":"54125",//发票管理号
+                 "invoiceNature":"公司",//发票性质
+                 "invoiceCode":"54125",//发票代码
+                 "invoiceNum":"125215",//发票号码
+                  "currencies":"人民币",//币种
+                 "billNum":"444515",//结算单号
+                 "invoiceMoney":"200000",//发票金额
+                "applicationMoney":"300000",//申请金额
+                 "payMoney":"200000",//付款金额
+                 "surplusMoney":"200000",//剩余金额
+                 "status":"已付",//发票状态
+
+
+

@@ -1,0 +1,49 @@
+<ion-view view-title="销售合同信息" >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
+    <h1 class="title light">销售合同具体信息</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-item class="detailed ">订单号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.orderNum}}</span></ion-item>
+    <ion-item class="detailed ">销售业务员&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.salesMan}}</span></ion-item>
+    <ion-item class="detailed ">单据日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.billDate}}</span></ion-item>
+    <ion-item class="detailed ">订货客户名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.recCusName}}</span></ion-item>
+    <ion-item class="detailed ">收货客户名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.recCusName}}</span></ion-item>
+    <ion-item class="detailed ">品种&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.type}}</span></ion-item>
+    <ion-item class="detailed ">销售单价（含税）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.univalence}}</span></ion-item>
+    <ion-item class="detailed ">钢种&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.steelGrade}}</span></ion-item>
+    <ion-item class="detailed ">规格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.standard}}</span></ion-item>
+    <ion-item class="detailed ">工艺&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.craft}}</span></ion-item>
+    <ion-item class="detailed ">标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.criterion}}</span></ion-item>
+    <ion-item class="detailed ">订货重量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.orderWeight}}</span></ion-item>
+    <ion-item class="detailed ">成品生产重量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.proWeight}}</span></ion-item>
+    <ion-item class="detailed ">成品入库量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.stockNum}}</span></ion-item>
+    <ion-item class="detailed ">最后入库日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.stockDate}}</span></ion-item>
+    <ion-item class="detailed ">成品发货量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.sendNum}}</span></ion-item>
+    <ion-item class="detailed ">最后发货日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.lastSendDate}}</span></ion-item>
+    <ion-item class="detailed ">当前成品库存量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.currentInventory}}</span></ion-item>
+    <ion-item class="detailed ">原料供应商&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.rawSupplier}}</span></ion-item>
+    <ion-item class="detailed ">交货方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.deliveryType}}</span></ion-item>
+    <ion-item class="detailed ">交货日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.deliveryDate}}</span></ion-item>
+    <ion-item class="detailed ">结算方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.clearMethods}}</span></ion-item>
+    <ion-item class="detailed ">备注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.rawSupplier}}</span></ion-item>
+    <ion-item class="detailed ">状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.status}}</span></ion-item>
+  </ion-content>
+  <img ng-src="img/popover.jpg" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<!--浮动框-->
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center">
+          <img ng-src="img/check.png" ui-sref="sale-check" class="popover_img"><div>审批</div>
+        </div>
+        <div class="col col-30 text-center"></div>
+          <div class="col col-30 text-center"></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+

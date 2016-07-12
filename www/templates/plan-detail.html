@@ -1,0 +1,21 @@
+
+<ion-view view-title="">
+    <ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <a class="button button-clear ion-chevron-left" ui-sref="tab-plan">返回
+    </a>
+  </ion-nav-buttons>
+    </ion-nav-bar>
+  <ion-content class="padding">
+      <h1 style="text-align:center;color:blue">发货执行情况:</h1>
+      <fusioncharts
+        width="100%"
+        height="60%"
+        type="MSColumn2D"
+        datasource="{{myDataSource}}"
+        >
+      </fusioncharts>
+
+
+  </ion-content>
+</ion-view>

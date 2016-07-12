@@ -1,0 +1,21 @@
+<ion-view view-title="明细">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="receive_bill"></a>
+        <h1 class="title light">{{info.number}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-item class="detailed ">收款单号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.NUMBER}}</span></ion-item>
+        <ion-item class="detailed ">单据日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.DATE}}</span></ion-item>
+        <ion-item class="detailed ">客户名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.USERNAME}}</span></ion-item>
+        <ion-item class="detailed ">收款方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.WAY}}</span></ion-item>
+        <ion-item class="detailed ">收款性质&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.NATURE}}</span></ion-item>
+        <ion-item class="detailed ">收款用途&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.USE}}</span></ion-item>
+        <ion-item class="detailed ">收款金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.RECEIVEMONEY}}</span></ion-item>
+        <ion-item class="detailed ">贴息金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.DISCOUNTMONEY}}</span></ion-item>
+        <ion-item class="detailed ">转退款金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.TURNORBACKMONEY}}</span></ion-item>
+        <ion-item class="detailed ">核销金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.VERIFICATION}}</span></ion-item>
+        <ion-item class="detailed ">币种&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.CURRENCIES}}</span></ion-item>
+        <ion-item class="detailed ">汇率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.EXCHANGE}}</span></ion-item>
+        <ion-item class="detailed ">币种对应金额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="item-note dark">{{mingxi.CURRENCIESMONEY}}</span></ion-item>
+    </ion-content>
+</ion-view>

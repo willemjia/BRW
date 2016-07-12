@@ -1,0 +1,48 @@
+<ion-view view-title="发货计划">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+        <h1 class="title light">发货计划</h1>
+    </ion-header-bar>
+  <ion-content>
+
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+
+    <ion-list>
+
+
+      <ion-item  ng-repeat="item in plans|filter:data.criteria" type="item-text-wrap"  >
+        <div class="receive_account_itemTitle" style="color:red" ng-if=!hide.name>客户名称：{{item.name}}</div><hr class="hr">
+        <div class="row receive_item">
+          <div class="col col-20 receive_account_key text-center light" >{{item.id}}</div>
+          <div class="col col-40 col-offset-10 attributes"><i style="color:blue">{{item.jiahua1}}</i><br><i ng-if=!hide.shijifahuo>实际发货量:</i><br><i ng-if=!hide.riqi>计划日期:</i><br><i  ng-if=!hide.jihuafahuo>计划发货量:</i><br><i  ng-if=!hide.jianshu>实际发货件数:</i>
+            <br><i style="color:blue">{{item.jiahua2}}</i><br><i ng-if=!hide.shijifahuo>实际发货量:</i><br><i ng-if=!hide.riqi>计划日期:</i><br><i ng-if=!hide.jihuafahuo>计划发货量:</i><br><i  ng-if=!hide.jianshu>实际发货件数:</i>
+          </div>
+          <div class="col col-40"><br><i  ng-if=!hide.shijifahuo>{{item.shijifahuo1}}</i><br><i ng-if=!hide.riqi>{{item.riqi1}}</i><br><i ng-if=!hide.jihuafahuo>{{item.jihuafahuo1}}</i><br><i ng-if=!hide.jianshu>{{item.jianshu1}}</i>
+            <br><br><i  ng-if=!hide.shijifahuo>{{item.shijifahuo2}}</i><br><i ng-if=!hide.riqi>{{item.riqi2}}</i><br><i ng-if=!hide.jihuafahuo>{{item.jihuafahuo2}}</i><br><i ng-if=!hide.jianshu>{{item.jianshu2}}</i>
+          </div>
+
+        </div>
+
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-dark" ui-sref="modifyplan()">发货执行情况查看</button>
+  </ion-content>
+  <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<script id="my-popover1.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/chaxun.png" ui-sref="pselect" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/chaxunlishi.png" ui-sref="pselect1"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/yincang.png" ui-sref="pyingcuang" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+

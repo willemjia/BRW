@@ -1,0 +1,60 @@
+<ion-view view-title="客户资金帐信息查询" >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
+    <h1 class="title light">客户资金帐户信息查询</h1>
+  </ion-header-bar>
+  <ion-tabs class="tabs-top  tabs-striped tabs-light tabs-color-active-calm">
+    <!-- Dashboard Tab -->
+    <ion-tab title="编辑查询">
+      <ion-view>
+        <ion-content>
+
+         <!-- <div ng-bind="condition.billDateEnd | date:'yyyy-MM-dd'" align="right"></div>-->
+          <ion-item>
+            <div class="row" >
+              <div class="col col-35" style="vertical-align:bottom"><h2>客户名称</h2></div>
+              <div class="col col-60 " >
+                <input type="text" placeholder="请输入客户名称" ng-model="condition.cusName"></div>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="row" >
+              <div class="col col-35" style="vertical-align:bottom"><h2>币种</h2></div>
+              <div class="col col-60 " >
+
+                <input type="text" placeholder="请输入币种" ng-model="condition.moneyType"></div>
+            </div>
+          </ion-item>
+        </ion-content>
+
+
+          <ion-footer-bar>
+            <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="showSearch()">查询</a></div>
+            <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
+          </ion-footer-bar>
+
+          <!--<a class="button button-icon " ng-click="commit()" >查询</a>
+          <i class="title">|</i>
+          <a class="button button-icon " ng-click="remeber()" >记住本次查询</a>-->
+      </ion-view>
+    </ion-tab>
+    <!-- Chats Tab -->
+    <ion-tab title="查询历史" >
+      <ion-view>
+        <ion-content>
+          <ul class="list color-list-demo">
+
+
+            <li class="item dark"ng-repeat="item in searchHistory">
+              <div ng-click="getOneHistory(item.id)">
+                {{item.condition}}
+                <span class="color-demo dark-bg dark-border"></span>
+              </div>
+            </li>
+
+          </ul>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+  </ion-tabs>
+  </ion-view>

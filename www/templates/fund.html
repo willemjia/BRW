@@ -1,0 +1,71 @@
+<ion-view view-title="客户资金帐信息" >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+    <h1 class="title light">客户资金账户信息</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字查询" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+    <ion-list ng-repeat="item in funds|filter:data.criteria">
+      <ion-item  class="receive_bill_margin" ui-sref="fund-detail({cusName:item.cusName})">
+        <div class="sale_account_itemTitle" ng-hide=fund_flag.cusName>客户名称：{{item.cusName}}</div><hr class="fund_hr">
+        <div class="row sale_item">
+          <div class="col col-20  crl_bgcolor text-center light">{{item.cusName.substring(0,1)}}</div>
+          <div class="col col-40 col-offset-10 sale_attributes">
+            <i ng-hide=fund_flag.accValue>账面金额：<br></i>
+            <i ng-hide=fund_flag.fundClear>资金净额：<br></i>
+            <i ng-hide=fund_flag.freeMoney>可用自由款：<br></i>
+            <i ng-hide=fund_flag.totMoney>总收款金额：</i></div>
+          <div class="col col-40">
+            <i ng-hide=fund_flag.accValue>{{item.accValue}}<br></i>
+            <i ng-hide=fund_flag.fundClear>{{item.fundClear}}<br></i>
+            <i ng-hide=fund_flag.freeMoney>{{item.freeMoney}}<br></i>
+            <i ng-hide=fund_flag.totMoney>{{item.totMoney}}</i></div>
+        </div>
+        <div class="row sale_item">
+          <div class="col col-20 sale_attributes">
+            <i ng-hide=fund_flag.occupyMoney>出库占用金额：<br></i>
+            <i ng-hide=fund_flag.totBalance>总结算金额：<br></i>
+            <i ng-hide=fund_flag.creditAmount>信用金额：<br></i>
+            <i ng-hide=fund_flag.paidCredit>已用信用：<br></i>
+            <i ng-hide=fund_flag.leftCredit>剩余信用：</i></div>
+          <div class="col col-40 col-offset-10">
+            <i ng-hide=fund_flag.occupyMoney>{{item.occupyMoney}}<br></i>
+            <i ng-hide=fund_flag.totBalance>{{item.totBalance}}<br></i>
+            <i ng-hide=fund_flag.creditAmount>{{item.creditAmount}}<br></i>
+            <i ng-hide=fund_flag.paidCredit>{{item.paidCredit}}<br></i>
+            <i ng-hide=fund_flag.leftCredit>{{item.leftCredit}}</i></div>
+          <div class="col col-40"></div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+  </ion-content>
+  <img ng-src="img/popover.jpg" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+
+</ion-view>
+<!--浮动框-->
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/search.png" ui-sref="fund-search" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/search-history.png" ui-sref="fund-history"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/hide.png" ui-sref="fund-hide" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+

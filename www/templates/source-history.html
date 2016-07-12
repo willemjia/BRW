@@ -1,0 +1,21 @@
+
+<ion-view >
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="fund"></a>
+    <h1 class="title light">能源系统数据查询历史</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <ul class="list color-list-demo">
+
+
+      <li class="item dark"ng-repeat="item in searchHistory">
+        <div ng-click="getOneHistory(item.id)">
+          {{item.condition}}
+          <span class="color-demo dark-bg dark-border"></span>
+        </div>
+      </li>
+
+    </ul>
+  </ion-content>
+  </ion-view>

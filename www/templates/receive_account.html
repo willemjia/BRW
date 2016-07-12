@@ -1,0 +1,51 @@
+<ion-view view-title="receive_bill">
+    <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if=!flag2></a>
+        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="receive_account_search" ng-click="state()" ng-if=flag2></a>
+        <h1 class="title light" ng-if=!flag2>应收账款信息</h1>
+        <h1 class="title light" ng-if=flag2>应收账款查询结果</h1>
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+        <div class="bar item-input-inset" >
+            <label class="item-input-wrapper" >
+                <input type="search" placeholder="关键字查询" ng-model="data.name">
+            </label>
+            <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+        </div>
+    </div>
+    <ion-content class="stable-bg content-margin">
+        <ion-list ng-repeat="item in resp|filter:data.criteria">
+            <ion-item  class="receive_bill_margin" ng-click="detail(item)"">
+                <div class="receive_account_itemTitle" ng-if=!hide.USERNAME>客户名称：{{item.USERNAME}}</div><hr class="hr">
+                <div class="row receive_item">
+                    <div class="col col-20 receive_account_key text-center light">{{item.key}}</div>
+                    <div class="col col-40 col-offset-10 attributes"><i ng-if=!hide.FORMINVOICENUM>形式发票号：<br></i><i ng-if=!hide.DATE>开票日期：<br></i><i ng-if=!hide.INVOICENUM>发票号码：<br></i><i ng-if=!hide.INVOICECODE>发票代码：</i></div>
+                    <div class="col col-40"><i ng-if=!hide.FORMINVOICENUM>{{item.FORMINVOICENUM}}<br></i><i ng-if=!hide.DATE>{{item.DATE}}<br></i><i ng-if=!hide.INVOICENUM>{{item.INVOICENUM}}<br></i><i ng-if=!hide.INVOICECODE>{{item.INVOICECODE}}</i></div>
+                </div>
+                <div class="row receive_item">
+                    <div class="col col-20 attributes"><i ng-if=!hide.CURRENCIES>币种：<br></i><i ng-if=!hide.BILLMONEY>结算金额：<br></i><i ng-if=!hide.VERIFICATIONMONEY>核销金额：<br></i><i ng-if=!hide.VERIFICATIONINGMONEY>待核销金额：</i></div>
+                    <div class="col col-40 col-offset-10"><i ng-if=!hide.CURRENCIES>{{item.CURRENCIES}}<br></i><i ng-if=!hide.BILLMONEY>{{item.BILLMONEY}}<br></i><i ng-if=!hide.VERIFICATIONMONEY>{{item.VERIFICATIONMONEY}}<br></i><i ng-if=!hide.VERIFICATIONINGMONEY>{{item.VERIFICATIONINGMONEY}}</i></div>
+                    <div class="col col-40"></div>
+                </div>
+            </ion-item>
+        </ion-list>
+      <ion-infinite-scroll
+        on-infinite="loadMore()"
+        ng-if="run"
+        distance="1%">
+      </ion-infinite-scroll>
+    </ion-content>
+    <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view class="receive_bill_popover">
+        <ion-content>
+            <div class="row">
+                <div class="col col-30 text-center"><img ng-src="img/chaxun.png" ui-sref="receive_account_search" class="popover_img"><div>查询</div></div>
+                <div class="col col-30 text-center"><img ng-src="img/chaxunlishi.png" ui-sref="receive_account_history" class="popover_img"><div>查询历史</div></div>
+                <div class="col col-30 text-center"><img ng-src="img/yincang.png" ui-sref="receive_account_hide" class="popover_img"><div>隐藏</div></div>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>

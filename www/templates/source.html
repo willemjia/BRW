@@ -1,0 +1,54 @@
+<ion-view view-title="能源系统数据">
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+    <h1 class="title light">能源系统数据</h1>
+    <a class="button button-icon button-clear ion-android-add button-light" ui-sref="source-add"></a>
+  </ion-header-bar>
+  <ion-content>
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字查询" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+    <ion-list ng-repeat="item in sources|filter:data.criteria" >
+      <ion-item  class="receive_bill_margin" ui-sref="source-detail({useDate:item.useDate})">
+        <div class="sale_account_itemTitle" ng-hide=source_flag.cusName>使用日期：{{item.useDate}}</div><hr class="fund_hr">
+        <div class="row sale_item">
+          <div class="col col-20  crl_bgcolor text-center light">{{item.useDate.substring(9,11)}}</div>
+          <div class="col col-40 col-offset-10 sale_attributes">
+            <i ng-hide=source_flag.water>水：<br></i>
+            <i ng-hide=source_flag.coal>煤：<br></i>
+            <i ng-hide=source_flag.gas>天然气：<br></i>
+            <i ng-hide=source_flag.electric>电：</i></div>
+          <div class="col col-40">
+            <i ng-hide=source_flag.water>{{item.water}}<br></i>
+            <i ng-hide=source_flag.coal>{{item.coal}}<br></i>
+            <i ng-hide=source_flag.gas>{{item.gas}}<br></i>
+            <i ng-hide=source_flag.electric>{{item.electric}}</i></div>
+        </div>
+        </ion-item>
+    </ion-list>
+
+
+
+
+  </ion-content>
+  <img ng-src="img/popover.jpg" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+
+</ion-view>
+<!--浮动框-->
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/search.png" ui-sref="source-search" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/search-history.png" ui-sref="source-history"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/hide.png" ui-sref="source-hide" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+
