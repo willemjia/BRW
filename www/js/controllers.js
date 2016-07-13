@@ -694,6 +694,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
+      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
@@ -1120,6 +1121,7 @@ angular.module('starter.controllers', [])
       for (var i = 0; i < $scope.resp.length; i++) {
         $scope.resp[i].key = (resp[i].USERNAME.substring(0, 1));
       }
+      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮，保存查询对象空间清空
@@ -1523,6 +1525,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
+      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
@@ -1939,6 +1942,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
+      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
