@@ -15,11 +15,11 @@
     </div>
     <ion-content class="stable-bg content-margin">
         <ion-list ng-repeat="item in resp|filter:data.criteria">
-            <ion-item  class="receive_bill_margin" ui-sref="pay_bill_detailed({id:item.id})">
-                <div class="receive_bill_itemTitle" ng-if=!hide.payRequisitionNum>付款申请单号:{{item.payRequisitionNum}}</div><hr class="hr">
+            <ion-item  class="receive_bill_margin" ng-click="detail(item)">
+                <div class="receive_bill_itemTitle" ng-if=!hide.PAYREQUISITIONNUM>付款申请单号:{{item.PAYREQUISITIONNUM}}</div><hr class="hr">
                 <div class="row receive_item">
-                    <div class="col col-60"><i ng-if=!hide.invoiceCode>发票代码:{{item.invoiceCode}}<br></i><i ng-if=!hide.invoiceNum>发票号码:{{item.invoiceNum}}<br></i><i ng-if=!hide.reportNum>报支单号:{{item.reportNum}}<br></i><i ng-if=!hide.contractNum>合同号:{{item.contractNum}}<br></i><i ng-if=!hide.applicationMoney>申请金额:{{item.applicationMoney}}<br></i><i ng-if=!hide.invoiceMoney>发票金额:{{item.invoiceMoney}}</i></div>
-                    <div class="col col-40"><i ng-if=!hide.payNum>付款单号:{{item.payNum}}<br></i><i ng-if=!hide.payDate>付款日期:{{item.payDate}}<br></i><i ng-if=!hide.payUse>付款方式:{{item.payUse}}<br></i><i ng-if=!hide.originMoney>原币金额:{{item.originMoney}}<br></i><i ng-if=!hide.currencies>币种:{{item.currencies}}<br></i><i ng-if=!hide.renmingbi>人民币金额:{{item.renmingbi}}</i></div>
+                    <div class="col col-60"><i ng-if=!hide.INVOICECODE>发票代码:{{item.INVOICECODE}}<br></i><i ng-if=!hide.INVOICENUM>发票号码:{{item.INVOICENUM}}<br></i><i ng-if=!hide.REPORTNUM>报支单号:{{item.REPORTNUM}}<br></i><i ng-if=!hide.CONTRACNUM>合同号:{{item.CONTRACNUM}}<br></i><i ng-if=!hide.APPLICATIONMONEY>申请金额:{{item.APPLICATIONMONEY}}<br></i><i ng-if=!hide.INVOICEMONEY>发票金额:{{item.INVOICEMONEY}}</i></div>
+                    <div class="col col-40"><i ng-if=!hide.PAYNUM>付款单号:{{item.PAYNUM}}<br></i><i ng-if=!hide.PAYDATE>付款日期:{{item.PAYDATE}}<br></i><i ng-if=!hide.PAYUSE>付款方式:{{item.PAYUSE}}<br></i><i ng-if=!hide.ORIGINMONEY>原币金额:{{item.ORIGINMONEY}}<br></i><i ng-if=!hide.CURRENCIES>币种:{{item.CURRENCIES}}<br></i><i ng-if=!hide.RENMINBI>人民币金额:{{item.RENMINBI}}</i></div>
                 </div>
             </ion-item>
         </ion-list>

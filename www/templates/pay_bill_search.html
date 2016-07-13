@@ -11,26 +11,20 @@
                 <ion-item>
                     <div class="row">
                         <div class="col col-25"><h2>付款日期</h2></div>
-                        <div class="col col-25">
-                            <select ng-model="req.dateRange" ng-options="m for m in dateRange" style="height: 26px">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                        <div class="col col-40 col-offset-10">
+                        <div class="col col-50 col-offset-10">
                             <ionic-datepicker input-obj="datepickerObject">
                                 <ion-item class="item item-input ion-calendar ">
-                                    <p>{{req.date1 | date:datepickerObject.dateFormat}}</p>
+                                    <p>{{search.date1 | date:datepickerObject.dateFormat}}</p>
                                 </ion-item>
                             </ionic-datepicker>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col col-25"></div>
-                        <div class="col col-25"></div>
-                        <div class="col col-40 col-offset-10">
-                            <ionic-datepicker input-obj="datepickerObject2" ng-if="req.dateRange=='时间段'">
+                        <div class="col col-50 col-offset-10">
+                            <ionic-datepicker input-obj="datepickerObject2">
                                 <ion-item class="item item-input ion-calendar ">
-                                    <p>{{req.date2 | date:datepickerObject2.dateFormat}}</p>
+                                    <p>{{search.date2 | date:datepickerObject2.dateFormat}}</p>
                                 </ion-item>
                             </ionic-datepicker>
                         </div>
@@ -55,7 +49,7 @@
         <ion-view>
             <ion-content>
                 <ion-list>
-                    <ion-item ng-repeat="item in history">
+                    <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
                         {{item.recordName}}
                         <ion-option-button class="button-calm" ng-click="remove(item.id)">
                             删除

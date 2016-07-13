@@ -28,15 +28,15 @@
 
 
 应收账款
-         "username"//客户名称
-         "formInvoiceNum"//形式发票号
-         "date"//开票日期
-         "invoiceNum"//发票号码
-         "invoiceCode"//发票代码
-         "currencies"//币种
-         "billMoney"//结算金额
-         "verificationMoney"//核销金额
-         "verificationingMoney"//待核销金额
+         USERNAME: false,
+              FORMINVOICENUM: false,
+              DATE: false,
+              INVOICENUM: false,
+              INVOICECODE: false,
+              CURRENCIES: false,
+              BILLMONEY: false,
+              VERIFICATIONMONEY: false,
+              VERIFICATIONINGMONEY: false
 
 
 

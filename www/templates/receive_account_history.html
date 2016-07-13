@@ -5,7 +5,7 @@
     </ion-header-bar>
     <ion-content>
         <ion-list>
-            <ion-item ng-repeat="item in history">
+            <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
                 {{item.RECORDNAME}}
                 <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
                     删除

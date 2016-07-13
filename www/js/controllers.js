@@ -641,10 +641,10 @@ angular.module('starter.controllers', [])
 
   //    ==================贾文光=============================================
 
-  .controller('receive_billCtrl', function ($scope,$state, receive_bill, $ionicPopover, $rootScope, myFactory) {
+  .controller('receive_billCtrl', function ($scope,$state,services, receive_bill, $ionicPopover, $rootScope) {
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
-    var requestCount={count:0};//上拉加载的条数
+    var requestCount={count:0,serviceName:'pmopm2_app_inq'};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
 
     /******************************************************************
@@ -652,7 +652,7 @@ angular.module('starter.controllers', [])
      ******************************************************************/
     $scope.loadMore=function(){
       requestCount.count+=100;
-      receive_bill.getAll(requestCount).then(function (result) {
+      services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
          if(EIinfoOut.length==0){
          $scope.run=false;
@@ -673,9 +673,9 @@ angular.module('starter.controllers', [])
     /*************************************************************************
      * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
      *************************************************************************/
-    var resp = myFactory.getter();
+    var resp = services.getter();
     if (resp == null) {
-      receive_bill.getAll(requestCount).then(function (resp) {
+      services.getAll(requestCount).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
         $scope.run=true;
@@ -689,7 +689,7 @@ angular.module('starter.controllers', [])
      * 点击返回按钮将myFactory清空
      *************************************************************************/
     $scope.state = function () {
-      myFactory.setter(null);
+      services.setter(null);
     }
 
     /*************************************************************************
@@ -754,8 +754,7 @@ angular.module('starter.controllers', [])
   .controller('receive_bill_detailedCtrl', function ($scope, $rootScope) {
    $scope.mingxi=$rootScope.mingxi;
   })
-  .controller('receive_bill_searchCtrl', function ($scope, receive_bill, $state, $ionicPopup, $timeout, myFactory) {
-    //$scope.req = {date1: null, date2: null, username: null, recordName: null};//查询参数
+  .controller('receive_bill_searchCtrl', function ($scope, services,receive_bill, $state, $ionicPopup, $timeout) {
     $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
@@ -862,10 +861,9 @@ angular.module('starter.controllers', [])
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
-      console.log($scope.req);
       receive_bill.search($scope.req).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
-        myFactory.setter(EIinfoOut);
+        services.setter(EIinfoOut);
         $state.go("receive_bill");
       }, function () {
       });
@@ -875,9 +873,10 @@ angular.module('starter.controllers', [])
      *************************************************************************/
     $scope.hisSearch=function(data){
       data.RECORDNAME=null;
+      data.serviceName='pmopm1_app_inq';
         receive_bill.search(data).then(function (resp) {
           var EIinfoOut = resp.Tables[0].Table;
-          myFactory.setter(EIinfoOut);
+          services.setter(EIinfoOut);
           $state.go("receive_bill");
         }, function () {
         });
@@ -935,7 +934,8 @@ angular.module('starter.controllers', [])
     /*************************************************************************
      * 获取保存的查询历史
      *************************************************************************/
-    receive_bill.searchHistory().then(function (resp) {
+    var searchHistoryNvc={serviceName:'pmopm3_app_inq'};
+    services.searchHistory(searchHistoryNvc).then(function (resp) {
       var EIinfoOut=resp.Tables[0].Table;
       $scope.history = EIinfoOut;
       history = EIinfoOut;
@@ -945,8 +945,8 @@ angular.module('starter.controllers', [])
      * 删除某条查询历史
      *************************************************************************/
     $scope.remove = function (req) {
-      var data={RECORDNAME:req};
-      receive_bill.remove(data).then(function (resp) {
+      var data={RECORDNAME:req,serviceName:'pmopm1_app_del'};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
@@ -962,8 +962,8 @@ angular.module('starter.controllers', [])
       });
       confirmPopup.then(function (res) {
         if (res) {
-          var req={RECORDNAME:null};
-          receive_bill.remove(req).then(function (resp) {
+          var req={RECORDNAME:null,serviceName:'pmopm1_app_del'};
+          services.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
           })
@@ -999,22 +999,22 @@ angular.module('starter.controllers', [])
       $state.go('receive_bill');
     }
   })
-  .controller('receive_bill_historyCtrl', function ($scope, receive_bill, $ionicPopup,myFactory,$state) {
+  .controller('receive_bill_historyCtrl', function ($scope, services,receive_bill, $ionicPopup,$state) {
     /*************************************************************************
      * 获取保存的查询历史
      *************************************************************************/
-    receive_bill.searchHistory().then(function (resp) {
+    var searchHistoryNvc={serviceName:'pmopm3_app_inq'};
+    services.searchHistory(searchHistoryNvc).then(function (resp) {
       var EIinfoOut=resp.Tables[0].Table;
       $scope.history = EIinfoOut;
-      history = EIinfoOut;
     }, function () {
     });
     /*************************************************************************
      * 删除某条查询历史
      *************************************************************************/
     $scope.remove = function (req) {
-      var data={RECORDNAME:req};
-      receive_bill.remove(data).then(function (resp) {
+      var data={RECORDNAME:null,serviceName:'pmopm1_app_del'};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
@@ -1030,8 +1030,8 @@ angular.module('starter.controllers', [])
       });
       confirmPopup.then(function (res) {
         if (res) {
-          var req={RECORDNAME:null};
-          receive_bill.remove(req).then(function (resp) {
+          var req={RECORDNAME:null,serviceName:'pmopm1_app_del'};
+          services.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
           })
@@ -1044,27 +1044,28 @@ angular.module('starter.controllers', [])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
-      var req={DATE1:data.DATE1,DATE2:data.DATE2,USERNAME:data.USERNAME,RECORDNAME:null};
-      receive_bill.search(req).then(function (resp) {
+      data.RECORDNAME=null;
+      data.serviceName='pmopm1_app_inq';
+      services.search(data).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
-        myFactory.setter(EIinfoOut);
+        services.setter(EIinfoOut);
         $state.go("receive_bill");
       }, function () {
       });
     }
   })
-  .controller('receive_accountCtrl', function ($scope, receive_account, $ionicPopover, $rootScope) {
+  .controller('receive_accountCtrl', function ($scope, services,receive_account, $ionicPopover, $rootScope) {
     $scope.flag2 = false;//返回按钮路由
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
-    var requestCount={count:0};//上拉加载的条数
+    var requestCount={count:0,serviceName:''};//上拉加载的条数
 
     /******************************************************************
      * 上拉加载
      ******************************************************************/
     $scope.loadMore=function(){
       requestCount.count+=100;
-      receive_account.getAll(requestCount).then(function (result) {
+      services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
         if(EIinfoOut.length==0){
           $scope.run=false;
@@ -1083,9 +1084,9 @@ angular.module('starter.controllers', [])
     /*************************************************************************
      * 获取查询结果，如果为空则不是查询的结果页，反之显示查询结果
      *************************************************************************/
-    var resp = receive_account.getter();
+    var resp = services.getter();
     if (resp == null) {
-      receive_account.getAll(requestCount).then(function (resp) {
+      services.getAll(requestCount).then(function (resp) {
         var EIinfoOut=resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
         for (var i = 0; i < $scope.resp.length; i++) {
@@ -1104,7 +1105,7 @@ angular.module('starter.controllers', [])
      * 点击返回按钮，保存查询对象空间清空
      *************************************************************************/
     $scope.state = function () {
-      receive_account.setter(null);
+      services.setter(null);
     }
     /*************************************************************************
      * 浮动框
@@ -1153,7 +1154,7 @@ angular.module('starter.controllers', [])
       $state.go('receive_account_detailed');
     }
   })
-  .controller('receive_account_searchCtrl', function ($scope, receive_account, $state, $ionicPopup, $timeout) {
+  .controller('receive_account_searchCtrl', function ($scope,services, receive_account, $state, $ionicPopup, $timeout) {
     $scope.req = {date1: null, date2: null, username: null, recordName: null};
     $scope.search = {date1: null, date2: null};
     var history = [];
@@ -1175,7 +1176,9 @@ angular.module('starter.controllers', [])
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
       return fmt;
     };
-    //日期插件
+    /*********************************************************************
+     *日期插件
+     *********************************************************************/
     $scope.datepickerObject = {
       titleLabel: 'Title',  //Optional
       todayLabel: 'Today',  //Optional
@@ -1254,15 +1257,20 @@ angular.module('starter.controllers', [])
         $scope.req.date2 = val2.format('yyyyMMdd');
       }
     };
+    /*********************************************************************
+     *查找并返回到页面
+     *********************************************************************/
     $scope.commit = function () {
-      console.log($scope.req);
       receive_account.search($scope.req).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
-        receive_account.setter(EIinfoOut);
+        services.setter(EIinfoOut);
         $state.go("receive_account");
       }, function () {
       });
     };
+    /*********************************************************************
+     *记住查询
+     *********************************************************************/
     $scope.showPopup = function () {
       $scope.data = {}
 
@@ -1309,20 +1317,25 @@ angular.module('starter.controllers', [])
         }
       });
       $timeout(function () {
-        myPopup.close(); // 20秒后关闭弹窗
-      }, 20000);
+        myPopup.close(); // 50秒后关闭弹窗
+      }, 50000);
     };
-
-    receive_account.searchHistory().then(function (resp) {
+    /*********************************************************************
+     *查询历史记录
+     *********************************************************************/
+    var searchHistoryNvc={serviceName:''};
+    services.searchHistory(searchHistoryNvc).then(function (resp) {
       var jsEIinfoOut=resp.Tables[0].Table;
       $scope.history = jsEIinfoOut;
       history = jsEIinfoOut;
     }, function () {
     })
-
+    /*********************************************************************
+     *删除某条历史记录
+     *********************************************************************/
     $scope.remove = function (req) {
-      var data={RECORDNAME:req};
-      receive_account.remove(data).then(function (resp) {
+      var data={RECORDNAME:req,serivceName:''};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
@@ -1338,7 +1351,7 @@ angular.module('starter.controllers', [])
       });
       confirmPopup.then(function (res) {
         if (res) {
-          var req={RECORDNAME:null};
+          var req={RECORDNAME:null,serviceName:''};
           receive_account.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
@@ -1348,108 +1361,147 @@ angular.module('starter.controllers', [])
         }
       });
     }
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      data.serviceName='';
+      receive_account.search(req).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("receive_account");
+      }, function () {
+      });
+    }
   })
-  .controller('receive_account_detailedCtrl', function ($scope, $location, receive_account) {
-    $scope.data = {id: $location.search().id};
-    receive_account.getAll().then(function (resp) {
-      for (var i = 0; i < resp.length; i++) {
-        if (resp[i].id == $scope.data.id) {
-          $scope.info = resp[i];
-          console.log(resp[i]);
-        }
-      }
+  .controller('receive_account_detailedCtrl', function ($scope, $rootScope) {
+    $scope.mingxi=$rootScope.mingxi;
+  })
+  .controller('receive_account_historyCtrl', function ($scope, services,receive_account, $ionicPopup) {
+    /*************************************************************************
+     * 获取保存的查询历史
+     *************************************************************************/
+    var searchHistoryNvc={serviceName:''};
+    services.searchHistory(searchHistoryNvc).then(function (resp) {
+      var EIinfoOut=resp.Tables[0].Table;
+      $scope.history = EIinfoOut;
     }, function () {
     });
-  })
-  .controller('receive_account_historyCtrl', function ($scope, receive_account, $ionicPopup) {
-    receive_account.searchHistory().then(function (resp) {
-      $scope.history = resp;
-    }, function () {
-    })
+    /*************************************************************************
+     * 删除某条查询历史
+     *************************************************************************/
     $scope.remove = function (req) {
-      receive_account.remove(req).then(function (resp) {
+      var data={RECORDNAME:req,serivceName:''};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
-    }
+    };
+    /*************************************************************************
+     * 删除所有查询历史
+     *************************************************************************/
     $scope.removeAll = function () {
       // 一个确认对话框
       var confirmPopup = $ionicPopup.confirm({
-        title: '确定要删除吗？',
+        title: '确定要全部删除吗？',
         template: '删了可就找不回来了！'
       });
       confirmPopup.then(function (res) {
         if (res) {
-          var req={recordName:null}
-          receive_account.remove(req).then(function (resp) {
+          var data={RECORDNAME:req,serivceName:''};
+          services.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
           })
         } else {
           console.log('You are not sure');
         }
+      });
+    }
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      data.serviceName='';
+      receive_account.search(req).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("receive_account");
+      }, function () {
       });
     }
   })
   .controller('receive_account_hideCtrl', function ($scope, $rootScope, $state) {
     $scope.data = {
-      username: false,
-      formInvoiceNum: false,
-      date: false,
-      invoiceNum: false,
-      invoiceCode: false,
-      currencies: false,
-      billMoney: false,
-      verificationMoney: false,
-      verificationingMoney: false
+      USERNAME: false,
+      FORMINVOICENUM: false,
+      DATE: false,
+      INVOICENUM: false,
+      INVOICECODE: false,
+      CURRENCIES: false,
+      BILLMONEY: false,
+      VERIFICATIONMONEY: false,
+      VERIFICATIONINGMONEY: false
     };
     $scope.commit = function () {
-      ;
       $rootScope.receive_account = $scope.data;
       $state.go('receive_account');
     }
   })
-  .controller('pay_billCtrl', function ($scope, pay_bill, $ionicPopover, $rootScope) {
-    $scope.resp=[];
-    $scope.run=true;//判断是否要上拉加载
-    var requestCount={count:0};
+  .controller('pay_billCtrl', function ($scope,$state, services,pay_bill, $ionicPopover, $rootScope) {
+    $scope.flag2 = false;//返回按钮路由
+    $scope.resp=[];//返回的数据
+    $scope.run=false;//上拉加载标志
+    var requestCount={count:0,servicesName:''};//上拉加载的条数
+
     $scope.loadMore=function(){
       requestCount.count+=100;
-      pay_bill.getAll(requestCount).then(function (result) {
-       /* if(result.Tables[0].Table.length==0){
+      services.getAll(requestCount).then(function (result) {
+        var EIinfoOut=result.Tables[0].Table;
+        if(EIinfoOut.length==0){
           $scope.run=false;
-        }*/
-        $scope.resp=$scope.resp.concat(result);
+        }
+        $scope.resp=$scope.resp.concat(EIinfoOut);
         $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function () {
       });
 
     };
-    /*$scope.$on('stateChangeSuccess', function() {
-      $scope.loadMore();
-    });*/
 
+    /*************************************************************************
+     * 隐藏列
+     *************************************************************************/
     $scope.flag2 = false;
     if ($rootScope.pay_bill != null) {
       $scope.hide = $rootScope.pay_bill;
-      console.log($scope.hide);
     }
-    var resp = pay_bill.getter();
+    /*************************************************************************
+     * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
+     *************************************************************************/
+    var resp = services.getter();
     if (resp == null) {
-      pay_bill.getAll(requestCount).then(function (resp) {
-        console.log(resp);
-        $scope.resp = resp;
+      services.getAll(requestCount).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        $scope.resp = EIinfoOut;
+        $scope.run=true;
       }, function () {
       });
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
     }
-    $scope.state = function () {
-      pay_bill.setter(null);
+    /*************************************************************************
+     * 点击返回按钮将myFactory清空
+     *************************************************************************/
+    $scope.state = function (){
+      services.setter(null);
     }
 
-    //浮动框
+    /*************************************************************************
+     * 悬浮按钮
+     *************************************************************************/
     $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
       scope: $scope
     });
@@ -1477,27 +1529,57 @@ angular.module('starter.controllers', [])
 //        $scope.$on('popover.removed', function() {
 //            // 执行代码
 //        });
-    $scope.flag = false;
+
+    /*************************************************************************
+     * 关键词查询
+     *************************************************************************/
     $scope.data = {
       criteria: '',
       //搜索联系人
       search: function () {
+        $scope.run=false;
         this.criteria = ''
         if (this.name) {
-          $scope.flag = true;
           this.criteria = this.name;
         } else {
           this.criteria = '';
-          $scope.flag = false;
+          $scope.run=true;
         }
       }
     }
-
+    /*************************************************************************
+     * 点击某条数据进入详细信息
+     *************************************************************************/
+    $scope.detail = function (data) {
+      $rootScope.mingxi = data;
+      $state.go('pay_bill_detailed');
+    }
   })
-  .controller('pay_bill_searchCtrl', function ($scope, pay_bill, $state, $ionicPopup, $timeout) {
-    $scope.req = {dateRange: null, date1: null, date2: null, username: null, recordName: null};
-    $scope.dateRange = ['时间段', '等于', '不等于', '大于', '小于', '大于等于', '小于等于', '全部'];
-    //日期插件
+  .controller('pay_bill_searchCtrl', function ($scope,services, pay_bill, $state, $ionicPopup, $timeout) {
+    $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
+    $scope.search = {date1: null, date2: null};//显示日期
+    var history = [];//存储查询历史数据
+    /****************************************************************
+     *日期转换
+     ****************************************************************/
+    Date.prototype.Format = function (fmt) { //author: meizz
+      var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+      for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
+    };
+    /*************************************************************************
+     * 日期插件
+     *************************************************************************/
     $scope.datepickerObject = {
       titleLabel: 'Title',  //Optional
       todayLabel: 'Today',  //Optional
@@ -1538,8 +1620,8 @@ angular.module('starter.controllers', [])
       if (typeof(val) === 'undefined') {
         console.log('No date selected');
       } else {
-        console.log(val);
-        $scope.req.date1 = val;
+        $scope.search.date1 = val;
+        $scope.req.DATE1 = val.Format("yyyyMMdd");
       }
     };
     //日期插件
@@ -1572,18 +1654,24 @@ angular.module('starter.controllers', [])
       if (typeof(val2) === 'undefined') {
         console.log('No date selected');
       } else {
-        console.log(val2);
-        $scope.req.date2 = val2;
+        $scope.search.date2 = val2;
+        $scope.req.DATE2 = val2.Format("yyyyMMdd");
       }
     };
+    /*************************************************************************
+     * 查询、跳转到结果页面
+     *************************************************************************/
     $scope.commit = function () {
-      console.log($scope.req);
       pay_bill.search($scope.req).then(function (resp) {
-        pay_bill.setter(resp);
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
         $state.go("pay_bill");
       }, function () {
       });
     };
+    /*************************************************************************
+     * 保存查询记录
+     *************************************************************************/
     $scope.showPopup = function () {
       $scope.data = {}
 
@@ -1603,7 +1691,21 @@ angular.module('starter.controllers', [])
                 // 不允许用户关闭，除非输入 wifi 密码
                 e.preventDefault();
               } else {
-                return $scope.data.wifi;
+                var f = true;
+                angular.forEach(history, function (item) {
+                  if (item.RECORDNAME == $scope.data.wifi) {
+                    f = false;
+                  }
+                });
+                if (!f) {
+                  e.preventDefault();
+                  $ionicPopup.alert({
+                    title: '警告',
+                    template: '标题重复或为空，请重新输入！'
+                  });
+                } else {
+                  return $scope.data.wifi;
+                }
               }
             }
           }
@@ -1612,86 +1714,45 @@ angular.module('starter.controllers', [])
       myPopup.then(function (res) {
         if (res) {
           $scope.req.recordName = res;
-          console.log($scope.req.recordName);
         }
       });
       $timeout(function () {
-        myPopup.close(); // 10秒后关闭弹窗
-      }, 10000);
+        myPopup.close(); // 50秒后关闭弹窗
+      }, 50000);
     };
-
-    pay_bill.searchHistory().then(function (resp) {
-      $scope.history = resp;
+    /*************************************************************************
+     * 获取保存的查询历史
+     *************************************************************************/
+    var searchHistorySvn={serviceName:''};
+    services.searchHistory(searchHistorySvn).then(function (resp) {
+      var EIinfoOut=resp.Tables[0].Table;
+      $scope.history = EIinfoOut;
+      history = EIinfoOut;
     }, function () {
     })
-
+    /*************************************************************************
+     * 删除某条查询历史
+     *************************************************************************/
     $scope.remove = function (req) {
-      pay_bill.remove(req).then(function (resp) {
+      var data={RECORDNAME:req,serviceName:''};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
     }
-    $scope.removeAll = function () {
-      pay_bill.removeAll().then(function (resp) {
-        $state.reload();
-      }, function () {
-      })
-    }
-  })
-  .controller('pay_bill_detailedCtrl', function ($scope, $location, pay_bill) {
-    $scope.data = {id: $location.search().id};
-    console.log($scope.data);
-    pay_bill.getAll().then(function (resp) {
-      for (var i = 0; i < resp.length; i++) {
-        if (resp[i].id == $scope.data.id) {
-          $scope.info = resp[i];
-          console.log(resp[i]);
-        }
-      }
-    }, function () {
-    });
-  })
-  .controller('pay_bill_hideCtrl', function ($scope, $rootScope, $state) {
-    $scope.data = {
-      payRequisitionNum: false,
-      invoiceCode: false,
-      invoiceNum: false,
-      reportNum: false,
-      contractNum: false,
-      applicationMoney: false,
-      invoiceMoney: false,
-      payNum: false,
-      payDate: false,
-      payUse: false,
-      originMoney: false,
-      currencies: false,
-      renmingbi: false
-    };
-    $scope.commit = function () {
-      $rootScope.pay_bill = $scope.data;
-      $state.go('pay_bill');
-    }
-  })
-  .controller('pay_bill_historyCtrl', function ($scope, pay_bill, $ionicPopup) {
-    pay_bill.searchHistory().then(function (resp) {
-      $scope.history = resp;
-    }, function () {
-    })
-    $scope.remove = function (req) {
-      pay_bill.remove(req).then(function (resp) {
-        $state.reload();
-      }, function () {
-      })
-    }
+    /*************************************************************************
+     * 删除所有查询历史
+     *************************************************************************/
     $scope.removeAll = function () {
       // 一个确认对话框
       var confirmPopup = $ionicPopup.confirm({
-        title: '确定要删除吗？',
+        title: '确定要全部删除吗？',
         template: '删了可就找不回来了！'
       });
       confirmPopup.then(function (res) {
         if (res) {
-          pay_bill.removeAll().then(function (resp) {
+          var req={RECORDNAME:null,serviceName:''};
+          services.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
           })
@@ -1700,34 +1761,151 @@ angular.module('starter.controllers', [])
         }
       });
     }
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      data.serviceName='';
+      pay_bill.search(data).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("pay_bill");
+      }, function () {
+      });
+    }
   })
-  .controller('pay_accountCtrl', function ($scope, pay_account, $ionicPopover, $rootScope) {
+  .controller('pay_bill_detailedCtrl', function ($scope) {
+    $scope.mingxi=$rootScope.mingxi;
+  })
+  .controller('pay_bill_hideCtrl', function ($scope, $rootScope, $state) {
+    $scope.data = {
+      PAYREQUISITIONNUM: false,
+      INVOICECODE: false,
+      INVOICENUM: false,
+      REPORTNUM: false,
+      CONTRACNUM: false,
+      APPLICATIONMONEY: false,
+      INVOICEMONEY: false,
+      PAYNUM: false,
+      PAYDATE: false,
+      PAYUSE: false,
+      ORIGINMONEY: false,
+      CURRENCIES: false,
+      RENMINBI: false
+    };
+    $scope.commit = function () {
+      $rootScope.pay_bill = $scope.data;
+      $state.go('pay_bill');
+    }
+  })
+  .controller('pay_bill_historyCtrl', function ($scope, services,pay_bill, $ionicPopup) {
+    /*************************************************************************
+     * 获取保存的查询历史
+     *************************************************************************/
+    var searchHistorySvn={serviceName:''};
+    services.searchHistory(searchHistorySvn).then(function (resp) {
+      var EIinfoOut=resp.Tables[0].Table;
+      $scope.history = EIinfoOut;
+    }, function () {
+    });
+    /*************************************************************************
+     * 删除某条查询历史
+     *************************************************************************/
+    $scope.remove = function (req) {
+      var data={RECORDNAME:req,serviceName:''};
+      services.remove(data).then(function (resp) {
+        $state.reload();
+      }, function () {
+      })
+    };
+    /*************************************************************************
+     * 删除所有查询历史
+     *************************************************************************/
+    $scope.removeAll = function () {
+      // 一个确认对话框
+      var confirmPopup = $ionicPopup.confirm({
+        title: '确定要全部删除吗？',
+        template: '删了可就找不回来了！'
+      });
+      confirmPopup.then(function (res) {
+        if (res) {
+          var req={RECORDNAME:null,serviceName:''};
+          services.remove(req).then(function (resp) {
+            $state.reload();
+          }, function () {
+          })
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    }
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      data.serviceName='';
+      pay_bill.search(data).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("pay_bill");
+      }, function () {
+      });
+    }
+  })
+  .controller('pay_accountCtrl', function ($scope,services, pay_account, $ionicPopover, $rootScope) {
+    $scope.flag2 = false;//返回按钮路由
+    $scope.resp=[];//返回的数据
+    $scope.run=false;//上拉加载标志
+    var requestCount={count:0,servicesName:''};//上拉加载的条数
+
+    $scope.loadMore=function(){
+      requestCount.count+=100;
+      services.getAll(requestCount).then(function (result) {
+        var EIinfoOut=result.Tables[0].Table;
+        if(EIinfoOut.length==0){
+          $scope.run=false;
+        }
+        $scope.resp=$scope.resp.concat(EIinfoOut);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }, function () {
+      });
+
+    };
+
+    /*************************************************************************
+     * 隐藏列
+     *************************************************************************/
     $scope.flag2 = false;
     if ($rootScope.pay_account != null) {
       $scope.hide = $rootScope.pay_account;
-      console.log($scope.hide);
     }
-    var resp = pay_account.getter();
+    /*************************************************************************
+     * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
+     *************************************************************************/
+    var resp = services.getter();
     if (resp == null) {
-      pay_account.getAll().then(function (resp) {
-        console.log(resp);
-        $scope.resp = resp;
-        for (var i = 0; i < $scope.resp.length; i++) {
-          $scope.resp[i].key = (resp[i].username.substring(0, 1));
-        }
+      services.getAll(requestCount).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        $scope.resp = EIinfoOut;
+        $scope.run=true;
       }, function () {
       });
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
-      for (var i = 0; i < $scope.resp.length; i++) {
-        $scope.resp[i].key = (resp[i].username.substring(0, 1));
-      }
     }
-    $scope.state = function () {
-      pay_account.setter(null);
+    /*************************************************************************
+     * 点击返回按钮将myFactory清空
+     *************************************************************************/
+    $scope.state = function (){
+      services.setter(null);
     }
-    //浮动框
+
+    /*************************************************************************
+     * 悬浮按钮
+     *************************************************************************/
     $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
       scope: $scope
     });
@@ -1747,38 +1925,68 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function () {
       $scope.popover.remove();
     });
-    $scope.flag = false;
+//        // 在隐藏浮动框后执行
+//        $scope.$on('popover.hidden', function() {
+//            // 执行代码
+//        });
+//        // 移除浮动框后执行
+//        $scope.$on('popover.removed', function() {
+//            // 执行代码
+//        });
+
+    /*************************************************************************
+     * 关键词查询
+     *************************************************************************/
     $scope.data = {
       criteria: '',
       //搜索联系人
       search: function () {
+        $scope.run=false;
         this.criteria = ''
         if (this.name) {
-          $scope.flag = true;
           this.criteria = this.name;
         } else {
           this.criteria = '';
-          $scope.flag = false;
+          $scope.run=true;
         }
       }
     }
+    /*************************************************************************
+     * 点击某条数据进入详细信息
+     *************************************************************************/
+    $scope.detail = function (data) {
+      $rootScope.mingxi = data;
+      $state.go('pay_account_detailed');
+    }
   })
-  .controller('pay_account_detailedCtrl', function ($scope, $location, pay_account) {
-    $scope.data = {id: $location.search().id};
-    pay_account.getAll().then(function (resp) {
-      for (var i = 0; i < resp.length; i++) {
-        if (resp[i].id == $scope.data.id) {
-          $scope.info = resp[i];
-          console.log(resp[i]);
-        }
-      }
-    }, function () {
-    });
+  .controller('pay_account_detailedCtrl', function ($scope) {
+    $scope.mingxi=$rootScope.mingxi;
   })
-  .controller('pay_account_searchCtrl', function ($scope, pay_account, $ionicPopup, $timeout, $state) {
-    $scope.req = {dateRange: null, date1: null, date2: null, username: null, recordName: null};
-    $scope.dateRange = ['时间段', '等于', '不等于', '大于', '小于', '大于等于', '小于等于', '全部'];
-    //日期插件
+  .controller('pay_account_searchCtrl', function ($scope, services,pay_account, $ionicPopup, $timeout, $state) {
+    $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
+    $scope.search = {date1: null, date2: null};//显示日期
+    var history = [];//存储查询历史数据
+    /****************************************************************
+     *日期转换
+     ****************************************************************/
+    Date.prototype.Format = function (fmt) { //author: meizz
+      var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+      for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
+    };
+    /*************************************************************************
+     * 日期插件
+     *************************************************************************/
     $scope.datepickerObject = {
       titleLabel: 'Title',  //Optional
       todayLabel: 'Today',  //Optional
@@ -1819,8 +2027,8 @@ angular.module('starter.controllers', [])
       if (typeof(val) === 'undefined') {
         console.log('No date selected');
       } else {
-        console.log(val);
-        $scope.req.date1 = val;
+        $scope.search.date1 = val;
+        $scope.req.DATE1 = val.Format("yyyyMMdd");
       }
     };
     //日期插件
@@ -1853,18 +2061,35 @@ angular.module('starter.controllers', [])
       if (typeof(val2) === 'undefined') {
         console.log('No date selected');
       } else {
-        console.log(val2);
-        $scope.req.date2 = val2;
+        $scope.search.date2 = val2;
+        $scope.req.DATE2 = val2.Format("yyyyMMdd");
       }
     };
+    /*************************************************************************
+     * 查询、跳转到结果页面
+     *************************************************************************/
     $scope.commit = function () {
-      console.log($scope.req);
       pay_account.search($scope.req).then(function (resp) {
-        pay_account.setter(resp);
+        services.setter(resp);
         $state.go("pay_account");
       }, function () {
       });
     };
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      receive_bill.search(data).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("pay_account");
+      }, function () {
+      });
+    }
+    /*************************************************************************
+     * 保存查询记录
+     *************************************************************************/
     $scope.showPopup = function () {
       $scope.data = {}
 
@@ -1884,7 +2109,21 @@ angular.module('starter.controllers', [])
                 // 不允许用户关闭，除非输入 wifi 密码
                 e.preventDefault();
               } else {
-                return $scope.data.wifi;
+                var f = true;
+                angular.forEach(history, function (item) {
+                  if (item.RECORDNAME == $scope.data.wifi) {
+                    f = false;
+                  }
+                });
+                if (!f) {
+                  e.preventDefault();
+                  $ionicPopup.alert({
+                    title: '警告',
+                    template: '标题重复或为空，请重新输入！'
+                  });
+                } else {
+                  return $scope.data.wifi;
+                }
               }
             }
           }
@@ -1893,72 +2132,121 @@ angular.module('starter.controllers', [])
       myPopup.then(function (res) {
         if (res) {
           $scope.req.recordName = res;
-          console.log($scope.req.recordName);
         }
       });
       $timeout(function () {
-        myPopup.close(); // 10秒后关闭弹窗
-      }, 10000);
+        myPopup.close(); // 50秒后关闭弹窗
+      }, 50000);
     };
-
-    pay_account.searchHistory().then(function (resp) {
-      $scope.history = resp;
+    /*************************************************************************
+     * 获取保存的查询历史
+     *************************************************************************/
+    var searchHistorySvn={serviceName:''};
+    services.searchHistory(searchHistorySvn).then(function (resp) {
+      var EIinfoOut=resp.Tables[0].Table;
+      $scope.history = EIinfoOut;
+      history = EIinfoOut;
     }, function () {
     })
-
+    /*************************************************************************
+     * 删除某条查询历史
+     *************************************************************************/
     $scope.remove = function (req) {
-      pay_account.remove(req).then(function (resp) {
+      var data={RECORDNAME:req,serviceName:''};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
     }
+    /*************************************************************************
+     * 删除所有查询历史
+     *************************************************************************/
     $scope.removeAll = function () {
-      pay_account.removeAll().then(function (resp) {
-        $state.reload();
-      }, function () {
-      })
+      // 一个确认对话框
+      var confirmPopup = $ionicPopup.confirm({
+        title: '确定要全部删除吗？',
+        template: '删了可就找不回来了！'
+      });
+      confirmPopup.then(function (res) {
+        if (res) {
+          var req={RECORDNAME:null,serviceName:''};
+          services.remove(req).then(function (resp) {
+            $state.reload();
+          }, function () {
+          })
+        } else {
+          console.log('You are not sure');
+        }
+      });
     }
+
   })
   .controller('pay_account_hideCtrl', function ($scope, $rootScope, $state) {
     $scope.data = {
-      username: false,
-      invoiceManageNum: false,
-      invoiceNature: false,
-      invoiceCode: false,
-      invoiceNum: false,
-      currencies: false,
-      billNum: false,
-      invoiceMoney: false,
-      applicationMoney: false,
-      payMoney: false,
-      surplusMoney: false,
-      status: false
+      USERNAME: false,
+      INVOICEMANAGENUM: false,
+      INVOICENATURE: false,
+      INVOICECODE: false,
+      INVOICENUM: false,
+      CURRENCIES: false,
+      BILLNUM: false,
+      INVOICEMONEY: false,
+      APPLICATIONMONEY: false,
+      PAYMONEY: false,
+      SURPLUSMONEY: false,
+      STATUS: false
     };
     $scope.commit = function () {
       $rootScope.pay_account = $scope.data;
       $state.go('pay_account');
     }
   })
-  .controller('pay_account_historyCtrl', function ($scope, pay_account, $ionicPopup) {
-    pay_account.searchHistory().then(function (resp) {
-      $scope.history = resp;
+  .controller('pay_account_historyCtrl', function ($scope,services, pay_account, $ionicPopup) {
+    /*************************************************************************
+     * 以历史记录查询、跳转到结果页面
+     *************************************************************************/
+    $scope.hisSearch=function(data){
+      data.RECORDNAME=null;
+      receive_bill.search(data).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        services.setter(EIinfoOut);
+        $state.go("pay_account");
+      }, function () {
+      });
+    };
+    /*************************************************************************
+     * 获取保存的查询历史
+     *************************************************************************/
+    var searchHistorySvn={serviceName:''};
+    services.searchHistory(searchHistorySvn).then(function (resp) {
+      var EIinfoOut=resp.Tables[0].Table;
+      $scope.history = EIinfoOut;
+      history = EIinfoOut;
     }, function () {
     })
+    /*************************************************************************
+     * 删除某条查询历史
+     *************************************************************************/
     $scope.remove = function (req) {
-      pay_account.remove(req).then(function (resp) {
+      var data={RECORDNAME:req,serviceName:''};
+      services.remove(data).then(function (resp) {
         $state.reload();
       }, function () {
       })
     }
+    /*************************************************************************
+     * 删除所有查询历史
+     *************************************************************************/
     $scope.removeAll = function () {
       // 一个确认对话框
       var confirmPopup = $ionicPopup.confirm({
-        title: '确定要删除吗？',
+        title: '确定要全部删除吗？',
         template: '删了可就找不回来了！'
       });
       confirmPopup.then(function (res) {
         if (res) {
-          pay_account.removeAll().then(function (resp) {
+          var req={RECORDNAME:null,serviceName:''};
+          services.remove(req).then(function (resp) {
             $state.reload();
           }, function () {
           })
