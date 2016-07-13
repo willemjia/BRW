@@ -641,11 +641,20 @@ angular.module('starter.controllers', [])
 
   //    ==================贾文光=============================================
 
-  .controller('receive_billCtrl', function ($scope,$state,services, receive_bill, $ionicPopover, $rootScope) {
+  .controller('receive_billCtrl', function ($scope,$state,services, receive_bill, $ionicPopover, $rootScope,$ionicLoading) {
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,serviceName:'pmopm2_app_inq'};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
+    /******************************************************************
+     * 加载动画
+     ******************************************************************/
+    if($scope.resp.length==0){
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
+    }
 
     /******************************************************************
      * 上拉加载
@@ -679,6 +688,7 @@ angular.module('starter.controllers', [])
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
         $scope.run=true;
+        $ionicLoading.hide();
       }, function () {
       });
     } else {
@@ -1046,7 +1056,7 @@ angular.module('starter.controllers', [])
     $scope.hisSearch=function(data){
       data.RECORDNAME=null;
       data.serviceName='pmopm1_app_inq';
-      services.search(data).then(function (resp) {
+      receive_bill.search(data).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
         $state.go("receive_bill");
@@ -1054,12 +1064,20 @@ angular.module('starter.controllers', [])
       });
     }
   })
-  .controller('receive_accountCtrl', function ($scope, services,receive_account, $ionicPopover, $rootScope) {
+  .controller('receive_accountCtrl', function ($scope, services,receive_account, $ionicPopover, $rootScope,$ionicLoading) {
     $scope.flag2 = false;//返回按钮路由
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,serviceName:''};//上拉加载的条数
-
+    /******************************************************************
+     * 加载动画
+     ******************************************************************/
+    if($scope.resp.length==0){
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
+    }
     /******************************************************************
      * 上拉加载
      ******************************************************************/
@@ -1092,6 +1110,8 @@ angular.module('starter.controllers', [])
         for (var i = 0; i < $scope.resp.length; i++) {
           $scope.resp[i].key = (resp[i].USERNAME.substring(0, 1));
         }
+        $scope.run=true;
+        $ionicLoading.hide();
       }, function () {
       });
     } else {
@@ -1450,12 +1470,23 @@ angular.module('starter.controllers', [])
       $state.go('receive_account');
     }
   })
-  .controller('pay_billCtrl', function ($scope,$state, services,pay_bill, $ionicPopover, $rootScope) {
+  .controller('pay_billCtrl', function ($scope,$state, services,pay_bill, $ionicPopover, $rootScope,$ionicLoading) {
     $scope.flag2 = false;//返回按钮路由
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,servicesName:''};//上拉加载的条数
-
+    /******************************************************************
+     * 加载动画
+     ******************************************************************/
+    if($scope.resp.length==0){
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
+    }
+    /******************************************************************
+     * 加载更多
+     ******************************************************************/
     $scope.loadMore=function(){
       requestCount.count+=100;
       services.getAll(requestCount).then(function (result) {
@@ -1486,6 +1517,7 @@ angular.module('starter.controllers', [])
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
         $scope.run=true;
+        $ionicLoading.hide();
       }, function () {
       });
     } else {
@@ -1854,12 +1886,23 @@ angular.module('starter.controllers', [])
       });
     }
   })
-  .controller('pay_accountCtrl', function ($scope,services, pay_account, $ionicPopover, $rootScope) {
+  .controller('pay_accountCtrl', function ($scope,services, pay_account, $ionicPopover, $rootScope,$ionicLoading) {
     $scope.flag2 = false;//返回按钮路由
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,servicesName:''};//上拉加载的条数
-
+    /******************************************************************
+     * 加载动画
+     ******************************************************************/
+    if($scope.resp.length==0){
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
+    }
+    /******************************************************************
+     * 加载更多
+     ******************************************************************/
     $scope.loadMore=function(){
       requestCount.count+=100;
       services.getAll(requestCount).then(function (result) {
@@ -1890,6 +1933,7 @@ angular.module('starter.controllers', [])
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
         $scope.run=true;
+        $ionicLoading.hide();
       }, function () {
       });
     } else {
