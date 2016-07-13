@@ -646,21 +646,13 @@ angular.module('starter.controllers', [])
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,serviceName:'pmopm2_app_inq'};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    if($scope.resp.length==0){
-      $ionicLoading.show({
-        template: 'Loading...',
-        duration:10000
-      });
-    }
+
 
     /******************************************************************
      * 上拉加载
      ******************************************************************/
     $scope.loadMore=function(){
-      requestCount.count+=100;
+      requestCount.count+=20;
       services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
          if(EIinfoOut.length==0){
@@ -684,6 +676,13 @@ angular.module('starter.controllers', [])
      *************************************************************************/
     var resp = services.getter();
     if (resp == null) {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
       services.getAll(requestCount).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
@@ -694,7 +693,6 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
-      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
@@ -1070,20 +1068,13 @@ angular.module('starter.controllers', [])
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,serviceName:''};//上拉加载的条数
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    if($scope.resp.length==0){
-      $ionicLoading.show({
-        template: 'Loading...',
-        duration:10000
-      });
-    }
+
+
     /******************************************************************
      * 上拉加载
      ******************************************************************/
     $scope.loadMore=function(){
-      requestCount.count+=100;
+      requestCount.count+=20;
       services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
         if(EIinfoOut.length==0){
@@ -1105,6 +1096,14 @@ angular.module('starter.controllers', [])
      *************************************************************************/
     var resp = services.getter();
     if (resp == null) {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
+
       services.getAll(requestCount).then(function (resp) {
         var EIinfoOut=resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
@@ -1121,7 +1120,6 @@ angular.module('starter.controllers', [])
       for (var i = 0; i < $scope.resp.length; i++) {
         $scope.resp[i].key = (resp[i].USERNAME.substring(0, 1));
       }
-      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮，保存查询对象空间清空
@@ -1477,20 +1475,12 @@ angular.module('starter.controllers', [])
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,servicesName:''};//上拉加载的条数
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    if($scope.resp.length==0){
-      $ionicLoading.show({
-        template: 'Loading...',
-        duration:10000
-      });
-    }
+
     /******************************************************************
      * 加载更多
      ******************************************************************/
     $scope.loadMore=function(){
-      requestCount.count+=100;
+      requestCount.count+=20;
       services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
         if(EIinfoOut.length==0){
@@ -1515,6 +1505,13 @@ angular.module('starter.controllers', [])
      *************************************************************************/
     var resp = services.getter();
     if (resp == null) {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
       services.getAll(requestCount).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
@@ -1525,7 +1522,6 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
-      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
@@ -1894,20 +1890,12 @@ angular.module('starter.controllers', [])
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
     var requestCount={count:0,servicesName:''};//上拉加载的条数
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    if($scope.resp.length==0){
-      $ionicLoading.show({
-        template: 'Loading...',
-        duration:10000
-      });
-    }
+
     /******************************************************************
      * 加载更多
      ******************************************************************/
     $scope.loadMore=function(){
-      requestCount.count+=100;
+      requestCount.count+=20;
       services.getAll(requestCount).then(function (result) {
         var EIinfoOut=result.Tables[0].Table;
         if(EIinfoOut.length==0){
@@ -1932,6 +1920,13 @@ angular.module('starter.controllers', [])
      *************************************************************************/
     var resp = services.getter();
     if (resp == null) {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: 'Loading...',
+        duration:10000
+      });
       services.getAll(requestCount).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
@@ -1942,7 +1937,6 @@ angular.module('starter.controllers', [])
     } else {
       $scope.flag2 = true;
       $scope.resp = resp;
-      $ionicLoading.hide();
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
