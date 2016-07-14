@@ -1,6 +1,7 @@
 <ion-view view-title="客户资金帐信息" >
   <ion-header-bar class="dark-bg">
-    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if=!flag2></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="fund" ng-click="state()" ng-if=flag2></a>
     <h1 class="title light">客户资金账户信息</h1>
   </ion-header-bar>
 
@@ -11,35 +12,35 @@
       </label>
       <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
     </div>
-    <ion-list ng-repeat="item in funds|filter:data.criteria">
-      <ion-item  class="receive_bill_margin" ui-sref="fund-detail({cusName:item.cusName})">
-        <div class="sale_account_itemTitle" ng-hide=fund_flag.cusName>客户名称：{{item.cusName}}</div><hr class="fund_hr">
+    <ion-list ng-repeat="item in resp|filter:data.criteria">
+      <ion-item  class="receive_bill_margin" ng-click="detail(item)" ">
+        <div class="sale_account_itemTitle" ng-hide=hide.CUSNAME>客户名称：{{item.CUSNAME}}</div><hr class="fund_hr">
         <div class="row sale_item">
-          <div class="col col-20  crl_bgcolor text-center light">{{item.cusName.substring(0,1)}}</div>
+          <div class="col col-20  crl_bgcolor text-center light">{{item.CUSNAME.substring(0,1)}}</div>
           <div class="col col-40 col-offset-10 sale_attributes">
-            <i ng-hide=fund_flag.accValue>账面金额：<br></i>
-            <i ng-hide=fund_flag.fundClear>资金净额：<br></i>
-            <i ng-hide=fund_flag.freeMoney>可用自由款：<br></i>
-            <i ng-hide=fund_flag.totMoney>总收款金额：</i></div>
+            <i ng-hide=hide.ACCVALUE>账面金额：<br></i>
+            <i ng-hide=hide.FUNDCLEAR>资金净额：<br></i>
+            <i ng-hide=hide.FREEMONEY>可用自由款：<br></i>
+            <i ng-hide=hide.TOTMONEY>总收款金额：</i></div>
           <div class="col col-40">
-            <i ng-hide=fund_flag.accValue>{{item.accValue}}<br></i>
-            <i ng-hide=fund_flag.fundClear>{{item.fundClear}}<br></i>
-            <i ng-hide=fund_flag.freeMoney>{{item.freeMoney}}<br></i>
-            <i ng-hide=fund_flag.totMoney>{{item.totMoney}}</i></div>
+            <i ng-hide=hide.ACCVALUE>{{item.ACCVALUE}}<br></i>
+            <i ng-hide=hide.FUNDCLEAR>{{item.FUNDCLEAR}}<br></i>
+            <i ng-hide=hide.FREEMONEY>{{item.FREEMONEY}}<br></i>
+            <i ng-hide=hide.TOTMONEY>{{item.TOTMONEY}}</i></div>
         </div>
         <div class="row sale_item">
           <div class="col col-20 sale_attributes">
-            <i ng-hide=fund_flag.occupyMoney>出库占用金额：<br></i>
-            <i ng-hide=fund_flag.totBalance>总结算金额：<br></i>
-            <i ng-hide=fund_flag.creditAmount>信用金额：<br></i>
-            <i ng-hide=fund_flag.paidCredit>已用信用：<br></i>
-            <i ng-hide=fund_flag.leftCredit>剩余信用：</i></div>
+            <i ng-hide=hide.OCCCUPYMONEY>出库占用金额：<br></i>
+            <i ng-hide=hide.TOTBALANCE>总结算金额：<br></i>
+            <i ng-hide=hide.CREDITAMOUNT>信用金额：<br></i>
+            <i ng-hide=hide.PAIDCREDIT>已用信用：<br></i>
+            <i ng-hide=hide.leftCredit>剩余信用：</i></div>
           <div class="col col-40 col-offset-10">
-            <i ng-hide=fund_flag.occupyMoney>{{item.occupyMoney}}<br></i>
-            <i ng-hide=fund_flag.totBalance>{{item.totBalance}}<br></i>
-            <i ng-hide=fund_flag.creditAmount>{{item.creditAmount}}<br></i>
-            <i ng-hide=fund_flag.paidCredit>{{item.paidCredit}}<br></i>
-            <i ng-hide=fund_flag.leftCredit>{{item.leftCredit}}</i></div>
+            <i ng-hide=hide.OCCCUPYMONEY>{{item.OCCCUPYMONEY}}<br></i>
+            <i ng-hide=hide.TOTBALANCE>{{item.TOTBALANCE}}<br></i>
+            <i ng-hide=hide.CREDITAMOUNT>{{item.CREDITAMOUNT}}<br></i>
+            <i ng-hide=hide.PAIDCREDIT>{{item.PAIDCREDIT}}<br></i>
+            <i ng-hide=hide.LEFTCREDIT>{{item.LEFTCREDIT}}</i></div>
           <div class="col col-40"></div>
         </div>
       </ion-item>

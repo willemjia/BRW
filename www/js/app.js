@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'ng-fusioncharts', 'ionic-datepicker'
+angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl','saleCtrl','sourceCtrl', 'starter.services', 'ng-fusioncharts', 'ionic-datepicker'
         ,'starter',
         'team.controllers','team.services','modifyteam.controllers','plan.controllers','plan.services','modifyplan.controllers','teammy.services',
         'pselect1.controllers','pselect.controllers','pselect.services','pyc.controllers',
@@ -49,53 +49,12 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
-//=================================蔚文彪===========================================
+//===========================================================================
             // setup an abstract state for the tabs directive
             .state('tab', {
                 url: '/tab',
                 abstract: true,
                 templateUrl: 'templates/tabs.html'
-            })
-
-            // Each tab has its own nav history stack:
-
-            .state('tab.dash', {
-                url: '/dash',
-                views: {
-                    'tab-dash': {
-                        templateUrl: 'templates/tab-dash.html',
-                        controller: 'DashCtrl'
-                    }
-                }
-            })
-
-            .state('tab.chats', {
-                url: '/chats',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/tab-chats.html',
-                        controller: 'ChatsCtrl'
-                    }
-                }
-            })
-            .state('tab.chat-detail', {
-                url: '/chats/:chatId',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/chat-detail.html',
-                        controller: 'ChatDetailCtrl'
-                    }
-                }
-            })
-
-            .state('tab.account', {
-                url: '/account',
-                views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
-                    }
-                }
             })
 
             .state('menu', {
@@ -120,25 +79,25 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 url: 'sale-detail',
                 cache: false,
                 templateUrl: 'templates/sale-detail.html',
-                controller: 'SaleCtrl'
+                controller: 'SaleDetailCtrl'
             })
             .state('sale-search', {
                 url: '/sale/search',
                 cache: false,
                 templateUrl: 'templates/sale-search.html',
-                controller: 'SaleCtrl'
+                controller: 'SaleSearchCtrl'
             })
             .state('sale-hide', {
                 url: '/sale/hide',
                 cache: false,
                 templateUrl: 'templates/sale-hide.html',
-                controller: 'SaleCtrl'
+                controller: 'SaleHideCtrl'
             })
             .state('sale-history', {
                 url: '/sale/history',
                 cache: false,
                 templateUrl: 'templates/sale-history.html',
-                controller: 'SaleCtrl'
+                controller: 'SaleSearchCtrl'
             })
 
             .state('fund', {
@@ -151,19 +110,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 url: '/fund-search',
                 cache: false,
                 templateUrl: 'templates/fund-search.html',
-                controller: 'FundCtrl'
+                controller: 'FundSearchCtrl'
             })
             .state('fund-hide', {
                 url: '/fund-hide',
                 cache: false,
                 templateUrl: 'templates/fund-hide.html',
-                controller: 'FundCtrl'
+                controller: 'FundHideCtrl'
             })
             .state('fund-history', {
                 url: '/fund-history',
                 cache: false,
                 templateUrl: 'templates/fund-history.html',
-                controller: 'FundCtrl'
+                controller: 'FundSearchCtrl'
             })
 
             .state('source', {
@@ -176,37 +135,35 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 url: '/source-search',
                 cache: false,
                 templateUrl: 'templates/source-search.html',
-                controller: 'SourceCtrl'
+                controller: 'SourceSearchCtrl'
             })
             .state('source-hide', {
                 url: '/source-hide',
                 cache: false,
                 templateUrl: 'templates/source-hide.html',
-                controller: 'SourceCtrl'
+                controller: 'SourceHideCtrl'
             })
             .state('source-history', {
                 url: '/source-history',
                 cache: false,
                 templateUrl: 'templates/source-history.html',
-                controller: 'SourceCtrl'
+                controller: 'SourceSearchCtrl'
             })
 
             .state('source-add', {
                 url: '/source-add',
                 cache: false,
                 templateUrl: 'templates/source-add.html',
-                controller: 'SourceCtrl'
+                controller: 'SourceAddCtrl'
             })
             .state('source-detail', {
-                url: 'source-detail?useDate',
+                url: 'source-detail',
                 cache: false,
                 templateUrl: 'templates/source-detail.html',
-                controller: 'SourceCtrl'
+                controller: 'SourceDetailCtrl'
             })
 
 
-
-//===================================贾文光==========================================================
             .state('receive_bill', {
                 cache: false,
                 url: '/receive_bill',
@@ -247,7 +204,8 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 cache: false,
                 url: '/receive_bill_history',
                 templateUrl: 'templates/receive_bill_history.html',
-                controller: 'receive_bill_historyCtrl'
+                //controller: 'receive_bill_historyCtrl'
+                controller: 'receive_bill_searchCtrl'
             })
             .state('receive_bill_detailed', {
                 cache: false,
@@ -277,7 +235,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 cache: false,
                 url: '/receive_account_history',
                 templateUrl: 'templates/receive_account_history.html',
-                controller: 'receive_account_historyCtrl'
+                controller: 'receive_account_searchCtrl'
             })
             .state('pay_account_detailed', {
                 cache: false,
@@ -307,7 +265,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 cache: false,
                 url: '/pay_bill_history',
                 templateUrl: 'templates/pay_bill_history.html',
-                controller: 'pay_bill_historyCtrl'
+                controller: 'pay_bill_searchCtrl'
             })
             .state('pay_account_search', {
                 cache: false,
@@ -325,7 +283,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
                 cache: false,
                 url: '/pay_account_history',
                 templateUrl: 'templates/pay_account_history.html',
-                controller: 'pay_account_historyCtrl'
+                controller: 'pay_account_searchCtrl'
             })
 
 

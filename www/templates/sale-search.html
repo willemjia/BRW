@@ -11,26 +11,20 @@
           <ion-item>
             <div class="row">
               <div class="col col-35"><h2>单据日期</h2></div>
-              <div class="col col-20">
-                <select ng-model="req.dateRange" ng-options="m for m in dateRange" style="height: 26px">
-                  <option value=""></option>
-                </select>
-              </div>
-              <div class="col col-40 col-offset-10">
+              <div class="col col-50 col-offset-10">
                 <ionic-datepicker input-obj="datepickerObject">
                   <ion-item class="item item-input ion-calendar ">
-                    <p>{{condition.billDateStart | date:datepickerObject.dateFormat}}</p>
+                    <p>{{search.date1 | date:datepickerObject.dateFormat}}</p>
                   </ion-item>
                 </ionic-datepicker>
               </div>
             </div>
             <div class="row">
               <div class="col col-35"></div>
-              <div class="col col-20"></div>
-              <div class="col col-40 col-offset-10">
-                <ionic-datepicker input-obj="datepickerObject2" style="vertical-align:bottom" ng-if="req.dateRange=='时间段'">
+              <div class="col col-50 col-offset-10">
+                <ionic-datepicker input-obj="datepickerObject2" style="vertical-align:bottom">
                   <ion-item class="item item-input ion-calendar ">
-                    <p>{{condition.billDateEnd | date:datepickerObject2.dateFormat}}</p>
+                    <p>{{search.date2 | date:datepickerObject2.dateFormat}}</p>
                   </ion-item>
                 </ionic-datepicker>
               </div>
@@ -41,47 +35,40 @@
             <div class="row" >
               <div class="col col-35" style="vertical-align:bottom"><h2>客户名称</h2></div>
               <div class="col col-60 " >
-                <input type="text" placeholder="请输入订货客户名称" ng-model="condition.orderCusName"></div>
+                <input type="text" placeholder="请输入订货客户名称" ng-model="req.ORDERCUSNAME"></div>
             </div>
           </ion-item>
           <ion-item>
             <div class="row" >
               <div class="col col-35" style="vertical-align:bottom"><h2>订单号</h2></div>
               <div class="col col-60 " >
-
-                <input type="text" placeholder="请输入订单号" ng-model="condition.orderNum"></div>
+                <input type="text" placeholder="请输入订单号" ng-model="req.ORDERNUM"></div>
             </div>
           </ion-item>
         </ion-content>
 
 
-          <ion-footer-bar>
-            <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="showSearch()">查询</a></div>
-            <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
-          </ion-footer-bar>
+        <ion-footer-bar>
+          <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="commit()">查询</a></div>
+          <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
+        </ion-footer-bar>
 
-          <!--<a class="button button-icon " ng-click="commit()" >查询</a>
-          <i class="title">|</i>
-          <a class="button button-icon " ng-click="remeber()" >记住本次查询</a>-->
       </ion-view>
     </ion-tab>
     <!-- Chats Tab -->
-    <ion-tab title="查询历史" >
+    <ion-tab title="查询历史">
       <ion-view>
         <ion-content>
-          <ul class="list color-list-demo">
-
-
-            <li class="item dark"ng-repeat="item in searchHistory">
-              <div ng-click="getOneHistory(item.id)">
-                {{item.condition}}
-                <span class="color-demo dark-bg dark-border"></span>
-              </div>
-            </li>
-
-          </ul>
+          <ion-list>
+            <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
+              {{item.RECORDNAME}}
+              <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
+                删除
+              </ion-option-button>
+            </ion-item>
+          </ion-list>
         </ion-content>
+        <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
       </ion-view>
     </ion-tab>
   </ion-tabs>
-  </ion-view>

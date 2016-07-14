@@ -13,7 +13,7 @@
       <div class="col col-60 col-offset-10">
         <ionic-datepicker input-obj="datepickerObject">
           <ion-item class="item item-input ion-calendar ">
-            <p>{{source1.useDate | date:datepickerObject.dateFormat}}</p>
+            <p>{{source1.USEDATE | date:datepickerObject.dateFormat}}</p>
           </ion-item>
         </ionic-datepicker>
       </div>
@@ -27,7 +27,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>水</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用水消费" ng-model="source1.water">{{source1.water}}</div>
+        <input type="text" placeholder="请输入用水消费" ng-model="mingxi.WATER">{{source1.water}}</div>
     </div>
   </ion-item>
   <ion-item>
@@ -35,7 +35,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>煤</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用煤消费" ng-model="source1.coal">{{source1.coal}}</div>
+        <input type="text" placeholder="请输入用煤消费" ng-model="mingxi.COAL">{{source1.coal}}</div>
     </div>
   </ion-item>
   <ion-item>
@@ -43,7 +43,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>电</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用电消费" ng-model="source1.electric">{{source1.electric}}</div>
+        <input type="text" placeholder="请输入用电消费" ng-model="mingxi.ELECTRIC">{{source1.electric}}</div>
     </div>
   </ion-item>
   <ion-item>
@@ -51,7 +51,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>天然气</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入天然气消费" ng-model="source1.gas">{{source1.gas}}</div>
+        <input type="text" placeholder="请输入天然气消费" ng-model="mingxi.GAS">{{source1.gas}}</div>
     </div>
   </ion-item>
   <div  class="padding" >

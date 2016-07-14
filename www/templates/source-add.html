@@ -12,7 +12,7 @@
       <div class="col col-60 col-offset-10">
         <ionic-datepicker input-obj="datepickerObject">
           <ion-item class="item item-input ion-calendar ">
-            <p>{{condition.useDateStart | date:datepickerObject.dateFormat}}</p>
+            <p>{{add.date | date:datepickerObject.dateFormat}}</p>
           </ion-item>
         </ionic-datepicker>
       </div>
@@ -26,7 +26,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>水</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用水消费" ng-model="source2.water"></div>
+        <input type="text" placeholder="请输入用水消费" ng-model="req.WATER"></div>
     </div>
   </ion-item>
   <ion-item>
@@ -34,7 +34,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>煤</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用煤消费" ng-model="source2.coal"></div>
+        <input type="text" placeholder="请输入用煤消费" ng-model="req.COAL"></div>
     </div>
   </ion-item>
   <ion-item>
@@ -42,7 +42,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>电</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用电消费" ng-model="source2.electric"></div>
+        <input type="text" placeholder="请输入用电消费" ng-model="req.ELECTRIC"></div>
     </div>
   </ion-item>
   <ion-item>
@@ -50,7 +50,7 @@
       <div class="col col-35" style="vertical-align:bottom"><h2>天然气</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入天然气消费" ng-model="source2.gas"></div>
+        <input type="text" placeholder="请输入天然气消费" ng-model="req.GAS"></div>
     </div>
   </ion-item>
   <div  class="padding" >

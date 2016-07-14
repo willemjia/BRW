@@ -1,50 +1,89 @@
 <ion-view view-title="隐藏">
-    <ion-header-bar class="dark-bg light">
-        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
-        <h1 class="title light">请选择要隐藏的列</h1>
-      <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="hide()"></a>
-    </ion-header-bar>
-
-
-    <ion-content>
-        <ul class="list">
-            <li class="item item-checkbox">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="sale_flag.salesMan">
-                </label>
-              销售业务员
-            </li>
-            <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="sale_flag.recCusName">
-            </label>
-              收货客户名称
-            </li>
-            <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="sale_flag.type">
-            </label>
-              品种
-            </li>
-            <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="sale_flag.univalence">
-            </label>
-              销售单价（含税）
-            </li>
-            <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="sale_flag.steelGrade">
-            </label>
-              钢种
-            </li>
-            <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="sale_flag.standard">
-            </label>
-              规格
-            </li>
-
-        </ul>
-    </ion-content>
+  <ion-header-bar class="dark-bg light">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
+    <h1 class="title light">请选择要隐藏的列</h1>
+    <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="commit()"></a>
+  </ion-header-bar>
+  <ion-content>
+    <ul class="list">
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.ORDERNUM">
+        </label>
+        订单号
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.SALEMAN">
+        </label>
+        销售业务员
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.BILLDATE">
+        </label>
+        单据日期
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.ORDERCUSNAME">
+        </label>
+        订货客户名称
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.RECCUSNAME">
+        </label>
+        收货客户名称
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.TYPE">
+        </label>
+        品种
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.UNIVALENCE">
+        </label>
+        销售单价（含税）
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.STEELGRADE">
+        </label>
+        钢种
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.STANDARD">
+        </label>
+        规格
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.CRAFTS">
+        </label>
+        工艺
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.NORM">
+        </label>
+        标准
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.ORDERWEIGHT">
+        </label>
+        订货重量
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.FINPROWEI">
+        </label>
+        成品生产重量
+      </li>
+    </ul>
+  </ion-content>
 </ion-view>

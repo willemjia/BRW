@@ -1,6 +1,6 @@
 <ion-view view-title="客户资金帐信息查询" >
   <ion-header-bar class="dark-bg">
-    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="source"></a>
     <h1 class="title light">能源系统数据</h1>
   </ion-header-bar>
   <ion-tabs class="tabs-top  tabs-striped tabs-light tabs-color-active-calm">
@@ -13,26 +13,20 @@
           <ion-item>
             <div class="row">
               <div class="col col-35"><h2>使用日期</h2></div>
-              <div class="col col-20">
-                <select ng-model="req.dateRange" ng-options="m for m in dateRange" style="height: 26px">
-                  <option value=""></option>
-                </select>
-              </div>
-              <div class="col col-40 col-offset-10">
+              <div class="col col-50 col-offset-10">
                 <ionic-datepicker input-obj="datepickerObject">
                   <ion-item class="item item-input ion-calendar ">
-                    <p>{{condition.useDateStart | date:datepickerObject.dateFormat}}</p>
+                    <p>{{search.date1 | date:datepickerObject.dateFormat}}</p>
                   </ion-item>
                 </ionic-datepicker>
               </div>
             </div>
             <div class="row">
               <div class="col col-35"></div>
-              <div class="col col-20"></div>
-              <div class="col col-40 col-offset-10">
-                <ionic-datepicker input-obj="datepickerObject2" style="vertical-align:bottom" ng-if="req.dateRange=='时间段'">
+              <div class="col col-50 col-offset-10">
+                <ionic-datepicker input-obj="datepickerObject2" style="vertical-align:bottom">
                   <ion-item class="item item-input ion-calendar ">
-                    <p>{{condition.useDateEnd | date:datepickerObject2.dateFormat}}</p>
+                    <p>{{search.date2 | date:datepickerObject2.dateFormat}}</p>
                   </ion-item>
                 </ionic-datepicker>
               </div>

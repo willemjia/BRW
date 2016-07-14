@@ -1,6 +1,7 @@
 <ion-view view-title="能源系统数据">
   <ion-header-bar class="dark-bg">
-    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if="!flag2"></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-click="state()" ng-if=flag2></a>
     <h1 class="title light">能源系统数据</h1>
     <a class="button button-icon button-clear ion-android-add button-light" ui-sref="source-add"></a>
   </ion-header-bar>
@@ -11,26 +12,24 @@
       </label>
       <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
     </div>
-    <ion-list ng-repeat="item in sources|filter:data.criteria" >
-      <ion-item  class="receive_bill_margin" ui-sref="source-detail({useDate:item.useDate})">
-        <div class="sale_account_itemTitle" ng-hide=source_flag.cusName>使用日期：{{item.useDate}}</div><hr class="fund_hr">
+    <ion-list ng-repeat="item in req|filter:data.criteria" >
+      <ion-item  class="receive_bill_margin" ng-click="detail(item)">
+        <div class="sale_account_itemTitle" ng-hide=hide.USEDATE>使用日期：{{item.USEDATE}}</div><hr class="fund_hr">
         <div class="row sale_item">
-          <div class="col col-20  crl_bgcolor text-center light">{{item.useDate.substring(9,11)}}</div>
+          <div class="col col-20  crl_bgcolor text-center light">{{item.USEDATE.substring(9,11)}}</div>
           <div class="col col-40 col-offset-10 sale_attributes">
-            <i ng-hide=source_flag.water>水：<br></i>
-            <i ng-hide=source_flag.coal>煤：<br></i>
-            <i ng-hide=source_flag.gas>天然气：<br></i>
-            <i ng-hide=source_flag.electric>电：</i></div>
+            <i ng-hide=hide.WATER>水：<br></i>
+            <i ng-hide=hide.COAL>煤：<br></i>
+            <i ng-hide=hide.GAS>天然气：<br></i>
+            <i ng-hide=hide.ELECTRIC>电：</i></div>
           <div class="col col-40">
-            <i ng-hide=source_flag.water>{{item.water}}<br></i>
-            <i ng-hide=source_flag.coal>{{item.coal}}<br></i>
-            <i ng-hide=source_flag.gas>{{item.gas}}<br></i>
-            <i ng-hide=source_flag.electric>{{item.electric}}</i></div>
+            <i ng-hide=hide.WATER>{{item.WATER}}<br></i>
+            <i ng-hide=hide.COAL>{{item.COAL}}<br></i>
+            <i ng-hide=hide.GAS>{{item.GAS}}<br></i>
+            <i ng-hide=hide.ELECTRIC>{{item.ELECTRIC}}</i></div>
         </div>
         </ion-item>
     </ion-list>
-
-
 
 
   </ion-content>
