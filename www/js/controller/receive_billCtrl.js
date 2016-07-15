@@ -49,6 +49,7 @@ angular.module('receive_billCtrl',[])
      ******************************************************************/
     $ionicLoading.show({
       template: 'Loading...',
+      noBackdrop:true,
       duration:10000
     });
     var jsTable1 = new EI.sDataTable();
@@ -74,6 +75,7 @@ angular.module('receive_billCtrl',[])
    *************************************************************************/
   $scope.state = function () {
     services.setter(null);
+    $state.reload();
   }
 
   /*************************************************************************
@@ -410,6 +412,4 @@ angular.module('receive_billCtrl',[])
       $rootScope.receive_bill = $scope.data;
       $state.go('receive_bill');
     }
-  })/**
- * Created by willemjia on 2016/7/14.
- */
+  })

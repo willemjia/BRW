@@ -1,0 +1,50 @@
+<ion-view view-title="receive_bill">
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if=!flag2></a>
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="TEY" ng-click="state()" ng-if=flag2></a>
+    <h1 class="title light" ng-if=!flag2>班组设备产量</h1>
+    <h1 class="title light" ng-if=flag2>班组设备产量查询结果</h1>
+  </ion-header-bar>
+  <div class="bar bar-subheader">
+    <div class="bar item-input-inset" >
+      <label class="item-input-wrapper" >
+        <input type="search" placeholder="关键字查询" ng-model="data.name">
+      </label>
+      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+    </div>
+  </div>
+  <ion-content class="stable-bg content-margin">
+
+    <ion-list ng-repeat="item in resp|filter:data.criteria">
+      <ion-item  class="receive_bill_margin" ng-click="detail(item)">
+        <div class="receive_bill_itemTitle" ng-if=!hide.NUMBER>设备:{{item.EQUIPMENT}}</div>
+        <div class="receive_bill_itemTitle" ng-if=!hide.DATE>工艺:{{item.CRAFTS}}</div>
+        <div class="receive_bill_itemTitle" ng-if=!hide.DATE>总量:{{item.TOTAL}}</div><hr class="hr">
+
+        <!--<div class="row" style="color: #000000;font-size: 12px;margin-left: 6px;"><i ng-if=!hide.USERNAME>客户名称:{{item.USERNAME}}<br></i></div>-->
+        <div class="row receive_item">
+          <div class="col col-55"><i ng-if=!hide.TEAM>班组:{{item.TEAM}}<br></i></div>
+          <div class="col col-45"><i ng-if=!hide.YIELD>产量:{{item.YIELD}}<br></i></div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      on-infinite="loadMore()"
+      ng-if="run"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+  <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+</ion-view>
+<!--浮动框-->
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view class="receive_bill_popover">
+    <ion-content>
+      <div class="row">
+        <div class="col col-30 text-center"><img ng-src="img/chaxun.png" ui-sref="receive_bill_search" class="popover_img"><div>查询</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/chaxunlishi.png" ui-sref="receive_bill_history"  class="popover_img"><div>查询历史</div></div>
+        <div class="col col-30 text-center"><img ng-src="img/yincang.png" ui-sref="receive_bill_hide" class="popover_img"><div>隐藏</div></div>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

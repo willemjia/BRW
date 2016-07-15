@@ -49,6 +49,7 @@ angular.module('pay_accountCtrl', [])
        ******************************************************************/
       $ionicLoading.show({
         template: 'Loading...',
+        noBackdrop:true,
         duration:10000
       });
       var jsTable1 = new EI.sDataTable();
@@ -74,6 +75,7 @@ angular.module('pay_accountCtrl', [])
      *************************************************************************/
     $scope.state = function (){
       services.setter(null);
+      $state.reload();
     }
 
     /*************************************************************************

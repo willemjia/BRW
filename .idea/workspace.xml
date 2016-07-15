@@ -2,38 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c7d058-2621-45aa-8eeb-3ed94cf69328" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/fundCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/pay_billCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/receive_billCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/saleCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/service/services.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/services.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/chat-detail.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/controller/TEYCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/TEY.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund-history.html" afterPath="$PROJECT_DIR$/www/templates/fund-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund-search.html" afterPath="$PROJECT_DIR$/www/templates/fund-search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/fundCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/fundCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/pay_billCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/pay_billCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/receive_billCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/receive_billCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/saleCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/saleCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund.html" afterPath="$PROJECT_DIR$/www/templates/fund.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_account.html" afterPath="$PROJECT_DIR$/www/templates/pay_account.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_bill.html" afterPath="$PROJECT_DIR$/www/templates/pay_bill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_account.html" afterPath="$PROJECT_DIR$/www/templates/receive_account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_bill.html" afterPath="$PROJECT_DIR$/www/templates/receive_bill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_bill_search.html" afterPath="$PROJECT_DIR$/www/templates/receive_bill_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-detail.html" afterPath="$PROJECT_DIR$/www/templates/sale-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-hide.html" afterPath="$PROJECT_DIR$/www/templates/sale-hide.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-history.html" afterPath="$PROJECT_DIR$/www/templates/sale-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-search.html" afterPath="$PROJECT_DIR$/www/templates/sale-search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale.html" afterPath="$PROJECT_DIR$/www/templates/sale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-add.html" afterPath="$PROJECT_DIR$/www/templates/source-add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-detail.html" afterPath="$PROJECT_DIR$/www/templates/source-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-hide.html" afterPath="$PROJECT_DIR$/www/templates/source-hide.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-history.html" afterPath="$PROJECT_DIR$/www/templates/source-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-search.html" afterPath="$PROJECT_DIR$/www/templates/source-search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source.html" afterPath="$PROJECT_DIR$/www/templates/source.html" />
     </list>
     <ignored path="BRW.iws" />
@@ -47,59 +30,21 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="D:\ionic\project\BRW" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="BRW" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.46875">
-              <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="receive_billCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/js/controller/receive_billCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3161512">
-              <caret line="415" column="0" selection-start-line="415" selection-start-column="0" selection-end-line="415" selection-end-column="0" />
-              <folding>
-                <element signature="e#273#4363#0" expanded="false" />
-                <element signature="e#1200#1361#0" expanded="false" />
-                <element signature="e#1401#1449#0" expanded="false" />
-                <element signature="e#3736#3768#0" expanded="false" />
-                <element signature="e#3818#3852#0" expanded="false" />
-                <element signature="e#4438#4480#0" expanded="false" />
-                <element signature="e#4582#14036#0" expanded="false" />
-                <element signature="e#4950#5594#0" expanded="false" />
-                <element signature="e#5797#6771#0" expanded="false" />
-                <element signature="e#6798#7115#0" expanded="false" />
-                <element signature="e#7348#7546#0" expanded="false" />
-                <element signature="e#7590#8567#0" expanded="false" />
-                <element signature="e#8615#8816#0" expanded="false" />
-                <element signature="e#10626#11913#0" expanded="false" />
-                <element signature="e#14115#14745#0" expanded="false" />
-                <element signature="e#14746#14791#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Html5" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -124,9 +69,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/receive_bill_hide.html" />
-        <option value="$PROJECT_DIR$/www/templates/sale_check.html" />
-        <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/templates/sale-check.html" />
         <option value="$PROJECT_DIR$/www/templates/receive_account_detailed.html" />
         <option value="$PROJECT_DIR$/www/json/pay_bill2.json" />
@@ -145,36 +87,39 @@
         <option value="$PROJECT_DIR$/www/templates/pay_account_search.html" />
         <option value="$PROJECT_DIR$/www/templates/pay_account_detailed.html" />
         <option value="$PROJECT_DIR$/www/templates/receive_bill_search.html" />
-        <option value="$PROJECT_DIR$/www/templates/sale.html" />
-        <option value="$PROJECT_DIR$/www/templates/receive_bill.html" />
         <option value="$PROJECT_DIR$/www/templates/receive_account.html" />
         <option value="$PROJECT_DIR$/www/templates/pay_bill.html" />
         <option value="$PROJECT_DIR$/www/templates/pay_account.html" />
         <option value="$PROJECT_DIR$/www/templates/sale-detail.html" />
         <option value="$PROJECT_DIR$/www/templates/sale-search.html" />
         <option value="$PROJECT_DIR$/www/templates/sale-hide.html" />
-        <option value="$PROJECT_DIR$/www/templates/fund.html" />
         <option value="$PROJECT_DIR$/www/templates/sale-history.html" />
         <option value="$PROJECT_DIR$/www/templates/fund-history.html" />
         <option value="$PROJECT_DIR$/www/templates/fund-search.html" />
         <option value="$PROJECT_DIR$/www/js/services.js" />
-        <option value="$PROJECT_DIR$/www/templates/source.html" />
         <option value="$PROJECT_DIR$/www/templates/source-detail.html" />
         <option value="$PROJECT_DIR$/www/templates/source-hide.html" />
         <option value="$PROJECT_DIR$/www/templates/source-search.html" />
         <option value="$PROJECT_DIR$/www/templates/source-history.html" />
         <option value="$PROJECT_DIR$/www/templates/source-add.html" />
         <option value="$PROJECT_DIR$/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/service/services.js" />
+        <option value="$PROJECT_DIR$/www/templates/TEY.html" />
+        <option value="$PROJECT_DIR$/www/js/controller/TEYCtrl.js" />
+        <option value="$PROJECT_DIR$/www/templates/receive_bill.html" />
+        <option value="$PROJECT_DIR$/www/js/controller/receive_billCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/fundCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/pay_billCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/saleCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/js/service/services.js" />
-        <option value="$PROJECT_DIR$/www/js/controller/receive_billCtrl.js" />
+        <option value="$PROJECT_DIR$/www/templates/sale.html" />
+        <option value="$PROJECT_DIR$/www/templates/fund.html" />
+        <option value="$PROJECT_DIR$/www/templates/source.html" />
+        <option value="$PROJECT_DIR$/www/templates/menu.html" />
       </list>
     </option>
   </component>
@@ -230,8 +175,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,34 +221,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BRW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BRW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -323,9 +246,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ionic\project\BRW\www\img" />
       <recent name="D:\ionic\project\BRW\www\js\service" />
       <recent name="D:\ionic\project\BRW\www\json" />
-      <recent name="D:\ionic\project\BRW\www\img" />
       <recent name="D:\ionic\project\BRW\www\js" />
       <recent name="E:\project\BRW\www\js" />
     </key>
@@ -432,7 +355,13 @@
       <option name="project" value="LOCAL" />
       <updated>1468392778648</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="---">
+      <created>1468479409962</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1468479409962</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -446,18 +375,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22544643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22544643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8527005" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -468,9 +394,12 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -497,27 +426,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/templates/pay_account_hide.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7945454">
-          <caret line="76" column="64" selection-start-line="76" selection-start-column="64" selection-end-line="76" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/pay_account_history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33454546">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/pay_account_search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46">
-          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/pay_bill_history.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29272726">
@@ -543,7 +451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,7 +458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -559,7 +465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1185567">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -575,7 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -583,14 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12545455">
           <caret line="3" column="107" selection-start-line="3" selection-start-column="107" selection-end-line="3" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/pay_bill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12545455">
-          <caret line="3" column="100" selection-start-line="3" selection-start-column="100" selection-end-line="3" selection-end-column="100" />
           <folding />
         </state>
       </provider>
@@ -607,7 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.03125">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -615,7 +510,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1254545">
           <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -623,7 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.625">
           <caret line="81" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -631,7 +524,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7945455">
           <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -639,7 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.9236364">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,15 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6718213">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/fund.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.96181816">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -663,7 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.15625">
           <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -671,7 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37636364">
           <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -679,7 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7145455">
           <caret line="41" column="65" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,15 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/receive_bill_search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12545455">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -703,15 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2090909">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/source.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.78125">
-          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,23 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41454545">
           <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/receive_bill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12545455">
-          <caret line="3" column="104" selection-start-line="3" selection-start-column="104" selection-end-line="3" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/sale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.15625">
-          <caret line="3" column="84" selection-start-line="3" selection-start-column="84" selection-end-line="3" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,7 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.15625">
           <caret line="3" column="94" selection-start-line="3" selection-start-column="94" selection-end-line="3" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -751,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9243987">
           <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -759,7 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37636364">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,15 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.84375">
           <caret line="15" column="24" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/team/modifyteamcontrollers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0790378">
-          <caret line="2" column="69" selection-start-line="2" selection-start-column="69" selection-end-line="2" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.3125">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="33" selection-start-line="47" selection-start-column="15" selection-end-line="58" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,115 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/fundCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2371134">
-          <caret line="284" column="22" selection-start-line="284" selection-start-column="22" selection-end-line="284" selection-end-column="22" />
-          <folding>
-            <element signature="e#290#4564#0" expanded="false" />
-            <element signature="e#3913#3949#0" expanded="false" />
-            <element signature="e#4003#4041#0" expanded="false" />
-            <element signature="e#4657#9862#0" expanded="false" />
-            <element signature="e#9932#10482#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2766323">
-          <caret line="404" column="4" selection-start-line="404" selection-start-column="4" selection-end-line="404" selection-end-column="4" />
-          <folding>
-            <element signature="e#270#4569#0" expanded="false" />
-            <element signature="e#4631#4673#0" expanded="false" />
-            <element signature="e#4773#14089#0" expanded="false" />
-            <element signature="e#14167#14623#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/pay_billCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding>
-            <element signature="e#264#4322#0" expanded="false" />
-            <element signature="e#4419#13783#0" expanded="false" />
-            <element signature="e#13842#13884#0" expanded="false" />
-            <element signature="e#13959#14428#0" expanded="false" />
-            <element signature="e#14429#14474#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="37" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
-          <folding>
-            <element signature="e#270#4346#0" expanded="false" />
-            <element signature="e#1401#1452#0" expanded="false" />
-            <element signature="e#2929#2961#0" expanded="false" />
-            <element signature="e#3194#3217#0" expanded="false" />
-            <element signature="e#4451#13762#0" expanded="false" />
-            <element signature="e#4807#5451#0" expanded="false" />
-            <element signature="e#5645#6619#0" expanded="false" />
-            <element signature="e#6646#6961#0" expanded="false" />
-            <element signature="e#7194#7390#0" expanded="false" />
-            <element signature="e#7434#8411#0" expanded="false" />
-            <element signature="e#8459#8658#0" expanded="false" />
-            <element signature="e#13840#13882#0" expanded="false" />
-            <element signature="e#13964#14357#0" expanded="false" />
-            <element signature="e#14358#14403#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/saleCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-          <folding>
-            <element signature="e#303#4339#0" expanded="false" />
-            <element signature="e#1216#1377#0" expanded="false" />
-            <element signature="e#3722#3754#0" expanded="false" />
-            <element signature="e#3804#3838#0" expanded="false" />
-            <element signature="e#4403#5371#0" expanded="false" />
-            <element signature="e#5015#5051#0" expanded="false" />
-            <element signature="e#5105#5143#0" expanded="false" />
-            <element signature="e#5464#14878#0" expanded="false" />
-            <element signature="e#5850#6494#0" expanded="false" />
-            <element signature="e#8490#9467#0" expanded="false" />
-            <element signature="e#9515#9716#0" expanded="false" />
-            <element signature="e#14948#15554#0" expanded="false" />
-            <element signature="e#15638#16057#0" expanded="false" />
-            <element signature="e#16058#16103#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/sourceCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3556701">
-          <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
-          <folding>
-            <element signature="e#286#4107#0" expanded="false" />
-            <element signature="e#1199#1360#0" expanded="false" />
-            <element signature="e#3709#3741#0" expanded="false" />
-            <element signature="e#3791#3825#0" expanded="false" />
-            <element signature="e#4173#4215#0" expanded="false" />
-            <element signature="e#4310#13605#0" expanded="false" />
-            <element signature="e#4662#5306#0" expanded="false" />
-            <element signature="e#8327#8528#0" expanded="false" />
-            <element signature="e#13677#14088#0" expanded="false" />
-            <element signature="e#14148#17860#0" expanded="false" />
-            <element signature="e#14465#15109#0" expanded="false" />
-            <element signature="e#17861#17906#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,50 +643,226 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2646048">
           <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37636364">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/team/modifyteamcontrollers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8694158">
+          <caret line="22" column="32" selection-start-line="5" selection-start-column="7" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/team-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16727273">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/TEY.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4181818">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/TEYCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8573883">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <folding>
+            <element signature="e#1248#1413#0" expanded="false" />
+            <element signature="e#1455#1507#0" expanded="false" />
+            <element signature="e#3959#3995#0" expanded="false" />
+            <element signature="e#4049#4087#0" expanded="false" />
+            <element signature="e#4815#14269#0" expanded="false" />
+            <element signature="e#5183#5827#0" expanded="false" />
+            <element signature="e#6030#7004#0" expanded="false" />
+            <element signature="e#7031#7348#0" expanded="false" />
+            <element signature="e#7581#7779#0" expanded="false" />
+            <element signature="e#7823#8800#0" expanded="false" />
+            <element signature="e#8848#9049#0" expanded="false" />
+            <element signature="e#10859#12146#0" expanded="false" />
+            <element signature="e#14339#14969#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/receive_bill_search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12545455">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9089347">
+          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+          <folding>
+            <element signature="e#4679#4721#0" expanded="false" />
+            <element signature="e#4821#14137#0" expanded="false" />
+            <element signature="e#14215#14671#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/pay_billCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66838485">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding>
+            <element signature="e#4463#13827#0" expanded="false" />
+            <element signature="e#13886#13928#0" expanded="false" />
+            <element signature="e#14003#14472#0" expanded="false" />
+            <element signature="e#14473#14518#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/receive_accountCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5103093">
+          <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
+          <folding>
+            <element signature="e#1401#1452#0" expanded="false" />
+            <element signature="e#3238#3261#0" expanded="false" />
+            <element signature="e#4495#13806#0" expanded="false" />
+            <element signature="e#4851#5495#0" expanded="false" />
+            <element signature="e#5689#6663#0" expanded="false" />
+            <element signature="e#6690#7005#0" expanded="false" />
+            <element signature="e#7238#7434#0" expanded="false" />
+            <element signature="e#7478#8455#0" expanded="false" />
+            <element signature="e#8503#8702#0" expanded="false" />
+            <element signature="e#13884#13926#0" expanded="false" />
+            <element signature="e#14008#14401#0" expanded="false" />
+            <element signature="e#14402#14447#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/receive_billCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5927835">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding>
+            <element signature="e#1200#1361#0" expanded="false" />
+            <element signature="e#3780#3812#0" expanded="false" />
+            <element signature="e#3862#3896#0" expanded="false" />
+            <element signature="e#4482#4524#0" expanded="false" />
+            <element signature="e#4626#14080#0" expanded="false" />
+            <element signature="e#4994#5638#0" expanded="false" />
+            <element signature="e#5841#6815#0" expanded="false" />
+            <element signature="e#6842#7159#0" expanded="false" />
+            <element signature="e#7392#7590#0" expanded="false" />
+            <element signature="e#7634#8611#0" expanded="false" />
+            <element signature="e#8659#8860#0" expanded="false" />
+            <element signature="e#10670#11957#0" expanded="false" />
+            <element signature="e#14159#14789#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/saleCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39175257">
+          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding>
+            <element signature="e#1216#1377#0" expanded="false" />
+            <element signature="e#3767#3799#0" expanded="false" />
+            <element signature="e#3849#3883#0" expanded="false" />
+            <element signature="e#4448#5416#0" expanded="false" />
+            <element signature="e#5060#5096#0" expanded="false" />
+            <element signature="e#5150#5188#0" expanded="false" />
+            <element signature="e#5509#14923#0" expanded="false" />
+            <element signature="e#5895#6539#0" expanded="false" />
+            <element signature="e#8535#9512#0" expanded="false" />
+            <element signature="e#9560#9761#0" expanded="false" />
+            <element signature="e#14993#15599#0" expanded="false" />
+            <element signature="e#15683#16102#0" expanded="false" />
+            <element signature="e#16103#16148#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/sourceCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5927835">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/sale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12545455">
+          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/receive_bill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12545455">
+          <caret line="3" column="94" selection-start-line="3" selection-start-column="94" selection-end-line="3" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/fund.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12545455">
+          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/source.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5854545">
+          <caret line="35" column="90" selection-start-line="35" selection-start-column="90" selection-end-line="35" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/fundCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+          <folding>
+            <element signature="e#3961#3997#0" expanded="false" />
+            <element signature="e#4051#4089#0" expanded="false" />
+            <element signature="e#4705#9910#0" expanded="false" />
+            <element signature="e#9980#10530#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/pay_bill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.90625">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.209091">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.99312717">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="e#389#1076#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.46875">
-          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        <state vertical-scroll-proportion="-1.9583334">
+          <caret line="7" column="125" selection-start-line="7" selection-start-column="121" selection-end-line="7" selection-end-column="125" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/receive_billCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3161512">
-          <caret line="415" column="0" selection-start-line="415" selection-start-column="0" selection-end-line="415" selection-end-column="0" />
-          <folding>
-            <element signature="e#273#4363#0" expanded="false" />
-            <element signature="e#1200#1361#0" expanded="false" />
-            <element signature="e#1401#1449#0" expanded="false" />
-            <element signature="e#3736#3768#0" expanded="false" />
-            <element signature="e#3818#3852#0" expanded="false" />
-            <element signature="e#4438#4480#0" expanded="false" />
-            <element signature="e#4582#14036#0" expanded="false" />
-            <element signature="e#4950#5594#0" expanded="false" />
-            <element signature="e#5797#6771#0" expanded="false" />
-            <element signature="e#6798#7115#0" expanded="false" />
-            <element signature="e#7348#7546#0" expanded="false" />
-            <element signature="e#7590#8567#0" expanded="false" />
-            <element signature="e#8615#8816#0" expanded="false" />
-            <element signature="e#10626#11913#0" expanded="false" />
-            <element signature="e#14115#14745#0" expanded="false" />
-            <element signature="e#14746#14791#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

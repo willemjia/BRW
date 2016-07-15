@@ -47,6 +47,7 @@ angular.module('receive_accountCtrl',[])
      ******************************************************************/
     $ionicLoading.show({
       template: 'Loading...',
+      noBackdrop:true,
       duration:10000
     });
     var jsTable1 = new EI.sDataTable();
@@ -78,6 +79,7 @@ angular.module('receive_accountCtrl',[])
    *************************************************************************/
   $scope.state = function () {
     services.setter(null);
+    $state.reload();
   }
   /*************************************************************************
    * 浮动框

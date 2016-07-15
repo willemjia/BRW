@@ -49,7 +49,9 @@ angular.module('saleCtrl',[])
      ******************************************************************/
     $ionicLoading.show({
       template: 'Loading...',
+      noBackdrop:true,
       duration:10000
+
     });
     var jsTable1 = new EI.sDataTable();
     jsTable1.addColums("count");
@@ -74,6 +76,7 @@ angular.module('saleCtrl',[])
    *************************************************************************/
   $scope.state = function () {
     services.setter(null);
+    $state.reload();
   }
 
   /*************************************************************************

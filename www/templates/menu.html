@@ -4,69 +4,30 @@
   </ion-header-bar>
 
   <ion-content>
-    <div style="padding:2px 0;height:90%">
-      <div class="row " style="height:30%;" >
-        <div class="col col-50 stable-bg dash_col"  ui-sref="tab-team">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-erlenmeyer-flask" style="font-size: 25px"></i>&nbsp&nbsp班组产量</p>
-          </div>
-        </div>
-        <div class="col col-50 stable-bg dash_col" ui-sref="tab-plan">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-navigate" style="font-size: 25px"></i>&nbsp&nbsp发货计划</p>
-          </div>
-        </div>
-      </div>
-      <div class="row " style="height:30%;" >
-        <div class="col col-50 stable-bg dash_col"  ui-sref="tab-stock">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-stats-bars" style="font-size: 25px"></i>&nbsp&nbsp库存统计</p>
-          </div>
-        </div>
-        <div class="col col-50 stable-bg dash_col" ui-sref="sale">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-load-a"style="font-size: 25px" ></i>&nbsp&nbsp销售进度</p>
-          </div>
-        </div>
-      </div>
-      <div class="row " style="height:30%;" >
-        <div class="col col-50 stable-bg dash_col"  ui-sref="receive_bill">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-document-text" style="font-size: 25px"></i>&nbsp&nbsp应收票据</p>
-          </div>
-        </div>
-        <div class="col col-50 stable-bg dash_col" ui-sref="receive_account">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-ios-download" style="font-size: 25px"></i>&nbsp&nbsp应收账款</p>
-          </div>
-        </div>
-      </div>
-      <div class="row " style="height:30%;" >
-        <div class="col col-50 stable-bg dash_col"  ui-sref="pay_bill">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-document" style="font-size: 25px"></i>&nbsp&nbsp应付票据</p>
-          </div>
-        </div>
-        <div class="col col-50 stable-bg dash_col" ui-sref="pay_account">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-ios-upload" style="font-size: 25px"></i>&nbsp&nbsp应付账款</p>
-          </div>
-        </div>
-      </div>
-      <div class="row " style="height:30%;" >
-        <div class="col col-50 stable-bg dash_col" ui-sref="fund" >
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-social-yen" style="font-size: 25px"></i>&nbsp&nbsp银行存款</p>
-          </div>
-        </div>
-        <div class="col col-50 stable-bg dash_col" ui-sref="source">
-          <div style="line-height: 30px">
-            <p class="dash_p"><i class="icon ion-fireball" style="font-size: 25px"></i>&nbsp&nbsp能源数据</p>
-          </div>
-        </div>
-      </div>
+    <p></p>
+    <div class="button-bar bar-calm">
+      <a class="button" ui-sref="tab-team">班组设备</a>
+      <a class="button" ui-sref="tab-stock">库存明细</a>
+      <a class="button" ui-sref="tab-plan">发货计划</a>
     </div>
-
-
+    <p></p>
+    <p>
+    </p><div class="button-bar bar-assertive">
+    <a class="button" ui-sref="sale">销售合同</a>
+    <a class="button" ui-sref="fund">银行存款</a>
+    <a class="button" ui-sref="receive_bill">应收票据</a>
+  </div>
+    <p></p>
+    <p>
+    </p><div class="button-bar bar-royal">
+    <a class="button" ui-sref="pay_bill">应付票据</a>
+    <a class="button" ui-sref="receive_account">应收账单</a>
+    <a class="button" ui-sref="pay_account">应付账单</a>
+  </div>
+    <p></p>
+    <p>
+    </p><div class="button-bar bar-energized">
+    <a class="button" ui-sref="source">能源系统数据</a>
+  </div>
   </ion-content>
   </ion-view>
