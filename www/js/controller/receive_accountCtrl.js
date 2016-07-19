@@ -2,11 +2,11 @@ angular.module('receive_accountCtrl',[])
 /*******************************************************
  * 应收账款
  *********************************************************/
-.controller('receive_accountCtrl', function ($scope, services, $ionicPopover, $rootScope,$ionicLoading) {
+.controller('receive_accountCtrl', function ($scope,$state, services, $ionicPopover, $rootScope,$ionicLoading) {
   $scope.flag2 = false;//返回按钮路由
   $scope.resp=[];//返回的数据
   $scope.run=false;//上拉加载标志
-  var requestCount={count:0,serviceName:''};//上拉加载的条数
+  var requestCount={count:0};//上拉加载的条数
 
 
   /******************************************************************
@@ -18,7 +18,7 @@ angular.module('receive_accountCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmops2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (result) {
@@ -27,6 +27,9 @@ angular.module('receive_accountCtrl',[])
         $scope.run=false;
       }
       $scope.resp=$scope.resp.concat(EIinfoOut);
+      for (var i = 0; i < $scope.resp.length; i++) {
+        $scope.resp[i].key = ($scope.resp[i].USERNAME.substring(0, 1));
+      }
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, function () {
     });
@@ -54,17 +57,17 @@ angular.module('receive_accountCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmops2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
       var EIinfoOut=resp.Tables[0].Table;
       $scope.resp = EIinfoOut;
       for (var i = 0; i < $scope.resp.length; i++) {
-        $scope.resp[i].key = (resp[i].USERNAME.substring(0, 1));
+        $scope.resp[i].key = ($scope.resp[i].USERNAME.substring(0, 1));
       }
-      $scope.run=true;
       $ionicLoading.hide();
+      $scope.run=true;
     }, function () {
     });
   } else {
@@ -129,7 +132,7 @@ angular.module('receive_accountCtrl',[])
   }
 })
   .controller('receive_account_searchCtrl', function ($scope,services,  $state, $ionicPopup, $timeout) {
-    $scope.req = {date1: null, date2: null, username: null, recordName: null};
+    $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};
     $scope.search = {date1: null, date2: null};
     var history = [];
     /*********************************************************************
@@ -194,7 +197,7 @@ angular.module('receive_accountCtrl',[])
         console.log('No date selected');
       } else {
         $scope.search.date1=val;
-        $scope.req.date1 = val.format('yyyyMMdd');
+        $scope.req.DATE1 = val.Format('yyyyMMdd');
       }
     };
     //日期插件
@@ -228,7 +231,7 @@ angular.module('receive_accountCtrl',[])
         console.log('No date selected');
       } else {
         $scope.search.date2=val2;
-        $scope.req.date2 = val2.format('yyyyMMdd');
+        $scope.req.DATE2 = val2.Format('yyyyMMdd');
       }
     };
     /*********************************************************************
@@ -239,7 +242,7 @@ angular.module('receive_accountCtrl',[])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -294,7 +297,7 @@ angular.module('receive_accountCtrl',[])
       });
       myPopup.then(function (res) {
         if (res) {
-          $scope.req.recordName = res;
+          $scope.req.RECORDNAME = res;
         }
       });
       $timeout(function () {
@@ -306,7 +309,7 @@ angular.module('receive_accountCtrl',[])
      *********************************************************************/
     var jsTable = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmops3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -323,7 +326,7 @@ angular.module('receive_accountCtrl',[])
       jsTable.addColums(RECORDNAME);
       jsTable.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -346,7 +349,7 @@ angular.module('receive_accountCtrl',[])
           jsTable.addColums(RECORDNAME);
           jsTable.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -366,7 +369,7 @@ angular.module('receive_accountCtrl',[])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
