@@ -323,7 +323,7 @@ angular.module('receive_accountCtrl',[])
      *********************************************************************/
     $scope.remove = function (req) {
       var jsTable = new EI.sDataTable();
-      jsTable.addColums(RECORDNAME);
+      jsTable.addColums('RECORDNAME');
       jsTable.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_del';
@@ -346,7 +346,7 @@ angular.module('receive_accountCtrl',[])
       confirmPopup.then(function (res) {
         if (res) {
           var jsTable = new EI.sDataTable();
-          jsTable.addColums(RECORDNAME);
+          jsTable.addColums('RECORDNAME');
           jsTable.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
           jsEIinfoIn.SysInfo.SvcName = 'pmops1_app_del';

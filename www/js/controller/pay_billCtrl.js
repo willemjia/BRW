@@ -17,7 +17,7 @@ angular.module('pay_billCtrl', [])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopf2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (result) {
@@ -56,7 +56,7 @@ angular.module('pay_billCtrl', [])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopf2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -245,7 +245,7 @@ angular.module('pay_billCtrl', [])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopf1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -299,7 +299,7 @@ angular.module('pay_billCtrl', [])
       });
       myPopup.then(function (res) {
         if (res) {
-          $scope.req.recordName = res;
+          $scope.req.RECORDNAME = res;
         }
       });
       $timeout(function () {
@@ -311,7 +311,7 @@ angular.module('pay_billCtrl', [])
      *************************************************************************/
     var jsTable = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopf3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -328,7 +328,7 @@ angular.module('pay_billCtrl', [])
       jsTable.addColums("RECORDNAME");
       jsTable.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopf1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -351,7 +351,7 @@ angular.module('pay_billCtrl', [])
           jsTable.addColums("RECORDNAME");
           jsTable.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopf1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -371,7 +371,7 @@ angular.module('pay_billCtrl', [])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopf1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -382,7 +382,7 @@ angular.module('pay_billCtrl', [])
       });
     }
   })
-  .controller('pay_bill_detailedCtrl', function ($scope) {
+  .controller('pay_bill_detailedCtrl', function ($scope,$rootScope) {
     $scope.mingxi=$rootScope.mingxi;
   })
   .controller('pay_bill_hideCtrl', function ($scope, $rootScope, $state) {

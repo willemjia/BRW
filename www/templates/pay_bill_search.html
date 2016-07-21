@@ -33,7 +33,7 @@
                 <ion-item>
                     <div class="row">
                         <div class="col col-25"><h2>客户名称</h2></div>
-                        <div class="col col-66 col-offset-10"><input type="text" placeholder="请输入客户名称" ng-model="req.username"></div>
+                        <div class="col col-66 col-offset-10"><input type="text" placeholder="请输入客户名称" ng-model="req.USERNAME"></div>
                     </div>
                 </ion-item>
             </ion-content>
@@ -50,8 +50,8 @@
             <ion-content>
                 <ion-list>
                     <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
-                        {{item.recordName}}
-                        <ion-option-button class="button-calm" ng-click="remove(item.id)">
+                        {{item.RECORDNAME}}
+                        <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
                             删除
                         </ion-option-button>
                     </ion-item>

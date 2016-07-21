@@ -56,18 +56,18 @@
                  "renmingbi":"200000"//人民币金额
 应付账款
 
-                "username":"张三",//供应商名称
-                 "invoiceManageNum":"54125",//发票管理号
-                 "invoiceNature":"公司",//发票性质
-                 "invoiceCode":"54125",//发票代码
-                 "invoiceNum":"125215",//发票号码
-                  "currencies":"人民币",//币种
-                 "billNum":"444515",//结算单号
-                 "invoiceMoney":"200000",//发票金额
-                "applicationMoney":"300000",//申请金额
-                 "payMoney":"200000",//付款金额
-                 "surplusMoney":"200000",//剩余金额
-                 "status":"已付",//发票状态
+                "username"//供应商名称
+                 "invoiceManageNum"//发票管理号
+                 "invoiceNature"//发票性质
+                 "invoiceCode"//发票代码
+                 "invoiceNum"//发票号码
+                  "currencies"//币种
+                 "billNum"//结算单号
+                 "invoiceMoney"//发票金额
+                "applicationMoney"//申请金额
+                 "payMoney"//付款金额
+                 "surplusMoney"//剩余金额
+                 "status"//发票状态
 
 
 

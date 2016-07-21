@@ -19,12 +19,12 @@
                 <div class="receive_account_itemTitle" ng-if=!hide.USERNAME>客户名称：{{item.USERNAME}}</div><hr class="hr">
                 <div class="row receive_item">
                     <div class="col col-20 receive_account_key text-center light">{{item.key}}</div>
-                    <div class="col col-40 col-offset-10 attributes"><i ng-if=!hide.FORMINVOICENUM>形式发票号：<br></i><i ng-if=!hide.DATE>开票日期：<br></i><i ng-if=!hide.INVOICENUM>发票号码：<br></i><i ng-if=!hide.INVOICECODE>发票代码：</i></div>
+                    <div class="col col-25 col-offset-10 attributes"><i ng-if=!hide.FORMINVOICENUM>形式发票号：<br></i><i ng-if=!hide.DATE>开票日期：<br></i><i ng-if=!hide.INVOICENUM>发票号码：<br></i><i ng-if=!hide.INVOICECODE>发票代码：</i></div>
                     <div class="col col-40"><i ng-if=!hide.FORMINVOICENUM>{{item.FORMINVOICENUM}}<br></i><i ng-if=!hide.DATE>{{item.DATE}}<br></i><i ng-if=!hide.INVOICENUM>{{item.INVOICENUM}}<br></i><i ng-if=!hide.INVOICECODE>{{item.INVOICECODE}}</i></div>
                 </div>
                 <div class="row receive_item">
                     <div class="col col-20 attributes"><i ng-if=!hide.CURRENCIES>币种：<br></i><i ng-if=!hide.BILLMONEY>结算金额：<br></i><i ng-if=!hide.VERIFICATIONMONEY>核销金额：<br></i><i ng-if=!hide.VERIFICATIONINGMONEY>待核销金额：</i></div>
-                    <div class="col col-40 col-offset-10"><i ng-if=!hide.CURRENCIES>{{item.CURRENCIES}}<br></i><i ng-if=!hide.BILLMONEY>{{item.BILLMONEY}}<br></i><i ng-if=!hide.VERIFICATIONMONEY>{{item.VERIFICATIONMONEY}}<br></i><i ng-if=!hide.VERIFICATIONINGMONEY>{{item.VERIFICATIONINGMONEY}}</i></div>
+                    <div class="col col-25 col-offset-10"><i ng-if=!hide.CURRENCIES>{{item.CURRENCIES}}<br></i><i ng-if=!hide.BILLMONEY>{{item.BILLMONEY}}<br></i><i ng-if=!hide.VERIFICATIONMONEY>{{item.VERIFICATIONMONEY}}<br></i><i ng-if=!hide.VERIFICATIONINGMONEY>{{item.VERIFICATIONINGMONEY}}</i></div>
                     <div class="col col-40"></div>
                 </div>
             </ion-item>
