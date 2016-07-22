@@ -49,6 +49,18 @@
     padding: 0;
     font-family: "微软雅黑" !important;
 }
+.menu_li{
+  border-right:0.1px solid #ddd;
+  border-bottom:0.1px solid #ddd;
+  text-align: center;
+}
+.menu_li2{
+  border-bottom:0.1px solid #ddd;
+  text-align: center;
+}
+.icon{
+  width:32px;height:32px
+}
 .receive_bill_fixed{
     width:50px;
     height:50px;
