@@ -3,28 +3,26 @@
     <h1 class="title light">功能导航</h1>
   </ion-header-bar>
 
-  <ion-content  overflow-scroll="true" style="overflow: hidden">
+  <ion-content class="gray-bg">
+    <div class="row">
+      <div class="col col-25 menu_li" ui-sref="tab-team"><img ng-src="img/team.png"><p>班组设备</p></div>
 
-    <div class="button-bar bar-calm" style="margin-top: 260px">
-      <a class="button" ui-sref="tab-team">班组设备</a>
-      <a class="button" ui-sref="tab-stock">库存明细</a>
-      <a class="button" ui-sref="tab-plan">发货计划</a>
+      <div class="col col-25 menu_li" ui-sref="tab-stock"><img ng-src="img/stock.png"><p>库存明细</p></div>
+      <div class="col col-25 menu_li" ui-sref="tab-plan"><img ng-src="img/fund.png"><p>发货计划</p></div>
+      <div class="col col-25 menu_li2" ui-sref="sale"><img ng-src="img/sale.png"><p>销售合同</p></div>
     </div>
 
+    <div class="row">
+      <div class="col col-25 menu_li" ui-sref="fund"><img ng-src="img/fund.png"><p>银行存款</p></div>
+      <div class="col col-25 menu_li" ui-sref="receive_bill"><img ng-src="img/fund.png"><p>应收票据</p></div>
+      <div class="col col-25 menu_li" ui-sref="pay_bill"><img ng-src="img/fund.png"><p>应付票据</p></div>
+      <div class="col col-25 menu_li2" ui-sref="receive_account"><img ng-src="img/fund.png"><p>应收账单</p></div>
+    </div>
 
-    <div class="button-bar bar-assertive" style="margin-top: 20px">
-    <a class="button" ui-sref="sale">销售合同</a>
-    <a class="button" ui-sref="fund">银行存款</a>
-    <a class="button" ui-sref="receive_bill">应收票据</a>
-  </div>
-   <div class="button-bar bar-royal" style="margin-top: 20px">
-    <a class="button" ui-sref="pay_bill">应付票据</a>
-    <a class="button" ui-sref="receive_account">应收账单</a>
-    <a class="button" ui-sref="pay_account">应付账单</a>
-  </div>
-   <div class="button-bar bar-energized" style="margin-top: 20px">
-    <a class="button" ui-sref="source">能源系统数据</a>
-  </div>
+    <div class="row">
+      <div class="col col-25 menu_li" ui-sref="pay_account"><img ng-src="img/fund.png"><p>应付账单</p></div>
+      <div class="col col-25 menu_li" ui-sref="source"><img ng-src="img/fund.png"><p>能源系统</p></div>
+    </div>
   </ion-content>
   <ion-footer-bar class="dark-bg light">
     <div class="title">南京宝日移动APP</div>
