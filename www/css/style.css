@@ -53,10 +53,12 @@
   border-right:0.1px solid #ddd;
   border-bottom:0.1px solid #ddd;
   text-align: center;
+  font-size:10px
 }
 .menu_li2{
   border-bottom:0.1px solid #ddd;
   text-align: center;
+  font-size:10px
 }
 .icon{
   width:32px;height:32px
