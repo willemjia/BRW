@@ -6,7 +6,7 @@ angular.module('pay_billCtrl', [])
   $scope.flag2 = false;//返回按钮路由
   $scope.resp=[];//返回的数据
   $scope.run=false;//上拉加载标志
-  var requestCount={count:0,servicesName:''};//上拉加载的条数
+  var requestCount={count:0};//上拉加载的条数
 
   /******************************************************************
    * 加载更多
