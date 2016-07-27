@@ -2,7 +2,7 @@ angular.module('pay_accountCtrl', [])
   /*******************************************************
    * 应付账款
    *********************************************************/
-  .controller('pay_accountCtrl', function ($scope,services, $ionicPopover, $rootScope,$ionicLoading) {
+  .controller('pay_accountCtrl', function ($scope,$state,services, $ionicPopover, $rootScope,$ionicLoading) {
     $scope.flag2 = false;//返回按钮路由
     $scope.resp=[];//返回的数据
     $scope.run=false;//上拉加载标志
@@ -17,7 +17,7 @@ angular.module('pay_accountCtrl', [])
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopy2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (result) {
@@ -56,7 +56,7 @@ angular.module('pay_accountCtrl', [])
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopy2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -248,7 +248,7 @@ angular.module('pay_accountCtrl', [])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopy1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -265,7 +265,7 @@ angular.module('pay_accountCtrl', [])
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopy1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -319,7 +319,7 @@ angular.module('pay_accountCtrl', [])
       });
       myPopup.then(function (res) {
         if (res) {
-          $scope.req.recordName = res;
+          $scope.req.RECORDNAME = res;
         }
       });
       $timeout(function () {
@@ -331,7 +331,7 @@ angular.module('pay_accountCtrl', [])
      *************************************************************************/
     var jsTable = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopy3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -345,10 +345,10 @@ angular.module('pay_accountCtrl', [])
      *************************************************************************/
     $scope.remove = function (req) {
       var jsTable = new EI.sDataTable();
-      jsTable.addColums(RECORDNAME);
+      jsTable.addColums('RECORDNAME');
       jsTable.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopy1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -371,7 +371,7 @@ angular.module('pay_accountCtrl', [])
           jsTable.addColums(RECORDNAME);
           jsTable.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopy1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable);
           services.toService(jsEIinfoIn).then(function (resp) {

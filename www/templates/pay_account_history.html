@@ -6,8 +6,8 @@
     <ion-content>
         <ion-list>
             <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
-                {{item.recordName}}
-                <ion-option-button class="button-calm" ng-click="remove(item.id)">
+                {{item.RECORDNAME}}
+                <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
                     删除
                 </ion-option-button>
             </ion-item>

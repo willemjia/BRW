@@ -15,10 +15,13 @@
     </div>
     <ion-content class="stable-bg content-margin">
         <ion-list ng-repeat="item in resp|filter:data.criteria">
-            <ion-item  class="receive_bill_margin" ng-click="detail(item)">
-                <div class="receive_account_itemTitle" ng-if=!hide.USERNAME>供应商名称：{{item.USERNAME}}</div><hr class="hr">
+            <!--<ion-item  class="receive_bill_margin" ng-click="detail(item)">-->
+            <ion-item  class="receive_bill_margin">
+                <div class="receive_bill_itemTitle" ng-if=!hide.USERNAME>(供应商){{item.USERNAME.substring(0,14)}}</div>
+                <div class="receive_bill_itemTitle" ng-if=!hide.USERNAME>{{item.USERNAME.substring(14,item.USERNAME.length)}}</div>
+              <hr class="hr">
                 <div class="row receive_item">
-                    <div class="col col-20 receive_account_key text-center light">{{item.key}}</div>
+                    <div class="col col-20 receive_account_key text-center light">{{item.USERNAME.substring(0,1)}}</div>
                     <div class="col col-25 col-offset-10 attributes"><i ng-if=!hide.INVOICEMANAGENUM>发票管理号：<br></i><i ng-if=!hide.INVOICENATURE>发票性质：<br></i><i ng-if=!hide.INVOICECODE>发票代码：<br></i><i ng-if=!hide.INVOICENUM>发票号码：<br></i><i ng-if=!hide.CURRENCIES>币种：</i></div>
                     <div class="col col-40"><i ng-if=!hide.INVOICEMANAGENUM>{{item.INVOICEMANAGENUM}}<br></i><i ng-if=!hide.INVOICENATURE>{{item.INVOICENATURE}}<br></i><i ng-if=!hide.INVOICECODE>{{item.INVOICECODE}}<br></i><i ng-if=!hide.INVOICENUM>{{item.INVOICENUM}}<br></i><i ng-if=!hide.CURRENCIES>{{item.CURRENCIES}}</i></div>
                 </div>

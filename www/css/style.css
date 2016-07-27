@@ -50,13 +50,13 @@
     font-family: "微软雅黑" !important;
 }
 .menu_li{
-  border-right:0.1px solid #ddd;
-  border-bottom:0.1px solid #ddd;
+  border-right:0.1px solid whitesmoke;
+  border-bottom:0.1px solid whitesmoke;
   text-align: center;
   font-size:10px
 }
 .menu_li2{
-  border-bottom:0.1px solid #ddd;
+  border-bottom:0.1px solid whitesmoke;
   text-align: center;
   font-size:10px
 }
@@ -83,7 +83,7 @@
 .receive_bill_itemTitle {
     color: red;
     font-size: 16px;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-bottom: 6px;
 }
 

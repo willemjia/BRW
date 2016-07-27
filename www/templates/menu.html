@@ -3,25 +3,41 @@
     <h1 class="title light">功能导航</h1>
   </ion-header-bar>
 
-  <ion-content class="gray-bg">
-    <div class="row">
-      <div class="col col-25 menu_li" ui-sref="tab-team"><img ng-src="img/team.png"><p>班组设备</p></div>
+  <ion-content class="stable-bg">
 
-      <div class="col col-25 menu_li" ui-sref="tab-stock"><img ng-src="img/stock.png"><p>库存明细</p></div>
-      <div class="col col-25 menu_li" ui-sref="tab-plan"><img ng-src="img/fund.png"><p>发货计划</p></div>
-      <div class="col col-25 menu_li2" ui-sref="sale"><img ng-src="img/sale.png"><p>销售合同</p></div>
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <img ng-src="img/menu.png" style="width:100%;height: 160px;margin-bottom:20px">
+      </ion-slide>
+      <ion-slide>
+        <img ng-src="img/menu2.png" style="width:100%;height: 160px;margin-bottom:20px">
+      </ion-slide>
+      <ion-slide>
+        <img ng-src="img/menu3.png" style="width:100%;height: 160px;margin-bottom:20px">
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="light-bg">
+    <div class="row">
+      <div class="col col-25 menu_li" ui-sref="tab-team"><img ng-src="img/team.png" class="icon"><p>班组设备</p></div>
+
+      <div class="col col-25 menu_li" ui-sref="tab-stock"><img ng-src="img/stock.png" class="icon"><p>库存明细</p></div>
+      <div class="col col-25 menu_li" ui-sref="tab-plan"><img ng-src="img/plan.png" class="icon"><p>发货计划</p></div>
+      <div class="col col-25 menu_li2" ui-sref="sale"><img ng-src="img/sale.png" class="icon"><p>销售合同</p></div>
     </div>
 
     <div class="row">
-      <div class="col col-25 menu_li" ui-sref="fund"><img ng-src="img/fund.png"><p>银行存款</p></div>
-      <div class="col col-25 menu_li" ui-sref="receive_bill"><img ng-src="img/fund.png"><p>应收票据</p></div>
-      <div class="col col-25 menu_li" ui-sref="pay_bill"><img ng-src="img/fund.png"><p>应付票据</p></div>
-      <div class="col col-25 menu_li2" ui-sref="receive_account"><img ng-src="img/fund.png"><p>应收账单</p></div>
+      <div class="col col-25 menu_li" ui-sref="fund"><img ng-src="img/fund.png" class="icon"/><p>银行存款</p></div>
+      <div class="col col-25 menu_li" ui-sref="receive_bill"><img ng-src="img/receive_bill.png" class="icon"><p>应收票据</p></div>
+      <div class="col col-25 menu_li" ui-sref="pay_bill"><img ng-src="img/pay_bill.png" class="icon"><p>应付票据</p></div>
+      <div class="col col-25 menu_li2" ui-sref="receive_account"><img ng-src="img/receive_account.png" class="icon"><p>应收账款</p></div>
     </div>
 
     <div class="row">
-      <div class="col col-25 menu_li" ui-sref="pay_account"><img ng-src="img/fund.png"><p>应付账单</p></div>
-      <div class="col col-25 menu_li" ui-sref="source"><img ng-src="img/fund.png"><p>能源系统</p></div>
+      <div class="col col-25 menu_li" ui-sref="pay_account"><img ng-src="img/pay_account.png" class="icon"><p>应付账款</p></div>
+      <div class="col col-25 menu_li" ui-sref="source"><img ng-src="img/source.png" class="icon"><p>能源系统</p></div>
+      <div class="col col-25"><div style="margin-top:16px;margin-left:30px;font-size: 30px;color:gray">...</div></div>
+    </div>
     </div>
   </ion-content>
   <ion-footer-bar class="dark-bg light">

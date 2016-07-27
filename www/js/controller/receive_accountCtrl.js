@@ -8,7 +8,6 @@ angular.module('receive_accountCtrl',[])
   $scope.run=false;//上拉加载标志
   var requestCount={count:0};//上拉加载的条数
 
-
   /******************************************************************
    * 上拉加载
    ******************************************************************/
@@ -27,9 +26,6 @@ angular.module('receive_accountCtrl',[])
         $scope.run=false;
       }
       $scope.resp=$scope.resp.concat(EIinfoOut);
-      for (var i = 0; i < $scope.resp.length; i++) {
-        $scope.resp[i].key = ($scope.resp[i].USERNAME.substring(0, 1));
-      }
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, function () {
     });
@@ -63,19 +59,13 @@ angular.module('receive_accountCtrl',[])
     services.toService(jsEIinfoIn).then(function (resp) {
       var EIinfoOut=resp.Tables[0].Table;
       $scope.resp = EIinfoOut;
-      for (var i = 0; i < $scope.resp.length; i++) {
-        $scope.resp[i].key = ($scope.resp[i].USERNAME.substring(0, 1));
-      }
-      $ionicLoading.hide();
       $scope.run=true;
+      $ionicLoading.hide();
     }, function () {
     });
   } else {
     $scope.flag2 = true;
     $scope.resp = resp;
-    for (var i = 0; i < $scope.resp.length; i++) {
-      $scope.resp[i].key = (resp[i].USERNAME.substring(0, 1));
-    }
   }
   /*************************************************************************
    * 点击返回按钮，保存查询对象空间清空
