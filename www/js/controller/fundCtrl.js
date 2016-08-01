@@ -298,7 +298,7 @@ angular.module('fundCtrl',[])
       TOTBALANCE: false,
       CREDITAMOUNT: false,
       PAIDCREDIT: false,
-      LEFTCREDIT: false,
+      LEFTCREDIT: false
     };
 
     $scope.commit = function () {
