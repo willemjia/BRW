@@ -1,78 +1,77 @@
-
+<ion-header-bar class="dark-bg">
+  <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="tab-team"></a>
+  <h1 class="title light">查询</h1>
+</ion-header-bar>
 <ion-tabs class="tabs-top  tabs-striped tabs-light tabs-color-active-calm">
 
-  <ion-tab title="班组查询">
-
+  <!-- Dashboard Tab -->
+  <ion-tab title="编辑查询">
     <ion-view>
-
       <ion-content>
-
         <ion-item>
           <div class="row">
-            <div class="col col-25"><h2>班组</h2></div>
-            <div class="col col-25">
-              <select ng-model="req.username" ng-options="m for m in username" style="height: 26px">
-                <option value=""></option>
-              </select>
-            </div>
-
-          </div>
-        </ion-item>
-        <ion-item>
-          <div class="row">
-            <div class="col col-25"><h2>设备类型</h2></div>
-            <div class="col col-25">
-              <select ng-model="req.teamtype" ng-options="m for m in teamtype" style="height: 26px">
-                <option value=""></option>
-              </select>
-            </div>
-
-          </div>
-        </ion-item>
-        <ion-item>
-          <div class="row">
-            <div class="col col-25"><h2>日期</h2></div>
-            <div class="col col-25">
-              <select ng-model="req.dateRange" ng-options="m for m in dateRange" style="height: 26px">
-                <option value=""></option>
-              </select>
-            </div>
-            <div class="col col-40 col-offset-10">
+            <div class="col col-30"><h2>日期范围</h2></div>
+            <!--<div class="col col-20"></div>-->
+            <div class="col col-50 col-offset-10">
               <ionic-datepicker input-obj="datepickerObject">
+                <ion-list>
                 <ion-item class="item item-input ion-calendar ">
-                  <p>{{req.date1 | date:datepickerObject.dateFormat}}</p>
+                  <p>{{search.date1 | date:datepickerObject.dateFormat}}</p>
                 </ion-item>
               </ionic-datepicker>
             </div>
           </div>
           <div class="row">
             <div class="col col-25"></div>
-            <div class="col col-25"></div>
-            <div class="col col-40 col-offset-10">
-              <ionic-datepicker input-obj="datepickerObject2" ng-if="req.dateRange=='时间段'">
+            <!-- <div class="col col-25"></div>-->
+            <div class="col col-50 col-offset-25">
+              <ionic-datepicker input-obj="datepickerObject2">
                 <ion-item class="item item-input ion-calendar ">
-                  <p>{{req.date2 | date:datepickerObject2.dateFormat}}</p>
+                  <p>{{search.date2 | date:datepickerObject2.dateFormat}}</p>
                 </ion-item>
               </ionic-datepicker>
             </div>
           </div>
-
         </ion-item>
-
-
+        <ion-item>
+          <div class="row">
+            <div class="col col-30"><h2>设备</h2></div>
+            <div class="col col-30 col-offset-40">
+             <select ng-model="req.TYPE" ng-options="m for m in model">
+            <option value=""></option>
+          </select>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="row">
+            <div class="col col-30"><h2>班组</h2></div>
+            <div class="col col-66 col-offset-10"><input type="text" placeholder="请输入班组" ng-model="req.TEAM"></div>
+          </div>
+        </ion-item>
+        </ion-list>
       </ion-content>
 
       <ion-footer-bar>
-        <a class="button button-icon" ng-click="commit()">查询</a>
-        <i class="title">|</i>
-        <a class="button button-icon" ng-click="remeber()">记住本次查询</a>
+        <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="commit()">查询</a></div>
+        <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
       </ion-footer-bar>
     </ion-view>
   </ion-tab>
-
-  <ion-tab
-    title="查询历史"
-    href="#/select1"
-   >
+  <!-- Chats Tab -->
+  <ion-tab title="查询历史">
+    <ion-view>
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
+            {{item.RECORDNAME}}
+            <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
+              删除
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
+    </ion-view>
   </ion-tab>
 </ion-tabs>

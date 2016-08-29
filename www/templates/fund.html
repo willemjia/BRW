@@ -4,14 +4,14 @@
     <a class="button button-icon button-clear ion-ios-arrow-left button-light"  ng-click="state()" ng-if=flag2></a>
     <h1 class="title light">客户资金账户信息</h1>
   </ion-header-bar>
+  <div class="bar bar-subheader item-input-inset" >
+    <label class="item-input-wrapper" >
+      <input type="search" placeholder="关键字查询" ng-model="data.name">
+    </label>
+    <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
+  </div>
 
-  <ion-content>
-    <div class="bar item-input-inset" >
-      <label class="item-input-wrapper" >
-        <input type="search" placeholder="关键字查询" ng-model="data.name">
-      </label>
-      <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
-    </div>
+  <ion-content class="stable-bg content-margin">
     <ion-list ng-repeat="item in resp|filter:data.criteria">
       <ion-item  class="receive_bill_margin" ng-click="detail(item)" ">
         <div class="sale_account_itemTitle" ng-hide=hide.CUSNAME>客户名称：{{item.CUSNAME}}</div><hr class="fund_hr">
@@ -47,7 +47,11 @@
     </ion-list>
 
 
-
+    <ion-infinite-scroll
+      on-infinite="loadMore()"
+      ng-if="run"
+      distance="1%">
+    </ion-infinite-scroll>
 
 
 

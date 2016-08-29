@@ -10,8 +10,6 @@
     <file url="file://$PROJECT_DIR$/www/js/stock/sselect1controllers.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/stock/sselectservices.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/stock/stockservices.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/js/team/teamservices.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/js/team/tselectservices.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/fund-history.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/fund-search.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/fund.html" charset="UTF-8" />

@@ -5,11 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl','saleCtrl','sourceCtrl', 'starter.services', 'ng-fusioncharts', 'ionic-datepicker'
+angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl','saleCtrl','sourceCtrl', 'starter.services', 'ionic-datepicker'
         ,'starter',
-        'team.controllers','team.services','modifyteam.controllers','plan.controllers','plan.services','modifyplan.controllers','teammy.services',
-        'pselect1.controllers','pselect.controllers','pselect.services','pyc.controllers',
-        'sselect1.controllers','sselect.controllers','sselect.services','syc.controllers',,'stock.controllers','stock.services','modifystock.controllers',"ng-fusioncharts",'tselect.controllers','select.services','tselect1.controllers','yc.controllers'])
+        'team.controllers','planCtrl','plan.services','modifyplan.controllers',
+        'pselect1.controllers','pselect.controllers','pselect.services','pyc.controllers','angular-echarts',
+        'sselect1.controllers','sselect.controllers','sselect.services','syc.controllers',,'stock.controllers','stock.services','modifystock.controllers',])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -287,7 +287,6 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
             })
 
 
-//=============================================沈腾飞==========================================================
             //班组设备产量
             .state('tab-team', {
                 cache: false,
@@ -297,7 +296,7 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
 
             })
 //班组设备产量展开图
-            .state('modifyteam', {
+            .state('team-detail', {
                 cache: false,
                 url: '/modifyteam?id',
                 templateUrl: "templates/team-detail.html",
@@ -308,7 +307,7 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
                 cache: false,
                 url: '/plan',
                 templateUrl: 'templates/tab-plan.html',
-                controller: 'planCtrl'
+                controller: 'PlanCtrl'
             })
 //发货计划展开图
             .state('modifyplan', {
@@ -336,38 +335,38 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
                 cache: false,
                 url: '/select',
                 templateUrl: "templates/team-select.html",
-                controller: "Tselect"
+                controller: "teamSearchCtrl"
             })
             .state('select1', {
                 cache: false,
                 url: '/select1',
                 templateUrl: "templates/team-select1.html",
-                controller: "Tselect1"
+                controller: "teamSearchCtrl"
             })
             .state('yingcuang', {
                 cache: false,
                 url: '/yingcuang',
                 templateUrl: "templates/team-yingcuang.html",
-                controller: "ycCrl"
+                controller: "teamHideCtrl"
             })
 //select发货计划浮动
             .state('pselect', {
                 cache: false,
                 url: '/pselect',
                 templateUrl: "templates/plan-select.html",
-                controller: "pselect"
+                controller: "PlanSearchCtrl"
             })
             .state('pselect1', {
                 cache: false,
                 url: '/pselect1',
                 templateUrl: "templates/plan-select1.html",
-                controller: "Pselect1"
+                controller: "PlanSearchCtrl"
             })
             .state('pyingcuang', {
                 cache: false,
                 url: '/pyingcuang',
                 templateUrl: "templates/plan-yingcuang.html",
-                controller: "PycCrl"
+                controller: "PlanHideCtrl"
             })
 //select库明细浮动
             .state('sselect', {

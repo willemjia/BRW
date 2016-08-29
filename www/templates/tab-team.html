@@ -1,24 +1,32 @@
 <ion-view view-title="班组设备产量">
     <ion-header-bar class="dark-bg">
-        <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu"></a>
-        <h1 class="title light">班组设备产量</h1>
+      <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="menu" ng-if=!flag2></a>
+      <a class="button button-icon button-clear ion-ios-arrow-left button-light" ng-click="state()" ng-if=flag2></a>
+      <h1 class="title light" ng-if=!flag2>班组设备产量</h1>
+      <h1 class="title light" ng-if=flag2>班组设备产量结果</h1>
     </ion-header-bar>
-  <ion-content>
+  <ion-content class="stable-bg">
     <div class="bar item-input-inset" >
       <label class="item-input-wrapper" >
         <input type="search" placeholder="关键字" ng-model="data.name">
       </label>
       <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
     </div>
-    <ion-list ng-repeat="team in teams|filter:data.criteria" >
+    <ion-list ng-repeat="team in resp|filter:data.criteria" >
 
-      <ion-item  class="receive_bill_margin"  ui-sref="modifyteam({id:{{team.id}}})">
-        <div class="receive_account_itemTitle" style="color:red">设备：{{team.name}}</div>
-        <div class="receive_account_itemTitle"  style="color:red">工艺：{{team.lastText}}</div>
+      <ion-item  class="receive_bill_margin" ng-click="detail(team)">
+        <span class="receive_bill_itemTitle" ng-if=!hide.TYPE>设备：{{team.TYPE}}</span>
+        <span class="receive_bill_itemTitle" ng-if=!hide.CRAFTS>工艺：{{team.CRAFTS}}</span>
+        <hr class="hr">
+
         <div class="row receive_item">
-          <div class="col col-20 receive_account_key text-center light">{{team.id}}</div>
-          <div class="col col-40 col-offset-10 attributes"><i ng-if=!hide.name1>班组{{team.name1}}</i><br><i ng-if=!hide.name2>班组{{team.name2}}</i><br><i ng-if=!hide.name3>班组{{team.name3}}</i><br><i ng-if=!hide.name4>班组{{team.name4}}</i></div>
-          <div class="col col-40"><i ng-if=!hide.name1>产量{{team.lastText1}}</i><br><i ng-if=!hide.name2>产量{{team.lastText2}}</i><br><i ng-if=!hide.name3>产量{{team.lastText3}}</i><br><i ng-if=!hide.name4>产量{{team.lastText4}}</i></div>
+            <div class="col col-40 col-offset-10" >
+              <div ng-repeat="k in team.TEAMS">
+              <i ng-if=!hide.TEAM>班组:{{k.TEAM}}</i></div> </div>
+
+            <div class="col col-40">
+              <div ng-repeat="k in team.TEAMS"><i ng-if=!hide.YIELD>产量:{{k.YIELD}}</i></div></div>
+
         </div>
       </ion-item>
     </ion-list>

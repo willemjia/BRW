@@ -1,41 +1,46 @@
 
 <ion-view view-title="">
-    <ion-nav-bar>
-  <ion-nav-buttons side="right">
-
+  <ion-header-bar class="dark-bg light">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="tab-plan"></a>
+    <h1 class="title light">请选择要隐藏的列</h1>
     <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="commit()"></a>
-  </ion-nav-buttons>
-    </ion-nav-bar>
+  </ion-header-bar>
   <ion-content>
 
     <ul class="list">
       <li class="item item-checkbox">
         <label class="checkbox">
-          <input type="checkbox" ng-model="data.name">
+          <input type="checkbox" ng-model="data.USERNAME">
         </label>
        客户名称
       </li>
       <li class="item item-checkbox">
         <label class="checkbox">
-          <input type="checkbox" ng-model="data.shijifahuo">
+          <input type="checkbox" ng-model="data.PLANNUM">
+        </label>
+        计划单号
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.REALAMOUNT">
         </label>
         实际发货量
       </li>
       <li class="item item-checkbox">
         <label class="checkbox">
-          <input type="checkbox" ng-model="data.riqi">
+          <input type="checkbox" ng-model="data.DATE">
         </label>
         计划日期
       </li>
       <li class="item item-checkbox">
         <label class="checkbox">
-          <input type="checkbox" ng-model="data.jihuafahuo">
+          <input type="checkbox" ng-model="data.PLANAMOUNT">
         </label>
         计划发货量
       </li>
       <li class="item item-checkbox">
         <label class="checkbox">
-          <input type="checkbox" ng-model="data.jianshu">
+          <input type="checkbox" ng-model="data.REALNUM">
         </label>
         实际发货件数
       </li>

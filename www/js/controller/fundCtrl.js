@@ -7,8 +7,35 @@ angular.module('fundCtrl',[])
     $scope.run=false;//上拉加载标志
     var requestCount={count:0};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
-
-
+    /*******************************************************
+     * 加减乘除
+     *********************************************************/
+    function sub(a, b){
+      var c, d, e;
+      try {
+        c = a.toString().split(".")[1].length;
+      } catch (f) {
+        c = 0;
+      }
+      try {
+        d = b.toString().split(".")[1].length;
+      } catch (f) {
+        d = 0;
+      }
+      return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
+    }
+    function mul(a, b) {
+      var c = 0,
+        d = a.toString(),
+        e = b.toString();
+      try {
+        c += d.split(".")[1].length;
+      } catch (f) {}
+      try {
+        c += e.split(".")[1].length;
+      } catch (f) {}
+      return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
+    }
     /******************************************************************
      * 上拉加载
      ******************************************************************/
@@ -18,7 +45,7 @@ angular.module('fundCtrl',[])
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopb2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (result) {
@@ -27,6 +54,13 @@ angular.module('fundCtrl',[])
           $scope.run=false;
         }
         $scope.resp=$scope.resp.concat(EIinfoOut);
+        angular.forEach($scope.resp,function(data){
+          data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
+          data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
+          data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
+          data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
+          data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
+        })
         $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function () {
       });
@@ -56,12 +90,19 @@ angular.module('fundCtrl',[])
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopb2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
+        angular.forEach($scope.resp,function(data){
+          data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
+          data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
+          data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
+          data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
+          data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
+        })
         $scope.run=true;
         $ionicLoading.hide();
       }, function () {
@@ -127,7 +168,6 @@ angular.module('fundCtrl',[])
 //        $scope.$on('popover.removed', function() {
 //            // 执行代码
 //        });
-
     /* /!*************************************************************************
      * 点击某条数据进入详细信息
      *************************************************************************!/
@@ -147,7 +187,7 @@ angular.module('fundCtrl',[])
       jsTable1.addColums("CUSNAME", "CURRENCIES","RECORDNAME");
       jsTable1.addOneRow($scope.req.CUSNAME, $scope.req.CURRENCIES,$scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -165,13 +205,13 @@ angular.module('fundCtrl',[])
       jsTable1.addColums("CUSNAME", "CURRENCIES","RECORDNAME");
       jsTable1.addOneRow(data.CUSNAME, data.CURRENCIES, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
-        $state.go("sale");
+        $state.go("fund");
       }, function () {
       });
     }
@@ -230,7 +270,7 @@ angular.module('fundCtrl',[])
      *************************************************************************/
     var jsTable1 = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopb3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -247,7 +287,7 @@ angular.module('fundCtrl',[])
       jsTable1.addColums("RECORDNAME");
       jsTable1.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -270,7 +310,7 @@ angular.module('fundCtrl',[])
           jsTable1.addColums("RECORDNAME");
           jsTable1.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -302,7 +342,7 @@ angular.module('fundCtrl',[])
     };
 
     $scope.commit = function () {
-      $rootScope.sale = $scope.data;
+      $rootScope.fund = $scope.data;
       $state.go('fund');
     }
   })

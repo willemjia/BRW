@@ -65,6 +65,7 @@ angular.module('pay_billCtrl', [])
       $scope.run=true;
       $ionicLoading.hide();
     }, function () {
+
     });
   } else {
     $scope.flag2 = true;

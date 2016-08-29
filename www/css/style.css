@@ -49,6 +49,10 @@
     padding: 0;
     font-family: "微软雅黑" !important;
 }
+.charts{
+  width: 100%;
+  height: 300px;
+}
 .menu_li{
   border-right:0.1px solid whitesmoke;
   border-bottom:0.1px solid whitesmoke;
@@ -77,6 +81,7 @@
     width:100%;
     height:70%;
 }
+
 .content-margin{
     margin-top: 20px;
 }
@@ -120,6 +125,16 @@
     font-size: 20px;
     line-height: 46px;
 
+}
+.receive_account_key2 {
+  max-width: 60px;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  background-color: gold;
+  font-size: 20px;
+  line-height: 24px;
+margin-top:40px;
 }
 
 .receive_account_itemTitle {

@@ -1,17 +1,17 @@
-<ion-view view-title="">
-    <ion-nav-bar>
-  <ion-nav-buttons side="left">
-    <a class="button button-clear ion-chevron-left" ui-sref="tab.plan">返回
-    </a>
-  </ion-nav-buttons>
-    </ion-nav-bar>
+<ion-view view-title="查询历史">
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="receive_bill"></a>
+    <h1 class="title light">查询历史</h1>
+  </ion-header-bar>
   <ion-content>
-    <h2 style="text-align:center;color:blue">历史记录</h2>
-    <div class="item">
-      <h3>&nbsp;计划发货量小于5000<span style="float:right">2016-4-8&nbsp;&nbsp;</span></h3>
-      <div class="clear"></div>
-    </div>
+    <ion-list>
+      <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
+        {{item.RECORDNAME}}
+        <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
+          删除
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
+  <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
 </ion-view>
-
-

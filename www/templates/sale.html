@@ -5,14 +5,14 @@
     <h1 class="title light" ng-if=!flag2>销售合同信息</h1>
     <h1 class="title light" ng-if=flag2>销售合同查询结果</h1>
   </ion-header-bar>
-  <div class="bar bar-subheader">
-    <div class="bar item-input-inset" >
+
+    <div class="bar bar-subheader item-input-inset" >
       <label class="item-input-wrapper" >
         <input type="search" placeholder="关键字查询" ng-model="data.name">
       </label>
       <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
     </div>
-  </div>
+
   <ion-content class="stable-bg content-margin">
 
     <ion-list ng-repeat="item in resp|filter:data.criteria">
@@ -24,7 +24,7 @@
 
         <!--<div class="row" style="color: #000000;font-size: 12px;margin-left: 6px;"><i ng-if=!hide.USERNAME>订货客户名称:{{item.USERNAME}}<br></i></div>-->
         <div class="row receive_item">
-          <div class="col col-55"><i ng-if=!hide.ORDERCUSNAME>订货客户名称:{{item.ORDERCUSNAME}}<br></i><i ng-if=!hide.TYPE>品种:{{item.TYPE}}<br></i><i ng-if=!hide.STEELGRADE>钢种:{{item.STEELGRADE}}<br></i><i ng-if=!hide.CRAFTS>工艺:{{item.CRAFTS}}<br></i><i ng-if=!hide.ORDERWEIGHT>订货重量:{{item.ORDERWEIGHT}}</i></div>
+          <div class="col col-55"><i ng-if=!hide.ORDERCUSNAME>订货客户名称:{{item.ORDERCUSNAME}}<br></i><i ng-if=!hide.TYPE>品种:{{item.TYPE}}<br></i><i ng-if=!hide.STEELGRADE>钢种:{{item.STEELGRADE}}<br></i><i ng-if=!hide.CRAFTS>工艺:{{item.CRAFTS}}<br></i><i ng-if=!hide.ORDERWEIGHT>订货重量:{{item.ORDERWEIGHT}}<br></i><i ng-if=!hide.STATUS>订货重量:{{item.STATUS}}</i></div>
           <div class="col col-45"><i ng-if=!hide.RECCUSNAME>收货客户名称:{{item.RECCUSNAME}}<br></i><i ng-if=!hide.UNIVALENCE>销售单价（含税）:{{item.UNIVALENCE}}<br></i><i ng-if=!hide.STANDARD>规格:{{item.STANDARD}}<br></i><i ng-if=!hide.NORM>标准:{{item.NORM}}<br></i><i ng-if=!hide.FINPROWEI>成品生产重量:{{item.FINPROWEI}}</i></div>
         </div>
       </ion-item>

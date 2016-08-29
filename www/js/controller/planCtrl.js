@@ -1,202 +1,113 @@
-angular.module('saleCtrl',[])
-/*******************************************************
- * 销售合同进度
- *********************************************************/
-.controller('SaleCtrl', function ($state, $ionicLoading,$timeout,$rootScope,services, $scope, $location, $ionicPopup, $ionicPopover) {
-  $scope.resp=[];//返回的数据
-  $scope.run=false;//上拉加载标志
-  var requestCount={count:0};//上拉加载的条数
-  $scope.flag2 = false;//返回按钮路由
+angular.module('planCtrl',[])
+  /*******************************************************
+   * 客户资金帐信息
+   *********************************************************/
+  .controller('PlanCtrl', function ($state, $rootScope, $scope,services, $ionicLoading,$location, $ionicPopup, $ionicPopover) {
+    $scope.resp=[];//返回的数据
+    $scope.run=false;//上拉加载标志
+    var requestCount={count:0};//上拉加载的条数
+    $scope.flag2 = false;//返回按钮路由
 
 
-  /******************************************************************
-   * 上拉加载
-   ******************************************************************/
-  $scope.loadMore=function(){
-    requestCount.count+=20;
-    var jsTable1 = new EI.sDataTable();
-    jsTable1.addColums("count");
-    jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
-    jsEIinfoIn.SysInfo.Sender = 'admin';
-    jsEIinfoIn.add(jsTable1);
-    services.toService(jsEIinfoIn).then(function (result) {
-      var EIinfoOut=result.Tables[0].Table;
-      if(EIinfoOut.length==0){
-        $scope.run=false;
-      }
-      $scope.resp=$scope.resp.concat(EIinfoOut);
-      $scope.$broadcast('scroll.infiniteScrollComplete');
-    }, function () {
-    });
-  };
-
-  /*************************************************************************
-   * 隐藏列
-   *************************************************************************/
-  if ($rootScope.sale != null) {
-    $scope.hide = $rootScope.sale;
-  }
-
-  /*************************************************************************
-   * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
-   *************************************************************************/
-  var resp = services.getter();
-  if (resp == null) {
     /******************************************************************
-     * 加载动画
+     * 上拉加载
      ******************************************************************/
-    $ionicLoading.show({
-      template: 'Loading...',
-      noBackdrop:true,
-      duration:10000
+    $scope.loadMore=function(){
+      requestCount.count+=20;
+      var jsTable1 = new EI.sDataTable();
+      jsTable1.addColums("count");
+      jsTable1.addOneRow(requestCount.count);
+      var jsEIinfoIn = new EI.EIinfo();
+      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.Sender = 'admin';
+      jsEIinfoIn.add(jsTable1);
+      services.toService(jsEIinfoIn).then(function (result) {
+        var EIinfoOut=result.Tables[0].Table;
+        if(EIinfoOut.length==0){
+          $scope.run=false;
+        }
+        $scope.resp=$scope.resp.concat(EIinfoOut);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }, function () {
+      });
+    };
 
-    });
-    var jsTable1 = new EI.sDataTable();
-    jsTable1.addColums("count");
-    jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
-    jsEIinfoIn.SysInfo.Sender = 'admin';
-    jsEIinfoIn.add(jsTable1);
-    services.toService(jsEIinfoIn).then(function (resp) {
-      var EIinfoOut = resp.Tables[0].Table;
-      $scope.resp = EIinfoOut;
-      $scope.run=true;
-      $ionicLoading.hide();
-    }, function () {
-      $ionicLoading.hide();
-      $scope.resp =[{
-        'ORDERNUM':'54564564',
-        'SALEMAN':'张三',
-        'BILLDATE':'2016-26-58',
-        'ORDERCUSNAME':'lisi',
-        'RECCUSNAME':'wangwu',
-        'TYPE':'钢',
-        'UNIVALENCE':'215100',
-        'STEELGRADE':'aa',
-        'STANDARD':'优良',
-        'CRAFTS':'优良',
-        'NORM':'aa',
-        'ORDERWEIGHT':'51kg',
-        'FINPROWEI':'52kg',
-        'FINWAREWEI':'52kg',
-        'LASTWAREDATE':'2016-26-58',
-        'FINSHIPNUM':'5465',
-        'LASTSHIPDATE':'2016-05-05',
-        'CURRFINNUM':'541',
-        'RAWSUPPLY':'lisi',
-        'DELIVERY':'现金',
-        'DELIVERYDATE':'2016-08-21',
-        'BILLWAY':'现金',
-        'REMARK':'无',
-        'STATUS':'未审核'
-      },
-        {
-          'ORDERNUM':'54564564',
-          'SALEMAN':'张三',
-          'BILLDATE':'2016-26-58',
-          'ORDERCUSNAME':'lisi',
-          'RECCUSNAME':'wangwu',
-          'TYPE':'钢',
-          'UNIVALENCE':'215100',
-          'STEELGRADE':'aa',
-          'STANDARD':'优良',
-          'CRAFTS':'优良',
-          'NORM':'aa',
-          'ORDERWEIGHT':'51kg',
-          'FINPROWEI':'52kg',
-          'FINWAREWEI':'52kg',
-          'LASTWAREDATE':'2016-26-58',
-          'FINSHIPNUM':'5465',
-          'LASTSHIPDATE':'2016-05-05',
-          'CURRFINNUM':'541',
-          'RAWSUPPLY':'lisi',
-          'DELIVERY':'现金',
-          'DELIVERYDATE':'2016-08-21',
-          'BILLWAY':'现金',
-          'REMARK':'无',
-          'STATUS':'未审核'
-        }]
-    });
-    //=============================================================
-
-     //============================================================
-
-  } else {
-    $scope.flag2 = true;
-    $scope.resp = resp;
-  }
-  /*************************************************************************
-   * 点击返回按钮将myFactory清空
-   *************************************************************************/
-  $scope.state = function () {
-    services.setter(null);
-    $state.reload();
-  }
-
-  /*************************************************************************
-   * 关键词查询
-   *************************************************************************/
-    //$scope.flag = false;
-  $scope.data = {
-    criteria: '',
-    //搜索联系人
-    search: function () {
-      $scope.run=false;
-      this.criteria = ''
-      if (this.name) {
-        this.criteria = this.name;
-      } else {
-        this.criteria = '';
-        $scope.run=true;
-      }
+    /*************************************************************************
+     * 隐藏列
+     *************************************************************************/
+    if ($rootScope.plan != null) {
+      $scope.hide = $rootScope.plan;
     }
-  };
 
-  /*************************************************************************
-   * 浮动菜单
-   *************************************************************************/
-  $scope.popover = $ionicPopover.fromTemplateUrl('my-popover.html', {
-    scope: $scope
-  });
-  // .fromTemplateUrl() 方法
-  $ionicPopover.fromTemplateUrl('my-popover.html', {
-    scope: $scope
-  }).then(function (popover) {
-    $scope.popover = popover;
-  });
-  $scope.openPopover = function ($event) {
-    $scope.popover.show($event);
-  };
-  $scope.closePopover = function () {
-    $scope.popover.hide();
-  };
-  // 清除浮动框
-  $scope.$on('$destroy', function () {
-    $scope.popover.remove();
-  });
-//        // 在隐藏浮动框后执行
-//        $scope.$on('popover.hidden', function() {
-//            // 执行代码
-//        });
-//        // 移除浮动框后执行
-//        $scope.$on('popover.removed', function() {
-//            // 执行代码
-//        });
+    /*************************************************************************
+     * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
+     *************************************************************************/
+    var resp = services.getter();
+    if (resp == null) {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: 'Loading...',
+        noBackdrop:true,
+        duration:10000
+      });
+      var jsTable1 = new EI.sDataTable();
+      jsTable1.addColums("count");
+      jsTable1.addOneRow(requestCount.count);
+      var jsEIinfoIn = new EI.EIinfo();
+      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.Sender = 'admin';
+      jsEIinfoIn.add(jsTable1);
+      services.toService(jsEIinfoIn).then(function (resp) {
+        var EIinfoOut = resp.Tables[0].Table;
+        $scope.resp = EIinfoOut;
+        $scope.run=true;
+        $ionicLoading.hide();
+      }, function () {
+        $ionicLoading.hide();
+        $scope.resp=[
+          {"USERNAME":"aaa",
+           "PLANS":[{"PLANNUM":"4234","PLANAMOUNT":"233","DATE":"2016-05-25","REALAMOUNT":"266","REALNUM":"23"},
+            {"PLANNUM":"3243","PLANAMOUNT":"324","DATE":"2015-02-02","REALAMOUNT":"233","REALNUM":"33"}]
+          },
+          {"USERNAME":"bbb",
+            "PLANS":[{"PLANNUM":"23234","PLANAMOUNT":"342","DATE":"2016-02-05","REALAMOUNT":"222","REALNUM":"33"},
+              {"PLANNUM":"33422","PLANAMOUNT":"234","DATE":"2015-02-03","REALAMOUNT":"343","REALNUM":"44"}]
+          }
+        ]
+      });
+    } else {
+      $scope.flag2 = true;
+      $scope.resp = resp;
+    }
+    /*************************************************************************
+     * 点击返回按钮将myFactory清空
+     *************************************************************************/
+    $scope.state = function () {
+      services.setter(null);
+      $state.reload();
+    }
 
+    /*************************************************************************
+     * 关键词查询
+     *************************************************************************/
+      //$scope.flag = false;
+    $scope.data = {
+      criteria: '',
+      //搜索联系人
+      search: function () {
+        $scope.run=false;
+        this.criteria = ''
+        if (this.name) {
+          this.criteria = this.name;
+        } else {
+          this.criteria = '';
+          $scope.run=true;
+        }
+      }
+    };
 
-  /*************************************************************************
-   * 点击某条数据进入详细信息
-   *************************************************************************/
-  $scope.detail = function (data) {
-    $rootScope.mingxi = data;
-    $state.go('sale-detail');
-  }
-})
-  .controller('SaleDetailCtrl', function ($scope,$ionicPopover, $rootScope) {
-    $scope.mingxi=$rootScope.mingxi;
     /*************************************************************************
      * 浮动菜单
      *************************************************************************/
@@ -227,9 +138,16 @@ angular.module('saleCtrl',[])
 //        $scope.$on('popover.removed', function() {
 //            // 执行代码
 //        });
+    /* /!*************************************************************************
+     * 点击某条数据进入详细信息
+     *************************************************************************!/
+     $scope.detail = function (data) {
+     $rootScope.mingxi = data;
+     $state.go('fund-detail');
+     }*/
   })
-  .controller('SaleSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
-    $scope.req = {DATE1: null, DATE2: null,ORDERCUSNAME:null, ORDERNUM: null, RECORDNAME: null};//查询参数
+  .controller('PlanSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
+    $scope.req = {DATE1: null, DATE2: null,USERNAME: null,RECORDNAME:null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
     /****************************************************************
@@ -336,8 +254,8 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     $scope.commit = function () {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("date1", "date2", "username", "recordName");
-      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
+      jsTable1.addColums("DATE1", "DATE2","USERNAME","RECORDNAME");
+      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2,$scope.req.USERNAME,$scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = '';
       jsEIinfoIn.SysInfo.Sender = 'admin';
@@ -345,7 +263,7 @@ angular.module('saleCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
-        $state.go("sale");
+        $state.go("tab-plan");
       }, function () {
       });
     };
@@ -354,10 +272,10 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     $scope.hisSearch=function(data){
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("date1", "date2", "username", "recordName");
-      jsTable1.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
+      jsTable1.addColums("DATE1", "DATE2","USERNAME","RECORDNAME");
+      jsTable1.addOneRow(data.DATE1, data.DATE2,data.USERNAME,null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = 'pmopm1_app_inq';
+      jsEIinfoIn.SysInfo.SvcName = '';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -462,7 +380,7 @@ angular.module('saleCtrl',[])
           jsTable1.addColums("RECORDNAME");
           jsTable1.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = 'pmopm1_app_del';
+          jsEIinfoIn.SysInfo.SvcName = '';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -476,50 +394,21 @@ angular.module('saleCtrl',[])
     }
 
   })
-  .controller('SaleHideCtrl', function ($scope, $rootScope, $state) {
+  .controller('PlanHideCtrl', function ($scope, $rootScope, $state) {
     /*************************************************************************
      * 隐藏列
      *************************************************************************/
     $scope.data = {
-      ORDERNUM: false,
-      SALEMAN: false,
-      BILLDATE: false,
-      ORDERCUSNAME: false,
-      RECCUSNAME: false,
-      TYPE: false,
-      UNIVALENCE: false,
-      STEELGRADE: false,
-      STANDARD: false,
-      CRAFTS: false,
-      NORM: false,
-      ORDERWEIGHT: false,
-      FINPROWEI: false,
-      STAUTS:false
+      USERNAME: false,
+      PLANNUM: false,
+      PLANAMOUNT: false,
+      DATE: false,
+      REALAMOUNT: false,
+      REALNUM: false
     };
 
     $scope.commit = function () {
-      $rootScope.sale = $scope.data;
-      $state.go('sale');
+      $rootScope.plan = $scope.data;
+      $state.go('tab-plan');
     }
   })
-  .controller('saleCheckCtrl', function ($state, $scope, $rootScope, $ionicPopup) {
-    $scope.data = {
-      stockNum: $rootScope.mingxi.orderNum,
-      status: null,
-      opinion: null
-    };
-    $scope.checkCommit = function (status) {
-      if (status == 'C' && $rootScope.mingxi.status == '待审核') {
-        $ionicPopup.alert({
-          title: '错误',
-          template: '待审核状态无法执行撤销操作！'
-        });
-      } else {
-        $scope.data.status = status;
-        $state.go("sale");
-      }
-
-    }
-  })/**
- * Created by willemjia on 2016/7/14.
- */
