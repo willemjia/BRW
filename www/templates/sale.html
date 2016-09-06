@@ -18,14 +18,18 @@
     <ion-list ng-repeat="item in resp|filter:data.criteria">
       <ion-item  class="receive_bill_margin" ng-click="detail(item)">
         <div class="receive_bill_itemTitle" ng-if=!hide.ORDERNUM>订单号:{{item.ORDERNUM}}</div>
-        <div class="receive_bill_itemTitle" ng-if=!hide.SALEMAN>销售业务员:{{item.SALEMAN}}</div>
-        <div class="receive_bill_itemTitle" ng-if=!hide.BILLDATE>单据日期:{{item.BILLDATE}}</div>
         <hr class="hr">
-
-        <!--<div class="row" style="color: #000000;font-size: 12px;margin-left: 6px;"><i ng-if=!hide.USERNAME>订货客户名称:{{item.USERNAME}}<br></i></div>-->
+        <!--<div  style="color:red;font-size: 12px;"><i ng-if=!hide.SALEMAN>销售业务员:{{item.SALEMAN}}</i><i ng-if=!hide.BILLDATE>单据日期:{{item.BILLDATE}}</i></div>-->
+        <!--<div ng-if=!hide.BILLDATE style="color:red">单据日期:{{item.BILLDATE}}</div>-->
         <div class="row receive_item">
-          <div class="col col-55"><i ng-if=!hide.ORDERCUSNAME>订货客户名称:{{item.ORDERCUSNAME}}<br></i><i ng-if=!hide.TYPE>品种:{{item.TYPE}}<br></i><i ng-if=!hide.STEELGRADE>钢种:{{item.STEELGRADE}}<br></i><i ng-if=!hide.CRAFTS>工艺:{{item.CRAFTS}}<br></i><i ng-if=!hide.ORDERWEIGHT>订货重量:{{item.ORDERWEIGHT}}<br></i><i ng-if=!hide.STATUS>订货重量:{{item.STATUS}}</i></div>
-          <div class="col col-45"><i ng-if=!hide.RECCUSNAME>收货客户名称:{{item.RECCUSNAME}}<br></i><i ng-if=!hide.UNIVALENCE>销售单价（含税）:{{item.UNIVALENCE}}<br></i><i ng-if=!hide.STANDARD>规格:{{item.STANDARD}}<br></i><i ng-if=!hide.NORM>标准:{{item.NORM}}<br></i><i ng-if=!hide.FINPROWEI>成品生产重量:{{item.FINPROWEI}}</i></div>
+          <div class="col col-90">
+            <i ng-if=!hide.ORDERCUSNAME class="receive_item">订货客户名称:{{item.ORDERCUSNAME}}<br></i>
+            <i ng-if=!hide.RECCUSNAME class="receive_item">收货客户名称:{{item.RECCUSNAME}}<br></i>
+          </div>
+        </div>
+        <div class="row receive_item">
+          <div class="col col-55"><i ng-if=!hide.SALEMAN style="color:red">销售业务员:{{item.SALEMAN}}<br></i><i ng-if=!hide.TYPE>品种:{{item.TYPE}}<br></i><i ng-if=!hide.STEELGRADE>钢种:{{item.STEELGRADE}}<br></i><i ng-if=!hide.CRAFTS>工艺:{{item.CRAFTS}}<br></i><i ng-if=!hide.ORDERWEIGHT>订货重量:{{item.ORDERWEIGHT}}<br></i><i ng-if=!hide.STATUS>状态:{{item.STATUS_CHN}}</i></div>
+          <div class="col col-45"><i ng-if=!hide.BILLDATE style="color:red">单据日期:{{item.BILLDATE}}<br></i><i ng-if=!hide.UNIVALENCE>销售单价（含税）:{{item.UNIVALENCE}}<br></i><i ng-if=!hide.STANDARD>规格:{{item.STANDARD}}<br></i><i ng-if=!hide.NORM>标准:{{item.NORM}}<br></i><i ng-if=!hide.FINPROWEI>成品生产重量:{{item.FINPROWEI}}</i></div>
         </div>
       </ion-item>
     </ion-list>

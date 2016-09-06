@@ -1,0 +1,34 @@
+<ion-view class="loginBg" name="login-view" hide-nav-bar="true">
+  <ion-content>
+   <!-- <div class="row" >
+      <div class="col" class="select" style="text-align: center">
+        <h3 style="font-weight:bold;color:#fff;text-align:center;margin-top:80px">宝日钢丝</h3>
+        <select ng-model="user.companyCode" style="margin-top:40px">
+          <option value="NJGS"  selected="selected">南京宝日</option>
+          <option value="NTGS">南通宝日</option>
+        </select>
+        <div class="list list-inset" style="margin-top:20px">
+          <label class="item item-input">
+            <input type="text" placeholder="Username" ng-model="user.username" >
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+        </div>
+        <button class="button button-block button-calm" ng-click="login()" style="background-color:RGB(244,156,20) ">Login</button>
+
+      </div>
+    </div>-->
+    <h2 style="font-weight:bold;color:#fff;text-align:center;margin-top:80px">宝日钢丝</h2>
+    <div class="select">
+      <i style="font-weight:bold;color:#fff;font-size:16px">公司名称</i><select ng-model="user.companyCode" style="width:50%">
+        <option value="NJGS"  selected="selected">南京宝日</option>
+        <option value="NTGS">南通宝日</option>
+      </select><br>
+
+        <input class='loginInput' type="text" placeholder="Username" ng-model="user.username" >
+        <input class='loginInput' type="password" placeholder="Password" ng-model="user.password">
+      <button class="button button-block button-calm" ng-click="login()" style="background-color:RGB(244,156,20);width:70%;margin:0 auto;margin-top:20px">Login</button>
+    </div>
+  </ion-content>
+</ion-view>

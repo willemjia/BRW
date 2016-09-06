@@ -66,14 +66,13 @@ angular.module('team.controllers', [])
               $ionicLoading.hide();
               $scope.resp=[{
                 "TYPE":"自动酸洗线",
-                "CRAFTS":"AAAA",
                 "SUM":"200",
-                "TEAMS":[{"TEAM":"甲","YIELD":"50"},{"TEAM":"乙","YIELD":"50"},{"TEAM":"丙","YIELD":"50"},{"TEAM":"丁","YIELD":"50"}]
+                "TEAMS":[{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"}]
               },{
                 "TYPE":"人工酸洗线",
                 "CRAFTS":"AAAA",
                 "SUM":"200",
-                "TEAMS":[{"TEAM":"甲","YIELD":"20"},{"TEAM":"乙","YIELD":"80"},{"TEAM":"丙","YIELD":"50"},{"TEAM":"丁","YIELD":"50"}]
+                "TEAMS":[{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"},{ "CRAFTS":"AAAA","YIELD":"50"}]
               }];
             });
           } else {

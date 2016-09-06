@@ -8,7 +8,31 @@ angular.module('sourceCtrl',[])
   var requestCount={count:0};//上拉加载的条数
   $scope.flag2 = false;//返回按钮路由
 
-
+  /******************************************************************
+   * 处理数据
+   ******************************************************************/
+  function getArray(EIinfoOut){
+    var array=[];
+    angular.forEach(EIinfoOut,function(data){
+      var list=array[array.length-1];
+      if(list!=null || list!=undefined) {
+        if (data.USEDATE == (list[list.length - 1]).USEDATE) {
+          array[array.length - 1].push(data);
+        } else {
+          var arr=[];
+          arr.USEDATE=data.USEDATE;
+          arr.push(data);
+          array.push(arr);
+        }
+      } else{
+        var arr=[];
+        arr.USEDATE=data.USEDATE;
+        arr.push(data);
+        array.push(arr);
+      }
+    });
+    return array;
+  }
   /******************************************************************
    * 上拉加载
    ******************************************************************/
@@ -50,7 +74,7 @@ angular.module('sourceCtrl',[])
     $ionicLoading.show({
       template: 'Loading...',
       noBackdrop:true,
-      duration:10000
+      duration:2000
     });
     var jsTable1 = new EI.sDataTable();
     jsTable1.addColums("count");
@@ -65,6 +89,13 @@ angular.module('sourceCtrl',[])
       $scope.run=true;
       $ionicLoading.hide();
     }, function () {
+      $scope.resp=[
+        {
+          WATER:220,COAL:330,GAS:1000,ELECTRIC:20000,USEDATE:'2016-09-02',MACHINE:'甲'
+        },
+        {WATER:220,COAL:330,GAS:1000,ELECTRIC:20000,USEDATE:'2016-09-02',MACHINE:'甲'},
+        {WATER:220,COAL:330,GAS:1000,ELECTRIC:20000,USEDATE:'2016-09-02',MACHINE:'甲'}
+      ];
     });
   } else {
     $scope.flag2 = true;

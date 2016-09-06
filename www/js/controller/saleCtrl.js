@@ -8,7 +8,46 @@ angular.module('saleCtrl',[])
   var requestCount={count:0};//上拉加载的条数
   $scope.flag2 = false;//返回按钮路由
 
-
+  /******************************************************************
+   * 添加字段
+   ******************************************************************/
+  function appendStatus(EiInfoOut){
+    angular.forEach(EiInfoOut,function(item){
+      switch(item.STATUS){
+        case 'AT':
+          item.STATUS_CHN='评审完毕';
+          break;
+        case 'CF':
+          item.STATUS_CHN='已做拆分';
+          break;
+        case 'CH':
+          item.STATUS_CHN='变更';
+          break;
+        case 'CL':
+          item.STATUS_CHN='结案';
+          break;
+        case 'NA':
+          item.STATUS_CHN='录入状态';
+          break;
+        case 'OP':
+          item.STATUS_CHN='录入完毕';
+          break;
+        case 'PE':
+          item.STATUS_CHN='财务审核通过';
+          break;
+        case 'RE':
+          item.STATUS_CHN='审批处理完成';
+          break;
+        case 'ZF':
+          item.STATUS_CHN='作废';
+          break;
+        default:
+          item.STATUS_CHN='无';
+          break;
+      }
+    });
+    return EiInfoOut;
+  }
   /******************************************************************
    * 上拉加载
    ******************************************************************/
@@ -18,7 +57,7 @@ angular.module('saleCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopso2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (result) {
@@ -26,7 +65,8 @@ angular.module('saleCtrl',[])
       if(EIinfoOut.length==0){
         $scope.run=false;
       }
-      $scope.resp=$scope.resp.concat(EIinfoOut);
+      var EIinfoOut2=appendStatus(EIinfoOut);
+      $scope.resp=$scope.resp.concat(EIinfoOut2);
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, function () {
     });
@@ -57,12 +97,13 @@ angular.module('saleCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopso2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
       var EIinfoOut = resp.Tables[0].Table;
-      $scope.resp = EIinfoOut;
+      var EIinfoOut2=appendStatus(EIinfoOut);
+      $scope.resp = EIinfoOut2;
       $scope.run=true;
       $ionicLoading.hide();
     }, function () {
@@ -126,7 +167,8 @@ angular.module('saleCtrl',[])
 
   } else {
     $scope.flag2 = true;
-    $scope.resp = resp;
+    var EiInfoOut=appendStatus(resp);
+    $scope.resp = EiInfoOut;
   }
   /*************************************************************************
    * 点击返回按钮将myFactory清空
@@ -192,7 +234,8 @@ angular.module('saleCtrl',[])
    *************************************************************************/
   $scope.detail = function (data) {
     $rootScope.mingxi = data;
-    $state.go('sale-detail');
+    //$state.go('sale-detail');
+    $state.go('sale-check');
   }
 })
   .controller('SaleDetailCtrl', function ($scope,$ionicPopover, $rootScope) {
@@ -336,10 +379,10 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     $scope.commit = function () {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("date1", "date2", "username", "recordName");
-      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
+      jsTable1.addColums("date1", "date2","ordernum","username", "recordName");
+      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.ORDERNUM,$scope.req.ORDERCUSNAME, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopso1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -357,7 +400,7 @@ angular.module('saleCtrl',[])
       jsTable1.addColums("date1", "date2", "username", "recordName");
       jsTable1.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = 'pmopm1_app_inq';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopso1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -422,7 +465,7 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     var jsTable1 = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopso3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -436,10 +479,10 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     $scope.remove = function (req) {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("RECORDNAME");
+      jsTable1.addColums("recordName");
       jsTable1.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopso1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -459,10 +502,10 @@ angular.module('saleCtrl',[])
       confirmPopup.then(function (res) {
         if (res) {
           var jsTable1 = new EI.sDataTable();
-          jsTable1.addColums("RECORDNAME");
+          jsTable1.addColums("recordName");
           jsTable1.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = 'pmopm1_app_del';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopso1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -504,19 +547,29 @@ angular.module('saleCtrl',[])
   })
   .controller('saleCheckCtrl', function ($state, $scope, $rootScope, $ionicPopup) {
     $scope.data = {
-      stockNum: $rootScope.mingxi.orderNum,
+      stockNum: $rootScope.mingxi.ORDERNUM,
       status: null,
       opinion: null
     };
     $scope.checkCommit = function (status) {
-      if (status == 'C' && $rootScope.mingxi.status == '待审核') {
+      if (status == 'OP' && $rootScope.mingxi.STATUS == 'OP') {
         $ionicPopup.alert({
           title: '错误',
           template: '待审核状态无法执行撤销操作！'
         });
       } else {
         $scope.data.status = status;
-        $state.go("sale");
+        var jsTable1 = new EI.sDataTable();
+          jsTable1.addColums("stockNum", "status", "opinion");
+        jsTable1.addOneRow($scope.data.stockNum, $scope.data.status, $scope.data.opinion);
+        var jsEIinfoIn = new EI.EIinfo();
+        jsEIinfoIn.SysInfo.SvcName = '';
+        jsEIinfoIn.SysInfo.Sender = 'admin';
+        jsEIinfoIn.add(jsTable1);
+        services.toService(jsEIinfoIn).then(function (resp) {
+          $state.go("sale");
+        }, function () {
+        })
       }
 
     }

@@ -1,32 +1,57 @@
-angular.module('planCtrl',[])
+angular.module('planCtrl', [])
   /*******************************************************
-   * 客户资金帐信息
+   * 发货计划
    *********************************************************/
-  .controller('PlanCtrl', function ($state, $rootScope, $scope,services, $ionicLoading,$location, $ionicPopup, $ionicPopover) {
-    $scope.resp=[];//返回的数据
-    $scope.run=false;//上拉加载标志
-    var requestCount={count:0};//上拉加载的条数
+  .controller('PlanCtrl', function ($state, $rootScope, $scope, services, $ionicLoading, $location, $ionicPopup, $ionicPopover) {
+    $scope.resp = [];//返回的数据
+    $scope.run = false;//上拉加载标志
+    var requestCount = {count: 0};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
-
+    /******************************************************************
+     * 处理数据
+     ******************************************************************/
+    function getArray(EIinfoOut) {
+      var array = [];
+      angular.forEach(EIinfoOut, function (data) {
+        var list = array[array.length - 1];
+        if (list != null || list != undefined) {
+          if (data.USERNAME == (list[list.length - 1]).USERNAME) {
+            array[array.length - 1].push(data);
+          } else {
+            var arr = [];
+            arr.USERNAME = data.USERNAME;
+            arr.push(data);
+            array.push(arr);
+          }
+        } else {
+          var arr = [];
+          arr.USERNAME = data.USERNAME;
+          arr.push(data);
+          array.push(arr);
+        }
+      });
+      return array;
+    }
 
     /******************************************************************
      * 上拉加载
      ******************************************************************/
-    $scope.loadMore=function(){
-      requestCount.count+=20;
+    $scope.loadMore = function () {
+      requestCount.count += 20;
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopsc2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (result) {
-        var EIinfoOut=result.Tables[0].Table;
-        if(EIinfoOut.length==0){
-          $scope.run=false;
+        var EIinfoOut = result.Tables[0].Table;
+        if (EIinfoOut.length == 0) {
+          $scope.run = false;
         }
-        $scope.resp=$scope.resp.concat(EIinfoOut);
+        var array = getArray(EIinfoOut);
+        $scope.resp = $scope.resp.concat(array);
         $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function () {
       });
@@ -49,37 +74,39 @@ angular.module('planCtrl',[])
        ******************************************************************/
       $ionicLoading.show({
         template: 'Loading...',
-        noBackdrop:true,
-        duration:10000
+        noBackdrop: true,
+        duration: 10000
       });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopsc2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
-        $scope.resp = EIinfoOut;
-        $scope.run=true;
+        var array = getArray(EIinfoOut);
+        $scope.resp = array;
+        $scope.run = true;
         $ionicLoading.hide();
       }, function () {
         $ionicLoading.hide();
-        $scope.resp=[
-          {"USERNAME":"aaa",
-           "PLANS":[{"PLANNUM":"4234","PLANAMOUNT":"233","DATE":"2016-05-25","REALAMOUNT":"266","REALNUM":"23"},
-            {"PLANNUM":"3243","PLANAMOUNT":"324","DATE":"2015-02-02","REALAMOUNT":"233","REALNUM":"33"}]
-          },
-          {"USERNAME":"bbb",
-            "PLANS":[{"PLANNUM":"23234","PLANAMOUNT":"342","DATE":"2016-02-05","REALAMOUNT":"222","REALNUM":"33"},
-              {"PLANNUM":"33422","PLANAMOUNT":"234","DATE":"2015-02-03","REALAMOUNT":"343","REALNUM":"44"}]
-          }
-        ]
+        /*$scope.resp=[
+         {"USERNAME":"aaa",
+         "PLANS":[{"PLANNUM":"4234","PLANAMOUNT":"233","DATE":"2016-05-25","REALAMOUNT":"266","REALNUM":"23"},
+         {"PLANNUM":"3243","PLANAMOUNT":"324","DATE":"2015-02-02","REALAMOUNT":"233","REALNUM":"33"}]
+         },
+         {"USERNAME":"bbb",
+         "PLANS":[{"PLANNUM":"23234","PLANAMOUNT":"342","DATE":"2016-02-05","REALAMOUNT":"222","REALNUM":"33"},
+         {"PLANNUM":"33422","PLANAMOUNT":"234","DATE":"2015-02-03","REALAMOUNT":"343","REALNUM":"44"}]
+         }
+         ]*/
       });
     } else {
       $scope.flag2 = true;
-      $scope.resp = resp;
+      var array = getArray(resp);
+      $scope.resp = array;
     }
     /*************************************************************************
      * 点击返回按钮将myFactory清空
@@ -97,13 +124,13 @@ angular.module('planCtrl',[])
       criteria: '',
       //搜索联系人
       search: function () {
-        $scope.run=false;
+        $scope.run = false;
         this.criteria = ''
         if (this.name) {
           this.criteria = this.name;
         } else {
           this.criteria = '';
-          $scope.run=true;
+          $scope.run = true;
         }
       }
     };
@@ -145,9 +172,13 @@ angular.module('planCtrl',[])
      $rootScope.mingxi = data;
      $state.go('fund-detail');
      }*/
+  $scope.report=function(data){
+      $state.go("plan_report",{username:data});
+  }
+
   })
   .controller('PlanSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
-    $scope.req = {DATE1: null, DATE2: null,USERNAME: null,RECORDNAME:null};//查询参数
+    $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
     /****************************************************************
@@ -254,10 +285,10 @@ angular.module('planCtrl',[])
      *************************************************************************/
     $scope.commit = function () {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("DATE1", "DATE2","USERNAME","RECORDNAME");
-      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2,$scope.req.USERNAME,$scope.req.RECORDNAME);
+      jsTable1.addColums("date1", "date2", "username", "recordName");
+      jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopsc1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -270,18 +301,18 @@ angular.module('planCtrl',[])
     /*************************************************************************
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
-    $scope.hisSearch=function(data){
+    $scope.hisSearch = function (data) {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("DATE1", "DATE2","USERNAME","RECORDNAME");
-      jsTable1.addOneRow(data.DATE1, data.DATE2,data.USERNAME,null);
+      jsTable1.addColums("date1", "date2", "username", "recordName");
+      jsTable1.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopsc1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
-        $state.go("sale");
+        $state.go("tab-plan");
       }, function () {
       });
     }
@@ -340,11 +371,11 @@ angular.module('planCtrl',[])
      *************************************************************************/
     var jsTable1 = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopsc3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
-      var EIinfoOut=resp.Tables[0].Table;
+      var EIinfoOut = resp.Tables[0].Table;
       $scope.history = EIinfoOut;
       history = EIinfoOut;
     }, function () {
@@ -354,10 +385,10 @@ angular.module('planCtrl',[])
      *************************************************************************/
     $scope.remove = function (req) {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("RECORDNAME");
+      jsTable1.addColums("recordName");
       jsTable1.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopsc1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -377,10 +408,10 @@ angular.module('planCtrl',[])
       confirmPopup.then(function (res) {
         if (res) {
           var jsTable1 = new EI.sDataTable();
-          jsTable1.addColums("RECORDNAME");
+          jsTable1.addColums("recordName");
           jsTable1.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopsc1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -412,3 +443,189 @@ angular.module('planCtrl',[])
       $state.go('tab-plan');
     }
   })
+  .controller('PlanReportCtrl', function ($scope,$ionicPopup,$stateParams,services) {
+    var username=$stateParams.username;
+
+
+    $scope.req = {DATE1: null, DATE2: null};//查询参数
+    $scope.search = {date1: null, date2: null};//显示日期
+    var history = [];//存储查询历史数据
+    /****************************************************************
+     *日期转换
+     ****************************************************************/
+    Date.prototype.Format = function (fmt) { //author: meizz
+      var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+      for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
+    };
+    /*************************************************************************
+     * 日期插件
+     *************************************************************************/
+    $scope.datepickerObject = {
+      titleLabel: 'Title',  //Optional
+      todayLabel: 'Today',  //Optional
+      closeLabel: 'Close',  //Optional
+      setLabel: 'Set',  //Optional
+      setButtonType: 'button-assertive',  //Optional
+      todayButtonType: 'button-assertive',  //Optional
+      closeButtonType: 'button-assertive',  //Optional
+      inputDate: new Date(),  //Optional
+      mondayFirst: true,  //Optional
+      disabledDates: disabledDates, //Optional
+      weekDaysList: weekDaysList, //Optional
+      monthList: monthList, //Optional
+      templateType: 'popup', //Optional
+      showTodayButton: 'true', //Optional
+      modalHeaderColor: 'bar-positive', //Optional
+      modalFooterColor: 'bar-positive', //Optional
+      from: new Date(2012, 8, 2), //Optional
+      to: new Date(2018, 8, 25),  //Optional
+      callback: function (val) {  //Mandatory
+        datePickerCallback(val);
+      },
+      dateFormat: 'yyyy-MM-dd', //Optional
+      closeOnSelect: false //Optional
+    };
+
+    var disabledDates = [
+      new Date(1437719836326),
+      new Date(),
+      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
+      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
+      new Date("08-14-2015"), //Short format
+      new Date(1439676000000) //UNIX format
+    ];
+    var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
+    var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    var datePickerCallback = function (val) {
+      if (typeof(val) === 'undefined') {
+        console.log('No date selected');
+      } else {
+        $scope.search.date1 = val;
+        $scope.req.DATE1 = val.Format("yyyyMMdd");
+      }
+    };
+    //日期插件
+    $scope.datepickerObject2 = {
+      titleLabel: 'Title',  //Optional
+      todayLabel: 'Today',  //Optional
+      closeLabel: 'Close',  //Optional
+      setLabel: 'Set',  //Optional
+      setButtonType: 'button-assertive',  //Optional
+      todayButtonType: 'button-assertive',  //Optional
+      closeButtonType: 'button-assertive',  //Optional
+      inputDate: new Date(),  //Optional
+      mondayFirst: true,  //Optional
+      disabledDates: disabledDates, //Optional
+      weekDaysList: weekDaysList, //Optional
+      monthList: monthList, //Optional
+      templateType: 'popup', //Optional
+      showTodayButton: 'true', //Optional
+      modalHeaderColor: 'bar-positive', //Optional
+      modalFooterColor: 'bar-positive', //Optional
+      from: new Date(2012, 8, 2), //Optional
+      to: new Date(2018, 8, 25),  //Optional
+      callback: function (val2) {  //Mandatory
+        datePickerCallback2(val2);
+      },
+      dateFormat: 'yyyy-MM-dd', //Optional
+      closeOnSelect: false //Optional
+    };
+    var datePickerCallback2 = function (val2) {
+      if (typeof(val2) === 'undefined') {
+        console.log('No date selected');
+      } else {
+        $scope.search.date2 = val2;
+        $scope.req.DATE2 = val2.Format("yyyyMMdd");
+      }
+    };
+
+    var array1=[];
+    var array2=[];
+    $scope.report=function(){
+      if($scope.req.DATE1!=null && $scope.req.DATE2!=null){
+        var jsTable1 = new EI.sDataTable();
+        jsTable1.addColums("date1","date2");
+        jsTable1.addOneRow($scope.req.DATE1,$scope.req.DATE2);
+        var jsEIinfoIn = new EI.EIinfo();
+        jsEIinfoIn.SysInfo.SvcName = 'pmopsc4_app_inq';
+        jsEIinfoIn.SysInfo.Sender = 'admin';
+        jsEIinfoIn.add(jsTable1);
+        services.toService(jsEIinfoIn).then(function (resp) {
+          var data=resp.Tables[0].Table;
+          angular.forEach(data,function(item){
+            var temp={x:'',y:''};
+            var temp2={x:'',y:''};
+            temp.x=item.USERNAME;
+            temp2.x=item.USERNAME;
+            temp.y=item.PLANSUM;
+            temp2.y=item.REALSUM;
+            array1.push(temp);
+            array2.push(temp2);
+          });
+
+
+        }, function () {
+        })
+      }else{
+        $ionicPopup.alert({
+          title: '提示',
+          template: '请选择时间段！'
+        });
+      }
+
+    }
+    var first = {
+      name: "计划发货量",
+      itemStyle: {
+        normal: {
+          color: "#3499dd",
+        },
+      },
+      barGap: '0%',
+      barCategoryGap: '40%',
+      datapoints: array1
+    };
+    var first1 = {
+      name: "实际发货量",
+      itemStyle: {
+        normal: {
+          color: "#f49c14",
+        },
+      },
+      barCategoryGap: '40%',
+      barGap: '0%',
+      datapoints: array2
+    };
+    $scope.config = {
+      debug: true,
+      showXAxis: true,
+      showYAxis: true,
+      showLegend: true,
+      stack: false,
+      dataZoom: [
+        {
+          type: 'inside',
+          start:0,
+          end:10
+        },
+        {
+          start:0,
+          end:10
+        },
+
+      ]
+
+    };
+    $scope.dataBar = [first, first1];
+  });

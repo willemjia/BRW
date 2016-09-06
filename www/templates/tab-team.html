@@ -16,14 +16,12 @@
 
       <ion-item  class="receive_bill_margin" ng-click="detail(team)">
         <span class="receive_bill_itemTitle" ng-if=!hide.TYPE>设备：{{team.TYPE}}</span>
-        <span class="receive_bill_itemTitle" ng-if=!hide.CRAFTS>工艺：{{team.CRAFTS}}</span>
         <hr class="hr">
 
         <div class="row receive_item">
             <div class="col col-40 col-offset-10" >
               <div ng-repeat="k in team.TEAMS">
-              <i ng-if=!hide.TEAM>班组:{{k.TEAM}}</i></div> </div>
-
+              <i ng-if=!hide.CRAFTS>工艺:{{k.CRAFTS}}</i></div> </div>
             <div class="col col-40">
               <div ng-repeat="k in team.TEAMS"><i ng-if=!hide.YIELD>产量:{{k.YIELD}}</i></div></div>
 

@@ -1,8 +1,8 @@
 <ion-view view-title="销售合同审批">
   <ion-header-bar class="dark-bg">
-    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale-detail"></a>
+    <!--<a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale-detail"></a>-->
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="sale"></a>
     <h1 class="title light">审批</h1>
-    <a class="button button-icon button-clear ion-android-done button-light" ng-click="commit()"></a>
   </ion-header-bar>
 
   <ion-content>
@@ -13,7 +13,7 @@
       <div class="checkItem">销售单价（含税）：{{mingxi.UNIVALENCE}}</div>
       <div class="checkItem">单据日期：{{mingxi.BILLDATE}}</div>
       <div class="checkItem">交货日期：{{mingxi.DELIVERYDATE}}</div>
-      <div class="checkItem">状态：{{mingxi.STATUS}}</div>
+      <div class="checkItem">状态：{{mingxi.STATUS_CHN}}</div>
 
 
 
@@ -30,9 +30,9 @@
   </ion-content>
 
   <ion-footer-bar>
-    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('A')"> <img ng-src="img/agree.png" style="margin-top:5px"></div>
-    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('B')"><img ng-src="img/noAgree.png" style="margin-top:6px"></div>
-    <div style="width:50%;text-align:center;margin:0 auto;" ng-click="checkCommit('C')"><img ng-src="img/exit.png" style="margin-top:6px"></div>
+    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('AT')"> <img ng-src="img/agree.png" style="margin-top:5px"></div>
+    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('NA')"><img ng-src="img/noAgree.png" style="margin-top:6px"></div>
+    <div style="width:50%;text-align:center;margin:0 auto;" ng-click="checkCommit('OP')"><img ng-src="img/exit.png" style="margin-top:6px"></div>
   </ion-footer-bar>
 </ion-view>
 

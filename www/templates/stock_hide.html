@@ -1,0 +1,60 @@
+<ion-view view-title="隐藏">
+  <ion-header-bar class="dark-bg light">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="tab-stock"></a>
+    <h1 class="title light">请选择要隐藏的列</h1>
+    <a class="button button-icon button-clear ion-ios-checkmark-outline button-light" ng-click="commit()"></a>
+  </ion-header-bar>
+  <ion-content>
+    <ul class="list">
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.USERNAME">
+        </label>
+        客户名称
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.INJUNCNUM">
+        </label>
+        制令单号
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.STEELGRADE">
+        </label>
+        钢种
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.STANDARD">
+        </label>
+        规格
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.CRAFTS">
+        </label>
+        工艺
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.NUMBERS">
+        </label>
+        盘数
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.WEIGHT">
+        </label>
+        重量
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="data.DATE">
+        </label>
+        入库日期
+      </li>
+
+    </ul>
+  </ion-content>
+</ion-view>

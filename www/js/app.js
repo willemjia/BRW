@@ -5,11 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl','saleCtrl','sourceCtrl', 'starter.services', 'ionic-datepicker'
-        ,'starter',
-        'team.controllers','planCtrl','plan.services','modifyplan.controllers',
-        'pselect1.controllers','pselect.controllers','pselect.services','pyc.controllers','angular-echarts',
-        'sselect1.controllers','sselect.controllers','sselect.services','syc.controllers',,'stock.controllers','stock.services','modifystock.controllers',])
+angular.module('starter', ['ionic','angular-echarts','ngEcharts','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
+  'saleCtrl','sourceCtrl','starter.services','stockController', 'ionic-datepicker','starter','team.controllers','planCtrl'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -51,16 +48,18 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
         $stateProvider
 //===========================================================================
             // setup an abstract state for the tabs directive
-            .state('tab', {
-                url: '/tab',
-                abstract: true,
-                templateUrl: 'templates/tabs.html'
-            })
+          .state('login', {
+            url: '/login',
+            cache: false,
+            templateUrl: 'templates/login.html',
+            controller: 'loginController'
+          })
 
             .state('menu', {
                 url: '/menu',
                 cache: false,
-                templateUrl: 'templates/menu.html'
+                templateUrl: 'templates/menu.html',
+                controller:'menuCtrl'
             })
 
             .state('sale', {
@@ -321,15 +320,33 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
                 cache: false,
                 url: '/stock',
                         templateUrl: 'templates/tab-stock.html',
-                        controller: 'StockCtrl'
+                        controller: 'stockCtrl'
             })
-            //发货计划展开图
+          .state('stock_search', {
+            cache: false,
+            url: '/stock',
+            templateUrl: 'templates/stock_search.html',
+            controller: 'stockSearchCtrl'
+          })
+          .state('stock_hide', {
+            cache: false,
+            url: '/stock',
+            templateUrl: 'templates/stock_hide.html',
+            controller: 'stock_hideCtrl'
+          })
+          .state('stock_history', {
+            cache: false,
+            url: '/stock',
+            templateUrl: 'templates/stock_history.html',
+            controller: 'stockSearchCtrl'
+          })
+          /*  //发货计划展开图
             .state('modifystock', {
                 cache: false,
                 url: '/modifystock?id',
-                templateUrl: "templates/stock-detail.html",
-                controller: "modifystockCtrl"
-            })
+                templateUrl: "templates/stock-detail.html"
+                //controller: "modifystockCtrl"
+            })*/
 //select班组浮动
             .state('select', {
                 cache: false,
@@ -350,16 +367,16 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
                 controller: "teamHideCtrl"
             })
 //select发货计划浮动
-            .state('pselect', {
+            .state('plan_search', {
                 cache: false,
                 url: '/pselect',
-                templateUrl: "templates/plan-select.html",
+                templateUrl: "templates/plan_search.html",
                 controller: "PlanSearchCtrl"
             })
-            .state('pselect1', {
+            .state('plan_history', {
                 cache: false,
                 url: '/pselect1',
-                templateUrl: "templates/plan-select1.html",
+                templateUrl: "templates/plan_history.html",
                 controller: "PlanSearchCtrl"
             })
             .state('pyingcuang', {
@@ -368,26 +385,32 @@ angular.module('starter', ['ionic','fundCtrl','pay_accountCtrl','pay_billCtrl','
                 templateUrl: "templates/plan-yingcuang.html",
                 controller: "PlanHideCtrl"
             })
+        .state('plan_report', {
+          cache: false,
+          url: '/plan_report/:username',
+          templateUrl: "templates/plan_report.html",
+          controller: "PlanReportCtrl"
+        });
 //select库明细浮动
-            .state('sselect', {
+          /*  .state('sselect', {
                 cache: false,
                 url: '/sselect',
-                templateUrl: "templates/stock-select.html",
-                controller: "Sselect"
+                templateUrl: "templates/stock-select.html"
+                //controller: "Sselect"
             })
             .state('sselect1', {
                 cache: false,
                 url: '/sselect1',
-                templateUrl: "templates/stock-select1.html",
-                controller: "Sselect1"
+                templateUrl: "templates/stock-select1.html"
+                //controller: "Sselect1"
             })
             .state('syingcuang', {
                 cache: false,
                 url: '/syingcuang',
-                templateUrl: "templates/stock-yingcuang.html",
-                controller: "SycCrl"
-            })
+                templateUrl: "templates/stock-yingcuang.html"
+                //controller: "SycCrl"
+            })*/
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/menu');
+        $urlRouterProvider.otherwise('/login');
 
     });

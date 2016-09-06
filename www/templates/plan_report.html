@@ -1,0 +1,40 @@
+<ion-view view-title="receive_bill">
+  <ion-header-bar class="dark-bg">
+    <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="tab-plan"></a>
+    <h1 class="title light">统计</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-item>
+      <div class="row">
+        <div class="col col-40">
+          <ionic-datepicker input-obj="datepickerObject">
+            <ion-item class="item item-input ion-calendar ">
+              <p>{{search.date1 | date:datepickerObject.dateFormat}}</p>
+            </ion-item>
+          </ionic-datepicker>
+        </div>
+        <div class="col col-40">
+          <ionic-datepicker input-obj="datepickerObject2">
+            <ion-item class="item item-input ion-calendar ">
+              <p>{{search.date2 | date:datepickerObject2.dateFormat}}</p>
+            </ion-item>
+          </ionic-datepicker>
+        </div>
+        <div class="col col-20">
+          <!--<button class="button button-positive" ng-click="report()">
+          统计
+          </button>-->
+          <!--<div ng-click="report()">统计</div>-->
+          <button class="button-small" ng-click="report()">统计</button>
+        </div>
+      </div>
+    </ion-item>
+
+
+    <div  style="width:90%;height:450px;margin:20px 70px 0 8%;">
+      <bar-chart config="config" data="dataBar"></bar-chart>
+    </div>
+
+  </ion-content>
+</ion-view>

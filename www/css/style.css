@@ -1,6 +1,28 @@
 /* Empty. Add your own CSS if you like */
 
-/*============================蔚文彪=================================*/
+.loginBg{
+  background:url(../img/login.jpg);
+  background-size:100% 100%;
+}
+.select {
+  height: 260px;
+  /*background-color: lightgray;*/
+  margin: 0 auto;
+  margin-top:100px;
+  padding-top: 30px;
+  text-align: center;
+  filter: alpha(Opacity=30);
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+}
+.loginInput{
+  width:70%;
+  margin:0 auto;
+  margin-top:20px;
+}
+
+
+
 .crl_bgcolor {
     max-width: 60px;
     width: 60px;
