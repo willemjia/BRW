@@ -77,6 +77,7 @@ angular.module('saleCtrl',[])
    *************************************************************************/
   if ($rootScope.sale != null) {
     $scope.hide = $rootScope.sale;
+    $rootScope.sale=null;
   }
 
   /*************************************************************************
@@ -397,8 +398,8 @@ angular.module('saleCtrl',[])
      *************************************************************************/
     $scope.hisSearch=function(data){
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("date1", "date2", "username", "recordName");
-      jsTable1.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
+      jsTable1.addColums("date1", "date2", "ordernum","username", "recordName");
+      jsTable1.addOneRow(data.DATE1, data.DATE2, data.ORDERNUM,data.USERNAME, null);
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = 'pmopso1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
@@ -545,14 +546,17 @@ angular.module('saleCtrl',[])
       $state.go('sale');
     }
   })
-  .controller('saleCheckCtrl', function ($state, $scope, $rootScope, $ionicPopup) {
+  .controller('saleCheckCtrl', function ($state, services ,$scope, $rootScope, $ionicPopup) {
     $scope.data = {
+      ORD_CUST_NAME:$rootScope.mingxi.ORDERCUSNAME,
+      VOUCH_DATE_FROM:$rootScope.mingxi.BILLDATE,
+      VOUCH_DATE_TO:$rootScope.mingxi.DELIVERYDATE,
       stockNum: $rootScope.mingxi.ORDERNUM,
       status: null,
       opinion: null
     };
     $scope.checkCommit = function (status) {
-      if (status == 'OP' && $rootScope.mingxi.STATUS == 'OP') {
+      if (status == 'Cancel' && $rootScope.mingxi.STATUS == 'OP') {
         $ionicPopup.alert({
           title: '错误',
           template: '待审核状态无法执行撤销操作！'
@@ -560,10 +564,10 @@ angular.module('saleCtrl',[])
       } else {
         $scope.data.status = status;
         var jsTable1 = new EI.sDataTable();
-          jsTable1.addColums("stockNum", "status", "opinion");
-        jsTable1.addOneRow($scope.data.stockNum, $scope.data.status, $scope.data.opinion);
+          jsTable1.addColums("SO_NO", "TYPE", "APPROVE_DESC","APPROVE_PERSON_NO");
+        jsTable1.addOneRow($scope.data.stockNum, $scope.data.status, $scope.data.opinion,$rootScope.user.username);
         var jsEIinfoIn = new EI.EIinfo();
-        jsEIinfoIn.SysInfo.SvcName = '';
+        jsEIinfoIn.SysInfo.SvcName = 'pmopso_app_all';
         jsEIinfoIn.SysInfo.Sender = 'admin';
         jsEIinfoIn.add(jsTable1);
         services.toService(jsEIinfoIn).then(function (resp) {

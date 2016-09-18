@@ -555,8 +555,8 @@ angular.module('planCtrl', [])
     $scope.report=function(){
       if($scope.req.DATE1!=null && $scope.req.DATE2!=null){
         var jsTable1 = new EI.sDataTable();
-        jsTable1.addColums("date1","date2");
-        jsTable1.addOneRow($scope.req.DATE1,$scope.req.DATE2);
+        jsTable1.addColums("username","date1","date2");
+        jsTable1.addOneRow(username,$scope.req.DATE1,$scope.req.DATE2);
         var jsEIinfoIn = new EI.EIinfo();
         jsEIinfoIn.SysInfo.SvcName = 'pmopsc4_app_inq';
         jsEIinfoIn.SysInfo.Sender = 'admin';

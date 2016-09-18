@@ -4,7 +4,54 @@ angular.module('team.controllers', [])
           $scope.run=false;//上拉加载标志
           var requestCount={count:0};//上拉加载的条数
           $scope.flag2 = false;//返回按钮路由
-
+          /******************************************************************
+           * 处理数据
+           ******************************************************************/
+          function getArray(EIinfoOut) {
+            var array = [];
+            angular.forEach(EIinfoOut, function (data) {
+              var list = array[array.length - 1];
+              if (list != null || list != undefined) {
+                if (data.TYPE == (list[list.length - 1]).TYPE && data.DATE==(list[list.length - 1]).DATE) {
+                  array[array.length - 1].push(data);
+                } else {
+                  var arr = [];
+                  switch(data.TYPE){
+                    case 'A0':
+                      arr.TYPECHN='热处理';
+                      break;
+                    case 'D0':
+                      arr.TYPECHN='拉丝';
+                      break;
+                    case 'P0':
+                      arr.TYPECHN='酸洗';
+                      break;
+                    default:data.TYPECHN='';
+                  }
+                  //arr.TYPE = data.TYPE;
+                  arr.push(data);
+                  array.push(arr);
+                }
+              } else {
+                var arr = [];
+                switch(data.TYPE){
+                  case 'A0':
+                    arr.TYPECHN='热处理';
+                    break;
+                  case 'D0':
+                    arr.TYPECHN='拉丝';
+                    break;
+                  case 'P0':
+                    arr.TYPECHN='酸洗';
+                    break;
+                  default:data.TYPECHN='';
+                }
+                arr.push(data);
+                array.push(arr);
+              }
+            });
+            return array;
+          }
 
           /******************************************************************
            * 上拉加载
@@ -15,7 +62,7 @@ angular.module('team.controllers', [])
             jsTable1.addColums("count");
             jsTable1.addOneRow(requestCount.count);
             var jsEIinfoIn = new EI.EIinfo();
-            jsEIinfoIn.SysInfo.SvcName = '';
+            jsEIinfoIn.SysInfo.SvcName = 'pmopu2_app_inq';
             jsEIinfoIn.SysInfo.Sender = 'admin';
             jsEIinfoIn.add(jsTable1);
             services.toService(jsEIinfoIn).then(function (result) {
@@ -23,7 +70,8 @@ angular.module('team.controllers', [])
               if(EIinfoOut.length==0){
                 $scope.run=false;
               }
-              $scope.resp=$scope.resp.concat(EIinfoOut);
+              var array=getArray(EIinfoOut);
+              $scope.resp=$scope.resp.concat(array);
               $scope.$broadcast('scroll.infiniteScrollComplete');
             }, function () {
 
@@ -54,12 +102,13 @@ angular.module('team.controllers', [])
             jsTable1.addColums("count");
             jsTable1.addOneRow(requestCount.count);
             var jsEIinfoIn = new EI.EIinfo();
-            jsEIinfoIn.SysInfo.SvcName = '';
+            jsEIinfoIn.SysInfo.SvcName = 'pmopu2_app_inq';
             jsEIinfoIn.SysInfo.Sender = 'admin';
             jsEIinfoIn.add(jsTable1);
             services.toService(jsEIinfoIn).then(function (resp) {
               var EIinfoOut = resp.Tables[0].Table;
-              $scope.resp = EIinfoOut;
+              var array=getArray(EIinfoOut);
+              $scope.resp = array;
               $scope.run=true;
               $ionicLoading.hide();
             }, function () {
@@ -77,7 +126,7 @@ angular.module('team.controllers', [])
             });
           } else {
             $scope.flag2 = true;
-            $scope.resp = resp;
+            $scope.resp = getArray(resp);
           }
           /*************************************************************************
            * 点击返回按钮将myFactory清空
@@ -148,9 +197,11 @@ angular.module('team.controllers', [])
   .controller('modifyteamCtrl',function($scope, $rootScope){
     $scope.team=$rootScope.mingxi;
     var TEAM_DATA=[];
-    angular.forEach($scope.team.TEAMS,function(data){
-      var obj={'x':data.TEAM,'y':data.YIELD};
+     $scope.sum=null;
+    angular.forEach($scope.team,function(data){
+      var obj={'x':data.CRAFTS,'y':data.YIELD};
       TEAM_DATA.push(obj);
+      $scope.sum+=data.SUM;
     });
     var pageload = {
       datapoints: TEAM_DATA
@@ -158,7 +209,7 @@ angular.module('team.controllers', [])
     $scope.config = {
       title : {
         //text: '班组产量统计',
-        subtext: '总产量'+$scope.team.SUM,
+        subtext: '总产量'+$scope.sum,
         x:'center'
       },
       debug: true,
@@ -285,7 +336,7 @@ angular.module('team.controllers', [])
             jsTable1.addColums("DATE1","DATE2","TYPE", "TEAM","RECORDNAME");
             jsTable1.addOneRow($scope.req.DATE1,$scope.req.DATE2,$scope.req.TYPE, $scope.req.TEAM,$scope.req.RECORDNAME);
             var jsEIinfoIn = new EI.EIinfo();
-            jsEIinfoIn.SysInfo.SvcName = '';
+            jsEIinfoIn.SysInfo.SvcName = 'pmopu1_app_inq';
             jsEIinfoIn.SysInfo.Sender = 'admin';
             jsEIinfoIn.add(jsTable1);
             services.toService(jsEIinfoIn).then(function (resp) {
@@ -303,7 +354,7 @@ angular.module('team.controllers', [])
             jsTable1.addColums("DATE1","DATE2","TYPE", "TEAM","RECORDNAME");
             jsTable1.addOneRow(data.DATE1, data.DATE2,data.TYPE,data.TEAM, null);
             var jsEIinfoIn = new EI.EIinfo();
-            jsEIinfoIn.SysInfo.SvcName = '';
+            jsEIinfoIn.SysInfo.SvcName = 'pmopu1_app_inq';
             jsEIinfoIn.SysInfo.Sender = 'admin';
             jsEIinfoIn.add(jsTable1);
             services.toService(jsEIinfoIn).then(function (resp) {
@@ -368,7 +419,7 @@ angular.module('team.controllers', [])
            *************************************************************************/
           var jsTable1 = new EI.sDataTable();
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopu3_app_inq';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -385,7 +436,7 @@ angular.module('team.controllers', [])
             jsTable1.addColums("RECORDNAME");
             jsTable1.addOneRow(req);
             var jsEIinfoIn = new EI.EIinfo();
-            jsEIinfoIn.SysInfo.SvcName = '';
+            jsEIinfoIn.SysInfo.SvcName = 'pmopu1_app_del';
             jsEIinfoIn.SysInfo.Sender = 'admin';
             jsEIinfoIn.add(jsTable1);
             services.toService(jsEIinfoIn).then(function (resp) {
@@ -408,7 +459,7 @@ angular.module('team.controllers', [])
                 jsTable1.addColums("RECORDNAME");
                 jsTable1.addOneRow(null);
                 var jsEIinfoIn = new EI.EIinfo();
-                jsEIinfoIn.SysInfo.SvcName = '';
+                jsEIinfoIn.SysInfo.SvcName = 'pmopu1_app_del';
                 jsEIinfoIn.SysInfo.Sender = 'admin';
                 jsEIinfoIn.add(jsTable1);
                 services.toService(jsEIinfoIn).then(function (resp) {

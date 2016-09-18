@@ -7,6 +7,7 @@
       .controller('menuCtrl',function($scope,$rootScope,$state){
         $scope.loginOut = function () {
           $rootScope.user=null;
+          localStorage.setItem("autoLogin",false);
           $state.go('login');
         }
       })

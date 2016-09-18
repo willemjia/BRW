@@ -42,7 +42,7 @@ angular.module('sourceCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopny2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (result) {
@@ -50,7 +50,7 @@ angular.module('sourceCtrl',[])
       if(EIinfoOut.length==0){
         $scope.run=false;
       }
-      $scope.resp=$scope.resp.concat(EIinfoOut);
+      $scope.resp=$scope.resp.concat(getArray(EIinfoOut));
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, function () {
     });
@@ -80,12 +80,12 @@ angular.module('sourceCtrl',[])
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopny2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
       var EIinfoOut = resp.Tables[0].Table;
-      $scope.resp = EIinfoOut;
+      $scope.resp =getArray(EIinfoOut);
       $scope.run=true;
       $ionicLoading.hide();
     }, function () {
@@ -99,7 +99,7 @@ angular.module('sourceCtrl',[])
     });
   } else {
     $scope.flag2 = true;
-    $scope.resp = resp;
+    $scope.resp = getArray(resp);
   }
   /*************************************************************************
    * 点击返回按钮将myFactory清空
@@ -161,8 +161,30 @@ angular.module('sourceCtrl',[])
 
 
 })
-  .controller('SourceDetailCtrl', function ($scope, $rootScope) {
+  .controller('SourceDetailCtrl', function ($scope, $rootScope,$state,services) {
     $scope.mingxi=$rootScope.mingxi;
+
+    /*************************************************************************
+     * 查询、跳转到结果页面
+     *************************************************************************/
+    $scope.save = function (action) {
+        var jsTable1 = new EI.sDataTable();
+        jsTable1.addColums("USEDATE", "WATER", "COAL","GAS","ELECTRIC","MACHINE");
+        jsTable1.addOneRow($scope.mingxi.USEDATE, $scope.mingxi.WATER, $scope.mingxi.COAL,$scope.mingxi.GAS,$scope.mingxi.ELECTRIC,$scope.mingxi.MACHINE);
+        var jsEIinfoIn = new EI.EIinfo();
+        if(action=="update"){
+          jsEIinfoIn.SysInfo.SvcName = 'pmopny_app_upd';
+        }else{
+          jsEIinfoIn.SysInfo.SvcName = 'pmopny_app_del';
+        }
+        jsEIinfoIn.SysInfo.Sender = 'admin';
+        jsEIinfoIn.add(jsTable1);
+        services.toService(jsEIinfoIn).then(function (resp) {
+          $state.go("source");
+        }, function (error) {
+          alert(error);
+        });
+    };
   })
   .controller('SourceSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
     $scope.req = {DATE1: null, DATE2: null, RECORDNAME: null};//查询参数
@@ -275,7 +297,7 @@ angular.module('sourceCtrl',[])
       jsTable1.addColums("date1", "date2", "recordName");
       jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopny1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -293,7 +315,7 @@ angular.module('sourceCtrl',[])
       jsTable1.addColums("date1", "date2","recordName");
       jsTable1.addOneRow(data.DATE1, data.DATE2, null);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopny1_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -358,7 +380,7 @@ angular.module('sourceCtrl',[])
      *************************************************************************/
     var jsTable1 = new EI.sDataTable();
     var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = '';
+    jsEIinfoIn.SysInfo.SvcName = 'pmopny3_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
     services.toService(jsEIinfoIn).then(function (resp) {
@@ -375,7 +397,7 @@ angular.module('sourceCtrl',[])
       jsTable1.addColums("RECORDNAME");
       jsTable1.addOneRow(req);
       var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
+      jsEIinfoIn.SysInfo.SvcName = 'pmopny1_app_del';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
@@ -398,7 +420,7 @@ angular.module('sourceCtrl',[])
           jsTable1.addColums("RECORDNAME");
           jsTable1.addOneRow(null);
           var jsEIinfoIn = new EI.EIinfo();
-          jsEIinfoIn.SysInfo.SvcName = '';
+          jsEIinfoIn.SysInfo.SvcName = 'pmopny1_app_del';
           jsEIinfoIn.SysInfo.Sender = 'admin';
           jsEIinfoIn.add(jsTable1);
           services.toService(jsEIinfoIn).then(function (resp) {
@@ -429,9 +451,15 @@ angular.module('sourceCtrl',[])
       $state.go('source');
     }
   })
-  .controller('SourceAddCtrl', function ($scope,  $state) {
-    $scope.req = {DATE: null, WATER: null,COAL:null,GAS:null,ELECTRIC:null};//查询参数
+  .controller('SourceAddCtrl', function ($scope,services,$state,$ionicPopup) {
+    $scope.req = {DATE: null, WATER: null,COAL:null,GAS:null,ELECTRIC:null,MACHINE:null};//查询参数
     $scope.add = {date: null};//显示日期
+    function validation(){
+      if($scope.req.DATE==null || $scope.req.DATE==undefined || $scope.req.MACHINE==null || $scope.req.MACHINE==undefined){
+        return false;
+      }
+      return true;
+    };
     /****************************************************************
      *日期转换
      ****************************************************************/
@@ -500,21 +528,25 @@ angular.module('sourceCtrl',[])
     /*************************************************************************
      * 查询、跳转到结果页面
      *************************************************************************/
-    $scope.commit = function () {
-      var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("DATE", "WATER", "COAL","GAS","ELECTRIC");
-      jsTable1.addOneRow($scope.req.DATE, $scope.req.WATER, $scope.req.COAL,$scope.req.GAS,$scope.req.ELECTRIC);
-      var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = '';
-      jsEIinfoIn.SysInfo.Sender = 'admin';
-      jsEIinfoIn.add(jsTable1);
-      services.toService(jsEIinfoIn).then(function (resp) {
-        var EIinfoOut = resp.Tables[0].Table;
-        services.setter(EIinfoOut);
-        $state.go("source");
-      }, function () {
-      });
-    };
-  })/**
- * Created by willemjia on 2016/7/14.
- */
+    $scope.addSource = function () {
+      if (validation()) {
+        var jsTable1 = new EI.sDataTable();
+        jsTable1.addColums("USEDATE", "WATER", "COAL", "GAS", "ELECTRIC", "MACHINE");
+        jsTable1.addOneRow($scope.req.DATE, $scope.req.WATER, $scope.req.COAL, $scope.req.GAS, $scope.req.ELECTRIC, $scope.req.MACHINE);
+        var jsEIinfoIn = new EI.EIinfo();
+        jsEIinfoIn.SysInfo.SvcName = 'pmopny_app_add';
+        jsEIinfoIn.SysInfo.Sender = 'admin';
+        jsEIinfoIn.add(jsTable1);
+        services.toService(jsEIinfoIn).then(function (resp) {
+          $state.go("source");
+        }, function (error) {
+          $ionicPopup.alert({
+            //title: '提示',
+            template:error
+          });
+        });
+      } else {
+        alert("字段内容不能为空");
+      }
+    }
+  });

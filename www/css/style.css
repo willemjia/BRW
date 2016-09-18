@@ -6,14 +6,23 @@
 }
 .select {
   height: 260px;
-  /*background-color: lightgray;*/
   margin: 0 auto;
-  margin-top:100px;
-  padding-top: 30px;
+  margin-top:20px;
   text-align: center;
-  filter: alpha(Opacity=30);
-  -moz-opacity: 0.7;
-  opacity: 0.7;
+  color: white;
+}
+.loginSpan{
+  display:inline-block;
+  vertical-align:middle;
+  border: solid 1px #555555;
+  background-color: #555555;
+  height: 34px;
+  color:#fff;
+  font-size:14px;
+  line-height: 32px;
+  position:relative;
+  bottom:1px;
+  width:20%;
 }
 .loginInput{
   width:70%;

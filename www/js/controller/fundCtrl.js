@@ -184,7 +184,7 @@ angular.module('fundCtrl',[])
      *************************************************************************/
     $scope.commit = function () {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("CUSNAME", "CURRENCIES","RECORDNAME");
+      jsTable1.addColums("cusname", "currencies","recordnameRECORDNAME");
       jsTable1.addOneRow($scope.req.CUSNAME, $scope.req.CURRENCIES,$scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_inq';

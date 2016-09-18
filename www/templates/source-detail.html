@@ -2,60 +2,65 @@
   <ion-header-bar class="dark-bg">
     <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="source"></a>
     <h1 class="title light">能源系统数据</h1>
-    <a class="button button-icon button-clear ion-ios-trash-outline button-light" ui-sref="source"></a>
+    <a class="button button-icon button-clear ion-ios-trash-outline button-light" ng-click="save('delete')"></a>
   </ion-header-bar>
 
 <ion-content>
   <ion-item>
+
     <div class="row source_row">
-      <div class="col col-35"><h2>使用日期</h2></div>
+      <div class="col col-35" style="vertical-align:bottom"><h2>使用日期</h2></div>
 
-      <div class="col col-60 col-offset-10">
-        <ionic-datepicker input-obj="datepickerObject">
-          <ion-item class="item item-input ion-calendar ">
-            <p>{{source1.USEDATE | date:datepickerObject.dateFormat}}</p>
-          </ion-item>
-        </ionic-datepicker>
-      </div>
+      <div class="col col-60 " >
+        <input type="text"  ng-model="mingxi.USEDATE" disabled="true"></div>
     </div>
-
   </ion-item>
+  <ion-item>
+
+    <div class="row source_row">
+      <div class="col col-35" style="vertical-align:bottom"><h2>车间</h2></div>
+
+      <div class="col col-60 " >
+        <input type="text"  ng-model="mingxi.MACHINE" disabled="true"></div>
+    </div>
+  </ion-item>
+
   <!-- <div ng-bind="condition.billDateEnd | date:'yyyy-MM-dd'" align="right"></div>-->
   <ion-item>
 
     <div class="row source_row">
-      <div class="col col-35" style="vertical-align:bottom"><h2>水</h2></div>
+      <div class="col col-35" style="vertical-align:bottom"><h2>水(L)</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用水消费" ng-model="mingxi.WATER">{{source1.water}}</div>
+        <input type="text" placeholder="请输入用水消费" ng-model="mingxi.WATER"></div>
     </div>
   </ion-item>
   <ion-item>
     <div class="row source_row" >
-      <div class="col col-35" style="vertical-align:bottom"><h2>煤</h2></div>
+      <div class="col col-35" style="vertical-align:bottom"><h2>煤(KG)</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用煤消费" ng-model="mingxi.COAL">{{source1.coal}}</div>
+        <input type="text" placeholder="请输入用煤消费" ng-model="mingxi.COAL"></div>
     </div>
   </ion-item>
   <ion-item>
     <div class="row source_row" >
-      <div class="col col-35" style="vertical-align:bottom"><h2>电</h2></div>
+      <div class="col col-35" style="vertical-align:bottom"><h2>电(度)</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入用电消费" ng-model="mingxi.ELECTRIC">{{source1.electric}}</div>
+        <input type="text" placeholder="请输入用电消费" ng-model="mingxi.ELECTRIC"></div>
     </div>
   </ion-item>
   <ion-item>
     <div class="row source_row" >
-      <div class="col col-35" style="vertical-align:bottom"><h2>天然气</h2></div>
+      <div class="col col-35" style="vertical-align:bottom"><h2>天然气(L)</h2></div>
 
       <div class="col col-60 " >
-        <input type="text" placeholder="请输入天然气消费" ng-model="mingxi.GAS">{{source1.gas}}</div>
+        <input type="text" placeholder="请输入天然气消费" ng-model="mingxi.GAS"></div>
     </div>
   </ion-item>
   <div  class="padding" >
-    <button class="button button-block button-dark" style="margin-top:30px"ng-click="addSource()">更新</button>
+    <button class="button button-block button-dark" style="margin-top:30px"ng-click="save('update')">更新</button>
   </div>
 </ion-content>
 </ion-view>

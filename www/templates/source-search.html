@@ -37,7 +37,7 @@
 
 
           <ion-footer-bar>
-            <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="showSearch()">查询</a></div>
+            <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="commit()">查询</a></div>
             <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
           </ion-footer-bar>
 
@@ -50,18 +50,16 @@
     <ion-tab title="查询历史" >
       <ion-view>
         <ion-content>
-          <ul class="list color-list-demo">
-
-
-            <li class="item dark"ng-repeat="item in searchHistory">
-              <div ng-click="getOneHistory(item.id)">
-                {{item.condition}}
-                <span class="color-demo dark-bg dark-border"></span>
-              </div>
-            </li>
-
-          </ul>
+          <ion-list>
+            <ion-item ng-repeat="item in history" ng-click="hisSearch(item)">
+              {{item.RECORDNAME}}
+              <ion-option-button class="button-calm" ng-click="remove(item.RECORDNAME)">
+                删除
+              </ion-option-button>
+            </ion-item>
+          </ion-list>
         </ion-content>
+        <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
       </ion-view>
     </ion-tab>
   </ion-tabs>

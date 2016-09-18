@@ -13,10 +13,11 @@
       <a class="button button-clear icon ion-search button-dark" ng-click="data.search()"></a>
     </div>
     <ion-list ng-repeat="item in resp|filter:data.criteria" >
-      <ion-item  class="receive_bill_margin" ng-click="detail(item)">
+      <ion-item  class="receive_bill_margin">
         <div class="sale_account_itemTitle" ng-hide=hide.USEDATE>使用日期：{{item.USEDATE}}</div><hr class="fund_hr">
-        <div class="row sale_item">
-          <div class="col col-20  crl_bgcolor text-center light">{{item.USEDATE.substring(8,11)}}</div>
+        <ion-item ng-repeat="k in item">
+        <div class="row sale_item"  ng-click="detail(k)">
+          <div class="col col-20  crl_bgcolor text-center light">{{k.MACHINE.substring(0,2)}}</div>
           <div class="col col-40 col-offset-10 sale_attributes">
             <i ng-hide=hide.MACHINE>车间：<br></i>
             <i ng-hide=hide.WATER>水：<br></i>
@@ -24,12 +25,13 @@
             <i ng-hide=hide.GAS>天然气：<br></i>
             <i ng-hide=hide.ELECTRIC>电：</i></div>
           <div class="col col-40">
-            <i ng-hide=hide.MACHINE>{{item.MACHINE}}<br></i>
-            <i ng-hide=hide.WATER>{{item.WATER}}<br></i>
-            <i ng-hide=hide.COAL>{{item.COAL}}<br></i>
-            <i ng-hide=hide.GAS>{{item.GAS}}<br></i>
-            <i ng-hide=hide.ELECTRIC>{{item.ELECTRIC}}</i></div>
+            <i ng-hide=hide.MACHINE>{{k.MACHINE}}<br></i>
+            <i ng-hide=hide.WATER>{{k.WATER}}<br></i>
+            <i ng-hide=hide.COAL>{{k.COAL}}<br></i>
+            <i ng-hide=hide.GAS>{{k.GAS}}<br></i>
+            <i ng-hide=hide.ELECTRIC>{{k.ELECTRIC}}</i></div>
         </div>
+        </ion-item>
         </ion-item>
     </ion-list>
 
