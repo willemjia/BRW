@@ -572,7 +572,12 @@ angular.module('saleCtrl',[])
         jsEIinfoIn.add(jsTable1);
         services.toService(jsEIinfoIn).then(function (resp) {
           $state.go("sale");
-        }, function () {
+        }, function (error) {
+          console.log(error);
+          $ionicPopup.alert({
+            title: '错误',
+            template: error
+          });
         })
       }
 
