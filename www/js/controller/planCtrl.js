@@ -549,7 +549,6 @@ angular.module('planCtrl', [])
         $scope.req.DATE2 = val2.Format("yyyyMMdd");
       }
     };
-
     var array1=[];
     var array2=[];
     $scope.report=function(){
@@ -563,6 +562,9 @@ angular.module('planCtrl', [])
         jsEIinfoIn.add(jsTable1);
         services.toService(jsEIinfoIn).then(function (resp) {
           var data=resp.Tables[0].Table;
+          $scope.data=data;
+          array1.length=0;
+          array2.length=0;
           angular.forEach(data,function(item){
             var temp={x:'',y:''};
             var temp2={x:'',y:''};

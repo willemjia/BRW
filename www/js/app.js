@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
   'saleCtrl','sourceCtrl','starter.services','stockController', 'ionic-datepicker','starter','team.controllers','planCtrl'])
   .constant('wwwVersion','0')
-    .run(function ($ionicPlatform,appUpdate,wwwVersion) {
+    .run(function ($ionicPlatform,$state,$ionicPopup,appUpdate,wwwVersion) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -20,6 +20,30 @@ angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             };
+          $ionicPlatform.registerBackButtonAction(function () {
+            function showConfirm() {
+              var confirmPopup = $ionicPopup.confirm({
+                title: '<strong>退出应用?</strong>',
+                template: '你确定要退出应用吗?',
+                okText: '退出',
+                cancelText: '取消'
+              });
+
+              confirmPopup.then(function (res) {
+                if (res) {
+                  ionic.Platform.exitApp();
+                }
+                else {
+                  // Don't close
+                }
+              });
+            }
+            if ($state.current.name == "menu" ||$state.current.name == "login") {
+              showConfirm();
+            } else {
+              navigator.app.backHistory();
+            }
+          }, 100);
           //appUpdate.toUpdate(wwwVersion,'BRW',false);
         });
     })

@@ -196,19 +196,18 @@ angular.module('team.controllers', [])
 
   .controller('modifyteamCtrl',function($scope, $rootScope){
     $scope.team=$rootScope.mingxi;
-    var TEAM_DATA=[];
+    $scope.TEAM_DATA=[];
      $scope.sum=null;
     angular.forEach($scope.team,function(data){
       var obj={'x':data.CRAFTS,'y':data.YIELD};
-      TEAM_DATA.push(obj);
+      $scope.TEAM_DATA.push(obj);
       $scope.sum+=data.SUM;
     });
     var pageload = {
-      datapoints: TEAM_DATA
-    }
+      datapoints: $scope.TEAM_DATA
+    };
     $scope.config = {
       title : {
-        //text: '班组产量统计',
         subtext: '总产量'+$scope.sum,
         x:'center'
       },

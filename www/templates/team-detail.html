@@ -9,5 +9,17 @@
     <div class="charts light-bg">
       <pie-chart config="config" data="data"></pie-chart>
     </div>
+    <table class="imagetable" style="width: 100%">
+        <tr>
+          <th scope="col">钢种规格</th>
+          <th scope="col">生产总量</th>
+        </tr>
+      <tr ng-repeat="item in TEAM_DATA">
+        <td style="text-align:center">{{item.x}}</td>
+        <td style="text-align:center">{{item.y}}</td>
+      </tr>
+    </table>
   </ion-content>
 </ion-view>
+
+
