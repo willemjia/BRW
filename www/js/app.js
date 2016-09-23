@@ -5,22 +5,22 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','angular-echarts','ngEcharts','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
+angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
   'saleCtrl','sourceCtrl','starter.services','stockController', 'ionic-datepicker','starter','team.controllers','planCtrl'])
-
-    .run(function ($ionicPlatform) {
+  .constant('wwwVersion','0')
+    .run(function ($ionicPlatform,appUpdate,wwwVersion) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
-
             }
             if (window.StatusBar) {
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
-            }
+            };
+          //appUpdate.toUpdate(wwwVersion,'BRW',false);
         });
     })
 
@@ -56,7 +56,7 @@ angular.module('starter', ['ionic','angular-echarts','ngEcharts','starter.login'
           })
 
             .state('menu', {
-                url: '/menu',
+                url: '/menu:appName',
                 cache: false,
                 templateUrl: 'templates/menu.html',
                 controller:'menuCtrl'

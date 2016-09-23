@@ -20,6 +20,9 @@ angular
         localStorage.setItem("username",$scope.user.username);
         if($scope.user.remberPass){
           //存储localStorage，key值：password，value：密码
+          //$window.localStorage.password='';
+          //delete $window.
+
           localStorage.setItem("password",$scope.user.password);
           localStorage.setItem("remberPass",$scope.user.remberPass);
         }else{
@@ -58,14 +61,11 @@ angular
       }
       if(localStorage.key(i)=="autoLogin"){
         if(localStorage.getItem(localStorage.key(i))=='true'){
-          $scope.user.localStorage=true;
-        }else{
-          $scope.user.localStorage=false;
-        }
-        if($scope.user.autoLogin){
+          $scope.user.autoLogin=true;
           $scope.submit();
+        }else{
+          $scope.user.autoLogin=false;
         }
-
       }
     }
 

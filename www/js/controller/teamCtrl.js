@@ -212,11 +212,12 @@ angular.module('team.controllers', [])
         subtext: '总产量'+$scope.sum,
         x:'center'
       },
-      debug: true,
+      debug: false,
       legend:{
-        orient: 'vertical',
-        left: 'left',
-        show:true
+        //orient: 'vertical',
+        left: 'center',
+        top:'middle',
+        show:false
       }
     };
     $scope.data = [ pageload ];
