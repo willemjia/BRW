@@ -165,7 +165,7 @@ angular.module('sourceCtrl',[])
     $scope.mingxi=$rootScope.mingxi;
 
     /*************************************************************************
-     * 查询、跳转到结果页面
+     * 新增
      *************************************************************************/
     $scope.save = function (action) {
         var jsTable1 = new EI.sDataTable();

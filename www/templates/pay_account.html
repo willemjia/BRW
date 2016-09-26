@@ -37,7 +37,7 @@
       </ion-infinite-scroll>
 
     </ion-content>
-    <img ng-src="img/popover.png" class="receive_bill_fixed" ng-click="openPopover($event)"/>
+    <img ng-src="img/popover.png" class="receive_bill_fixed" ng-if=!flag2 ng-click="openPopover($event)"/>
 </ion-view>
 <!--浮动框-->
 <script id="my-popover.html" type="text/ng-template">

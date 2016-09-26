@@ -10,20 +10,20 @@ angular.module('fundCtrl',[])
     /*******************************************************
      * 加减乘除
      *********************************************************/
-    function sub(a, b){
-      var c, d, e;
-      try {
-        c = a.toString().split(".")[1].length;
-      } catch (f) {
-        c = 0;
-      }
-      try {
-        d = b.toString().split(".")[1].length;
-      } catch (f) {
-        d = 0;
-      }
-      return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
-    }
+    //function sub(a, b){
+    //  var c, d, e;
+    //  try {
+    //    c = a.toString().split(".")[1].length;
+    //  } catch (f) {
+    //    c = 0;
+    //  }
+    //  try {
+    //    d = b.toString().split(".")[1].length;
+    //  } catch (f) {
+    //    d = 0;
+    //  }
+    //  return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
+    //}
     function mul(a, b) {
       var c = 0,
         d = a.toString(),
@@ -54,13 +54,13 @@ angular.module('fundCtrl',[])
           $scope.run=false;
         }
         $scope.resp=$scope.resp.concat(EIinfoOut);
-        angular.forEach($scope.resp,function(data){
+        /*angular.forEach($scope.resp,function(data){
           data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
           data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
           data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
           data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
           data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
-        })
+        })*/
         $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function () {
       });
@@ -96,13 +96,13 @@ angular.module('fundCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         $scope.resp = EIinfoOut;
-        angular.forEach($scope.resp,function(data){
+      /*  angular.forEach($scope.resp,function(data){
           data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
           data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
           data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
           data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
           data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
-        })
+        })*/
         $scope.run=true;
         $ionicLoading.hide();
       }, function () {
@@ -184,7 +184,7 @@ angular.module('fundCtrl',[])
      *************************************************************************/
     $scope.commit = function () {
       var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("cusname", "currencies","recordnameRECORDNAME");
+      jsTable1.addColums("cusname", "currencies","RECORDNAME");
       jsTable1.addOneRow($scope.req.CUSNAME, $scope.req.CURRENCIES,$scope.req.RECORDNAME);
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = 'pmopb1_app_inq';

@@ -30,9 +30,13 @@
   </ion-content>
 
   <ion-footer-bar>
-    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('Yes')"> <img ng-src="img/agree.png" style="margin-top:5px"></div>
-    <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid gray" ng-click="checkCommit('No')"><img ng-src="img/noAgree.png" style="margin-top:6px"></div>
-    <div style="width:50%;text-align:center;margin:0 auto;" ng-click="checkCommit('Cancel')"><img ng-src="img/exit.png" style="margin-top:6px"></div>
+
+
+<div class="button-bar">
+      <button class="button icon ion-ios-checkmark-outline button-balanced" ng-click="checkCommit('Yes')">同意</button>
+      <button class="button icon ion-ios-close-outline button-assertive" ng-click="checkCommit('No')">不同意</button>
+      <button class="button icon ion-ios-undo button-energized" ng-click="checkCommit('Cancel')">撤销</button>
+</div>
   </ion-footer-bar>
 </ion-view>
 

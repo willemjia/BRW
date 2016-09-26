@@ -2,7 +2,7 @@
     <a class="button button-icon button-clear ion-ios-arrow-left button-light" ui-sref="pay_account"></a>
     <h1 class="title light">查询</h1>
 </ion-header-bar>
-<ion-tabs class="tabs-top  tabs-striped tabs-light tabs-color-active-calm">
+<ion-tabs class="tabs-striped tabs-top  tabs-color-assertive">
 
     <!-- Dashboard Tab -->
     <ion-tab title="编辑查询">
@@ -10,7 +10,7 @@
             <ion-content>
                 <ion-item>
                     <div class="row">
-                        <div class="col col-25"><h2>开票日期</h2></div>
+                        <div class="col col-35"><h2>开票日期</h2></div>
 
                         <div class="col col-50 col-offset-10">
                             <ionic-datepicker input-obj="datepickerObject">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col col-25"></div>
+                        <div class="col col-35"></div>
 
                         <div class="col col-50 col-offset-10">
                             <ionic-datepicker input-obj="datepickerObject2">
@@ -41,8 +41,12 @@
             </ion-content>
 
             <ion-footer-bar>
-                <div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="commit()">查询</a></div>
-                <div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>
+              <div class="button-bar">
+                <button class="button icon ion-search button-balanced" ng-click="commit()">查询</button>
+                <button class="button icon ion-compose button-assertive" ng-click="showPopup()">记住本次查询</button>
+              </div>
+                <!--<div style="width:50%;text-align:center;margin:0 auto;border-right:1px solid black" > <a class="button button-icon" ng-click="commit()">查询</a></div>-->
+                <!--<div style="width:50%;text-align:center;margin:0 auto"><a class="button button-icon" ng-click="showPopup()">记住本次查询</a></div>-->
             </ion-footer-bar>
         </ion-view>
     </ion-tab>
@@ -59,7 +63,12 @@
                     </ion-item>
                 </ion-list>
             </ion-content>
-            <div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>
+            <!--<div class="history_delete" ng-click="removeAll()">删除所有查询历史</div>-->
+          <ion-footer-bar>
+            <div class="button-bar">
+              <button class="button button-assertive" ng-click="removeAll()">删除所有查询历史</button>
+            </div>
+          </ion-footer-bar>
         </ion-view>
     </ion-tab>
 </ion-tabs>

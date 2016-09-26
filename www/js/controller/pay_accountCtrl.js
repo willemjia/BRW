@@ -252,7 +252,8 @@ angular.module('pay_accountCtrl', [])
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable);
       services.toService(jsEIinfoIn).then(function (resp) {
-        services.setter(resp);
+        var EiInfoOut=resp.Tables[0].Table;
+        services.setter(EiInfoOut);
         $state.go("pay_account");
       }, function () {
       });
