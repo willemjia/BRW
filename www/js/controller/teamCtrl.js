@@ -189,8 +189,19 @@ angular.module('team.controllers', [])
            * 点击某条数据进入详细信息
            *************************************************************************/
            $scope.detail = function (data) {
-           $rootScope.mingxi = data;
-           $state.go('team-detail');
+             var jsTable1 = new EI.sDataTable();
+             jsTable1.addColums("TYPE","DATE");
+             jsTable1.addOneRow(data[0].TYPE,data[0].DATE);
+             var jsEIinfoIn = new EI.EIinfo();
+             jsEIinfoIn.SysInfo.SvcName = 'pmopu4_app_inq';
+             jsEIinfoIn.SysInfo.Sender = 'admin';
+             jsEIinfoIn.add(jsTable1);
+             services.toService(jsEIinfoIn).then(function (resp) {
+               var EIinfoOut = resp.Tables[0].Table;
+               $rootScope.mingxi = EIinfoOut;
+               $state.go('team-detail');
+             }, function () {
+             });
            }
         })
 

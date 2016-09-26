@@ -125,7 +125,7 @@ angular.module('ionicAppUpdate', ['ionic', 'ngCordova'])
     }
     //app内更新
     function updateWWW(){
-      chcp.fetchUpdate(function(error, data){
+      /*chcp.fetchUpdate(function(error, data){
         if (error) {
           console.log('Failed to load the update with error code: ' + error.code);
           console.log(error.description);
@@ -140,7 +140,7 @@ angular.module('ionicAppUpdate', ['ionic', 'ngCordova'])
             }
           });
         }
-      });
+      });*/
     }
     return {
       toUpdate: toUpdate

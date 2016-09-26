@@ -2,95 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c7d058-2621-45aa-8eeb-3ed94cf69328" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-40@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-40@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-50@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-72.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-72@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-76.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-76@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-83.5@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-568h@2x~iphone.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-667h.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-736h.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape-736h.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape@2x~ipad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape~ipad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait@2x~ipad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait~ipad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default@2x~iphone.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/splash/Default~iphone.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/icon.ai" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/splash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/controller/TEYCtrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/TEY.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/tab-account.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/tab-chats.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/tab-dash.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-hdpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-hdpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-ldpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-ldpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-mdpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-mdpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-xhdpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xhdpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-xxhdpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xxhdpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/icon/drawable-xxxhdpi-icon.png" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xxxhdpi-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-hdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-hdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-ldpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-ldpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-mdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-mdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-xhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xhdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxhdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxxhdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-hdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-hdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-ldpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-ldpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-mdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-mdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-xhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xhdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxhdpi-screen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxxhdpi-screen.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/fundCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/fundCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/pay_accountCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund-history.html" afterPath="$PROJECT_DIR$/www/templates/fund-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund-search.html" afterPath="$PROJECT_DIR$/www/templates/fund-search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/fund.html" afterPath="$PROJECT_DIR$/www/templates/fund.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_account.html" afterPath="$PROJECT_DIR$/www/templates/pay_account.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_account_history.html" afterPath="$PROJECT_DIR$/www/templates/pay_account_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_account_search.html" afterPath="$PROJECT_DIR$/www/templates/pay_account_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_bill.html" afterPath="$PROJECT_DIR$/www/templates/pay_bill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_bill_history.html" afterPath="$PROJECT_DIR$/www/templates/pay_bill_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/pay_bill_search.html" afterPath="$PROJECT_DIR$/www/templates/pay_bill_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/plan_history.html" afterPath="$PROJECT_DIR$/www/templates/plan_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/plan_search.html" afterPath="$PROJECT_DIR$/www/templates/plan_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_account.html" afterPath="$PROJECT_DIR$/www/templates/receive_account.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_account_history.html" afterPath="$PROJECT_DIR$/www/templates/receive_account_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_account_search.html" afterPath="$PROJECT_DIR$/www/templates/receive_account_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_bill.html" afterPath="$PROJECT_DIR$/www/templates/receive_bill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_bill_history.html" afterPath="$PROJECT_DIR$/www/templates/receive_bill_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/receive_bill_search.html" afterPath="$PROJECT_DIR$/www/templates/receive_bill_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-check.html" afterPath="$PROJECT_DIR$/www/templates/sale-check.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-history.html" afterPath="$PROJECT_DIR$/www/templates/sale-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale-search.html" afterPath="$PROJECT_DIR$/www/templates/sale-search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/sale.html" afterPath="$PROJECT_DIR$/www/templates/sale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-history.html" afterPath="$PROJECT_DIR$/www/templates/source-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source-search.html" afterPath="$PROJECT_DIR$/www/templates/source-search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/source.html" afterPath="$PROJECT_DIR$/www/templates/source.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/stock_history.html" afterPath="$PROJECT_DIR$/www/templates/stock_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/stock_search.html" afterPath="$PROJECT_DIR$/www/templates/stock_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-plan.html" afterPath="$PROJECT_DIR$/www/templates/tab-plan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-stock.html" afterPath="$PROJECT_DIR$/www/templates/tab-stock.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tab-team.html" afterPath="$PROJECT_DIR$/www/templates/tab-team.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/team-select.html" afterPath="$PROJECT_DIR$/www/templates/team-select.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/team-select1.html" afterPath="$PROJECT_DIR$/www/templates/team-select1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/appUpdate.js" afterPath="$PROJECT_DIR$/www/js/appUpdate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controller/teamCtrl.js" afterPath="$PROJECT_DIR$/www/js/controller/teamCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login.html" afterPath="$PROJECT_DIR$/www/templates/login.html" />
     </list>
     <ignored path="BRW.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,8 +31,8 @@
       <file leaf-file-name="teamCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/controller/teamCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4347079">
-              <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.31163707">
+              <caret line="191" column="16" selection-start-line="191" selection-start-column="16" selection-end-line="191" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -157,19 +74,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/www/templates/receive_bill_hide.html" />
-        <option value="$PROJECT_DIR$/www/js/appUpdate.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/controller/menuCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/account/loginCtrl.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/templates/menu.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/templates/team-detail.html" />
         <option value="$PROJECT_DIR$/www/templates/plan_report.html" />
         <option value="$PROJECT_DIR$/www/js/controller/planCtrl.js" />
-        <option value="$PROJECT_DIR$/www/js/controller/teamCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/angular-echarts.js" />
-        <option value="$PROJECT_DIR$/www/templates/login.html" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/templates/sale-check.html" />
         <option value="$PROJECT_DIR$/www/templates/receive_bill_history.html" />
@@ -207,6 +119,11 @@
         <option value="$PROJECT_DIR$/www/js/controller/saleCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/sourceCtrl.js" />
         <option value="$PROJECT_DIR$/www/js/controller/fundCtrl.js" />
+        <option value="$PROJECT_DIR$/www/js/appUpdate.js" />
+        <option value="$PROJECT_DIR$/www/templates/login.html" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/controller/teamCtrl.js" />
       </list>
     </option>
   </component>
@@ -262,7 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -337,7 +254,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -574,7 +491,13 @@
       <option name="project" value="LOCAL" />
       <updated>1474620335556</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="主线">
+      <created>1474853784703</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1474853784703</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -596,7 +519,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6759411" sideWeight="0.49578503" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12418301" sideWeight="0.49578503" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -642,28 +565,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.78125">
-          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/plan_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9201452">
-          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/team-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.46875">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/angular-echarts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6654611">
@@ -671,18 +572,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1875">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/lib/ionic/css/ionic.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35272726">
           <caret line="8550" column="27" selection-start-line="8550" selection-start-column="27" selection-end-line="8550" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.375">
           <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.875">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,7 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.3125">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.3125">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.03125">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -840,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.3125">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -848,7 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.125">
           <caret line="39" column="73" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,7 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.84375">
           <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,7 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.625">
           <caret line="30" column="73" selection-start-line="30" selection-start-column="73" selection-end-line="30" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -872,7 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1875">
           <caret line="37" column="73" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.21875">
           <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.375">
           <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.78125">
           <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.15625">
           <caret line="36" column="71" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,7 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.59375">
           <caret line="35" column="72" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,6 +852,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controller/fundCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.097938">
+          <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/tab-team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5054545">
+          <caret line="36" column="71" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41636363">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/account/loginCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29038113">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#input#2;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#3;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/appUpdate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23670669">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#581#1169#0" expanded="false" />
+            <element signature="e#4438#5000#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.15625">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3661017">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5590278">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controller/stockCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -988,42 +936,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controller/fundCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.097938">
-          <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tab-team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5054545">
-          <caret line="36" column="71" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17692308">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="13.541667">
-          <caret line="325" column="42" selection-start-line="325" selection-start-column="42" selection-end-line="325" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controller/teamCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4347079">
-          <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.31163707">
+          <caret line="191" column="16" selection-start-line="191" selection-start-column="16" selection-end-line="191" selection-end-column="16" />
           <folding />
         </state>
       </provider>

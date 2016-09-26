@@ -8,13 +8,13 @@
       Your Name Here
     </author>
   <content src="index.html"/>
-  <chcp>
-    <!--手动更新和下载安装-->
+  <!--<chcp>
+    手动更新和下载安装
     <auto-download enabled="false" />
     <auto-install enabled="false" />
-    <!--指定了需要从哪里加载app配置-->
-    <!--<config-file url="https://localhost/chcp.json"/>-->
-  </chcp>
+    指定了需要从哪里加载app配置
+    <config-file url="https://localhost/chcp.json"/>
+  </chcp>-->
 
   <content src="index.html" />
   <access origin="*" />
