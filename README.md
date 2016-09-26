@@ -11,7 +11,6 @@ cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-file-transfer
 cordova plugin add cordova-plugin-file-opener2
 cordova plugin add cordova-plugin-network-information
-cordova plugin add cordova-hot-code-push-plugin
 cordova plugin add cordova-plugin-inappbrowser
 cordova plugin add cordova-plugin-compat
 ```
