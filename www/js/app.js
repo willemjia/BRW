@@ -44,7 +44,7 @@ angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts
               navigator.app.backHistory();
             }
           }, 100);
-          //appUpdate.toUpdate(wwwVersion,'BRW',false);
+          appUpdate.toUpdate(wwwVersion,'BRW',false);
         });
     })
 
