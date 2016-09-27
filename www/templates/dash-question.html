@@ -1,0 +1,25 @@
+<ion-view view-title="常见问题">
+  <ion-nav-bar></ion-nav-bar>
+  <ion-header-bar class="bar-stable">
+    <!--<ion-nav-buttons side="left">-->
+      <button class="button button-icon button-clear ion-ios-arrow-left button-positive" ui-sref="setup">
+
+      </button>
+    <!--</ion-nav-buttons>-->
+    <!--<h1 class="title">我</h1>-->
+  </ion-header-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-ios-arrow-left button-positive" ui-sref="setup">
+
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="stable-bg">
+    <br>
+    <ion-list>
+      <ion-item ng-repeat="item in question" class="item item-icon-right" ui-sref="questionDetail({id:item.id,title:item.title})">
+        <p>{{item.title}}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

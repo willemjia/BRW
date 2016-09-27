@@ -1,0 +1,21 @@
+<ion-view view-title="版本信息">
+  <ion-nav-bar></ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-ios-arrow-left button-positive" ui-sref="setup">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="stable-bg">
+
+
+      <div ng-repeat="item in version | orderBy:'-date'" class="stable-bg" >
+        <br>
+        <p style="font-size:16px;font-weight: 500">&nbsp&nbsp{{item.version}}</p>
+       <div class="light-bg padding" >
+        <li ng-repeat="con in item.content">{{con}}</li>
+
+       </div>
+      </div>
+
+  </ion-content>
+</ion-view>
+

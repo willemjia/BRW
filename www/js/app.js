@@ -5,9 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
+angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts','starter.tabAbout','starter.login','starter.loginService','menu','fundCtrl','pay_accountCtrl','pay_billCtrl','receive_billCtrl','receive_accountCtrl',
   'saleCtrl','sourceCtrl','starter.services','stockController', 'ionic-datepicker','starter','team.controllers','planCtrl'])
-  .constant('wwwVersion','0')
     .run(function ($ionicPlatform,$state,$ionicPopup,appUpdate,wwwVersion) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -80,12 +79,32 @@ angular.module('starter', ['ionic','ionicAppUpdate','angular-echarts','ngEcharts
           })
 
             .state('menu', {
-                url: '/menu:appName',
+                url: '/menu',
                 cache: false,
                 templateUrl: 'templates/menu.html',
-                controller:'menuCtrl'
+                controller:'DashCtrl'
             })
-
+          .state('setup', {
+            url: '/app/melists/setup',
+            templateUrl: 'templates/melists-setup.html',
+            controller:"setupCtrl"
+          })
+          .state('question', {
+            url: '/dash/question',
+            templateUrl: 'templates/dash-question.html',
+            controller:"questionCtrl"
+          })
+          .state('questionDetail', {
+            url: '/dash/question/questionDetail',
+            params:{"id":null,"title":null},
+            templateUrl: 'templates/question-detail.html',
+            controller:"questionDetailCtrl"
+          })
+          .state('version', {
+            url: '/dash/version',
+            templateUrl: 'templates/dash-version.html',
+            controller:"versionCtrl"
+          })
             .state('sale', {
                 url: '/sale',
                 cache: false,

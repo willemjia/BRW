@@ -26,5 +26,7 @@
     .constant('ApplicationConfig',{
         CompanyCode:'BRGS',
         ApplicationName:'BRGSE1'
-    });
+    })
+    .constant('wwwVersion','0')
+
 })();

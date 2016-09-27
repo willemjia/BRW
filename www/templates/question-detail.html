@@ -1,0 +1,23 @@
+<ion-view view-title="{{title}}">
+  <!--<ion-nav-bar></ion-nav-bar>-->
+  <!--<ion-nav-buttons side="left">-->
+    <!--<button class="button button-icon button-clear ion-ios-arrow-left button-positive" ui-sref="question">-->
+    <!--</button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-header-bar class="bar-stable">
+    <!--<ion-nav-buttons side="left">-->
+    <button class="button button-icon button-clear ion-ios-arrow-left button-positive" ui-sref="question">
+
+    </button>
+    <!--</ion-nav-buttons>-->
+    <h1 class="title">{{title}}</h1>
+  </ion-header-bar>
+  <ion-content class="stable-bg">
+    <br>
+    <p> &nbsp&nbsp&nbsp{{oneQuestion.question}}</p>
+    <div class="light-bg padding" >
+      <li ng-repeat="con in oneQuestion.answer">{{con}}</li>
+
+    </div>
+  </ion-content>
+</ion-view>

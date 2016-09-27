@@ -1,46 +1,85 @@
-<ion-view  >
-  <ion-header-bar class="dark-bg">
-    <h1 class="title light">功能导航</h1>
-    <a class="button button-icon button-clear ion-android-exit button-light"  ng-click="loginOut()"></a>
-  </ion-header-bar>
+<ion-side-menus>
+  <ion-side-menu-content>
+    <ion-view  >
+      <ion-header-bar class="dark-bg">
+        <a class="button button-icon button-clear ion-navicon" menu-toggle="left"></a>
+        <h1 class="title light">功能导航</h1>
+        <a class="button button-icon button-clear ion-android-exit button-light"  ng-click="loginOut()"></a>
+      </ion-header-bar>
+      <ion-content class="stable-bg">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <img ng-src="img/menu.png" style="width:100%;height: 160px;margin-bottom:20px">
+          </ion-slide>
+          <ion-slide>
+            <img ng-src="img/menu2.png" style="width:100%;height: 160px;margin-bottom:20px">
+          </ion-slide>
+          <ion-slide>
+            <img ng-src="img/menu3.png" style="width:100%;height: 160px;margin-bottom:20px">
+          </ion-slide>
+        </ion-slide-box>
 
-  <ion-content class="stable-bg">
+        <div class="light-bg">
+          <div class="row">
+            <div class="col col-25 menu_li2" ui-sref="sale"><img ng-src="img/sale.png" class="icon"><p>销售合同</p></div>
+            <div class="col col-25 menu_li" ui-sref="fund"><img ng-src="img/fund.png" class="icon"/><p>银行存款</p></div>
+            <div class="col col-25 menu_li" ui-sref="receive_bill"><img ng-src="img/receive_bill.png" class="icon"><p>应收票据</p></div>
+            <div class="col col-25 menu_li" ui-sref="pay_bill"><img ng-src="img/pay_bill.png" class="icon"><p>应付票据</p></div>
+          </div>
 
-    <ion-slide-box on-slide-changed="slideHasChanged($index)">
-      <ion-slide>
-        <img ng-src="img/menu.png" style="width:100%;height: 160px;margin-bottom:20px">
-      </ion-slide>
-      <ion-slide>
-        <img ng-src="img/menu2.png" style="width:100%;height: 160px;margin-bottom:20px">
-      </ion-slide>
-      <ion-slide>
-        <img ng-src="img/menu3.png" style="width:100%;height: 160px;margin-bottom:20px">
-      </ion-slide>
-    </ion-slide-box>
+          <div class="row">
+            <div class="col col-25 menu_li2" ui-sref="receive_account"><img ng-src="img/receive_account.png" class="icon"><p>应收账款</p></div>
+            <div class="col col-25 menu_li" ui-sref="pay_account"><img ng-src="img/pay_account.png" class="icon"><p>应付账款</p></div>
+            <div class="col col-25 menu_li" ui-sref="tab-stock"><img ng-src="img/stock.png" class="icon"><p>库存明细</p></div>
+            <div class="col col-25 menu_li" ui-sref="tab-plan"><img ng-src="img/plan.png" class="icon"><p>发货计划</p></div>
+          </div>
 
-    <div class="light-bg">
-    <div class="row">
-      <div class="col col-25 menu_li2" ui-sref="sale"><img ng-src="img/sale.png" class="icon"><p>销售合同</p></div>
-      <div class="col col-25 menu_li" ui-sref="fund"><img ng-src="img/fund.png" class="icon"/><p>银行存款</p></div>
-      <div class="col col-25 menu_li" ui-sref="receive_bill"><img ng-src="img/receive_bill.png" class="icon"><p>应收票据</p></div>
-      <div class="col col-25 menu_li" ui-sref="pay_bill"><img ng-src="img/pay_bill.png" class="icon"><p>应付票据</p></div>
-    </div>
+          <div class="row">
+            <div class="col col-25 menu_li" ui-sref="tab-team"><img ng-src="img/team.png" class="icon"><p>班组设备</p></div>
+            <div class="col col-25 menu_li" ui-sref="source"><img ng-src="img/source.png" class="icon"><p>能源系统</p></div>
+            <!--<div class="col col-25"><div style="margin-top:16px;margin-left:30px;font-size: 30px;color:gray">...</div></div>-->
+          </div>
+        </div>
+      </ion-content>
+      <ion-footer-bar class="dark-bg light">
+        <div class="title">南京宝日移动APP</div>
+      </ion-footer-bar>
+    </ion-view>
+  </ion-side-menu-content>
+  <!-- 左侧菜单 -->
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">我</h1>
+    </ion-header-bar>
+    <ion-content class="stable-bg" style="height:100%">
+      <ion-list>
+        <ion-item class="item item-avatar-left" style="min-height:90px;padding-top:20px">
+          <img ng-src="{{me[0].userImg}}" alt="">
+          <h2>{{me[0].userName}}</h2>
+          <p>工号：{{me[0].userNumber}}</p>
+        </ion-item>
 
-    <div class="row">
-      <div class="col col-25 menu_li2" ui-sref="receive_account"><img ng-src="img/receive_account.png" class="icon"><p>应收账款</p></div>
-      <div class="col col-25 menu_li" ui-sref="pay_account"><img ng-src="img/pay_account.png" class="icon"><p>应付账款</p></div>
-      <div class="col col-25 menu_li" ui-sref="tab-stock"><img ng-src="img/stock.png" class="icon"><p>库存明细</p></div>
-      <div class="col col-25 menu_li" ui-sref="tab-plan"><img ng-src="img/plan.png" class="icon"><p>发货计划</p></div>
-    </div>
+      </ion-list>
+      <br>
+     <!-- <ion-list>
+        <ion-item class="item item-avatar-left" style="min-height: 50px">
+          <img src="img/meIcon1.png" alt="" style="max-width:33px;max-height:33px;margin-top:-7px">
+          <span>财务部-财务经理</span>
+        </ion-item>
+        <ion-item class="item item-avatar-left" style="min-height: 50px">
+          <img src="img/meIcon2.png" alt="" style="max-width:33px;max-height:33px;margin-top:-7px">
+          <span>我的顾问</span>
+        </ion-item>
+      </ion-list>
+      <br>-->
+      <ion-list>
+        <ion-item class="item item-avatar-left" style="min-height:50px" ng-click="goSetup()">
+          <img src="img/meIcon3.png" alt="" style="max-width:33px;max-height:33px;margin-top:-7px">
+          <span>设置</span>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
 
-    <div class="row">
-      <div class="col col-25 menu_li" ui-sref="tab-team"><img ng-src="img/team.png" class="icon"><p>班组设备</p></div>
-      <div class="col col-25 menu_li" ui-sref="source"><img ng-src="img/source.png" class="icon"><p>能源系统</p></div>
-      <!--<div class="col col-25"><div style="margin-top:16px;margin-left:30px;font-size: 30px;color:gray">...</div></div>-->
-    </div>
-    </div>
-  </ion-content>
-  <ion-footer-bar class="dark-bg light">
-    <div class="title">南京宝日移动APP</div>
-  </ion-footer-bar>
-  </ion-view>
+
