@@ -2,9 +2,10 @@ angular.module('planCtrl', [])
   /*******************************************************
    * 发货计划
    *********************************************************/
-  .controller('PlanCtrl', function ($state, $rootScope, $scope, services, $ionicLoading, $location, $ionicPopup, $ionicPopover) {
+  .controller('PlanCtrl', function ($state, $rootScope, $scope, services,$location, $ionicPopup, $ionicPopover) {
     $scope.resp = [];//返回的数据
-    $scope.run = false;//上拉加载标志
+    $scope.run=true;//分页查询
+    var isSelect=false;//是否是查询数据分页
     var requestCount = {count: 0};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
     /******************************************************************
@@ -33,29 +34,6 @@ angular.module('planCtrl', [])
       return array;
     }
 
-    /******************************************************************
-     * 上拉加载
-     ******************************************************************/
-    $scope.loadMore = function () {
-      requestCount.count += 20;
-      var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("count");
-      jsTable1.addOneRow(requestCount.count);
-      var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = 'pmopsc2_app_inq';
-      jsEIinfoIn.SysInfo.Sender = 'admin';
-      jsEIinfoIn.add(jsTable1);
-      services.toService(jsEIinfoIn).then(function (result) {
-        var EIinfoOut = result.Tables[0].Table;
-        if (EIinfoOut.length == 0) {
-          $scope.run = false;
-        }
-        var array = getArray(EIinfoOut);
-        $scope.resp = $scope.resp.concat(array);
-        $scope.$broadcast('scroll.infiniteScrollComplete');
-      }, function () {
-      });
-    };
 
     /*************************************************************************
      * 隐藏列
@@ -68,46 +46,57 @@ angular.module('planCtrl', [])
      * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
      *************************************************************************/
     var resp = services.getter();
-    if (resp == null) {
-      /******************************************************************
-       * 加载动画
-       ******************************************************************/
-      $ionicLoading.show({
-        template: 'Loading...',
-        noBackdrop: true,
-        duration: 10000
-      });
-      var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("count");
-      jsTable1.addOneRow(requestCount.count);
-      var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = 'pmopsc2_app_inq';
-      jsEIinfoIn.SysInfo.Sender = 'admin';
-      jsEIinfoIn.add(jsTable1);
-      services.toService(jsEIinfoIn).then(function (resp) {
-        var EIinfoOut = resp.Tables[0].Table;
-        var array = getArray(EIinfoOut);
-        $scope.resp = array;
-        $scope.run = true;
-        $ionicLoading.hide();
-      }, function () {
-        $ionicLoading.hide();
-        /*$scope.resp=[
-         {"USERNAME":"aaa",
-         "PLANS":[{"PLANNUM":"4234","PLANAMOUNT":"233","DATE":"2016-05-25","REALAMOUNT":"266","REALNUM":"23"},
-         {"PLANNUM":"3243","PLANAMOUNT":"324","DATE":"2015-02-02","REALAMOUNT":"233","REALNUM":"33"}]
-         },
-         {"USERNAME":"bbb",
-         "PLANS":[{"PLANNUM":"23234","PLANAMOUNT":"342","DATE":"2016-02-05","REALAMOUNT":"222","REALNUM":"33"},
-         {"PLANNUM":"33422","PLANAMOUNT":"234","DATE":"2015-02-03","REALAMOUNT":"343","REALNUM":"44"}]
-         }
-         ]*/
-      });
-    } else {
+    if (resp != null) {
+      isSelect=true;
       $scope.flag2 = true;
-      var array = getArray(resp);
-      $scope.resp = array;
-    }
+      if(resp.length>20){
+        var EiInfoOut=getArray(resp.slice(0,20));
+        $scope.resp = EiInfoOut;
+        resp=resp.slice(20);
+      }else{
+        var EiInfoOut=getArray(resp);
+        $scope.resp = EiInfoOut;
+        $scope.run=false;
+      }
+    };
+    /******************************************************************
+     * 上拉加载
+     ******************************************************************/
+    $scope.loadMore = function () {
+      if(isSelect){
+        if(resp.length>20){
+          var EiInfoOut=getArray(resp.slice(0,20));
+          $scope.resp=$scope.resp.concat(EiInfoOut);
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+          resp=resp.slice(20);
+        } else{
+          var EiInfoOut=getArray(resp);
+          $scope.resp=$scope.resp.concat(EiInfoOut);
+          $scope.run=false;
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        }
+      }else {
+        var jsTable1 = new EI.sDataTable();
+        jsTable1.addColums("count");
+        jsTable1.addOneRow(requestCount.count);
+        requestCount.count += 20;
+        var jsEIinfoIn = new EI.EIinfo();
+        jsEIinfoIn.SysInfo.SvcName = 'pmopsc2_app_inq';
+        jsEIinfoIn.SysInfo.Sender = 'admin';
+        jsEIinfoIn.add(jsTable1);
+        services.toService(jsEIinfoIn).then(function (result) {
+          var EIinfoOut = result.Tables[0].Table;
+          if (EIinfoOut.length == 0) {
+            $scope.run = false;
+          }
+          var array = getArray(EIinfoOut);
+          $scope.resp = $scope.resp.concat(array);
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        }, function () {
+        });
+      }
+    };
+
     /*************************************************************************
      * 点击返回按钮将myFactory清空
      *************************************************************************/
@@ -202,19 +191,25 @@ angular.module('planCtrl', [])
     /*************************************************************************
      * 日期插件
      *************************************************************************/
+    var disabledDates = [
+      new Date(1437719836326),
+      new Date(),
+      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
+      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
+      new Date("08-14-2015"), //Short format
+      new Date(1439676000000) //UNIX format
+    ];
     $scope.datepickerObject = {
-      titleLabel: 'Title',  //Optional
-      todayLabel: 'Today',  //Optional
-      closeLabel: 'Close',  //Optional
-      setLabel: 'Set',  //Optional
+      titleLabel: '请选择日期',  //Optional
+      todayLabel: '今天',  //Optional
+      closeLabel: '关闭',  //Optional
+      setLabel: '确定',  //Optional
       setButtonType: 'button-assertive',  //Optional
       todayButtonType: 'button-assertive',  //Optional
       closeButtonType: 'button-assertive',  //Optional
       inputDate: new Date(),  //Optional
       mondayFirst: true,  //Optional
       disabledDates: disabledDates, //Optional
-      weekDaysList: weekDaysList, //Optional
-      monthList: monthList, //Optional
       templateType: 'popup', //Optional
       showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional
@@ -228,16 +223,6 @@ angular.module('planCtrl', [])
       closeOnSelect: false //Optional
     };
 
-    var disabledDates = [
-      new Date(1437719836326),
-      new Date(),
-      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
-      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
-      new Date("08-14-2015"), //Short format
-      new Date(1439676000000) //UNIX format
-    ];
-    var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
-    var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
     var datePickerCallback = function (val) {
       if (typeof(val) === 'undefined') {
         console.log('No date selected');
@@ -248,18 +233,16 @@ angular.module('planCtrl', [])
     };
     //日期插件
     $scope.datepickerObject2 = {
-      titleLabel: 'Title',  //Optional
-      todayLabel: 'Today',  //Optional
-      closeLabel: 'Close',  //Optional
-      setLabel: 'Set',  //Optional
+      titleLabel: '请选择日期',  //Optional
+      todayLabel: '今天',  //Optional
+      closeLabel: '关闭',  //Optional
+      setLabel: '确定',  //Optional
       setButtonType: 'button-assertive',  //Optional
       todayButtonType: 'button-assertive',  //Optional
       closeButtonType: 'button-assertive',  //Optional
       inputDate: new Date(),  //Optional
       mondayFirst: true,  //Optional
       disabledDates: disabledDates, //Optional
-      weekDaysList: weekDaysList, //Optional
-      monthList: monthList, //Optional
       templateType: 'popup', //Optional
       showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional

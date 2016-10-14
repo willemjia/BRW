@@ -64,9 +64,6 @@ tabAboutModule
       "userImg":"img/user.png",
       "userNumber":$rootScope.user.username
     }];
- /* Me.getMe().then(function(resp){
-    $scope.me = resp;
-  });*/
   $scope.goSetup = function(){
     $state.go('setup');
   };

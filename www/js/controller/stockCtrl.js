@@ -1,7 +1,8 @@
 angular.module('stockController', [])
-.controller('stockCtrl',function($scope,$state,services,  $ionicPopover, $rootScope,$ionicLoading){
+.controller('stockCtrl',function($scope,$state,services,  $ionicPopover, $rootScope){
   $scope.resp=[];//返回的数据
-  $scope.run=false;//上拉加载标志
+  $scope.run=true;//分页查询
+  var isSelect=false;//是否是查询数据分页
   var requestCount={count:0};//上拉加载的条数
   $scope.flag2 = false;//返回按钮路由
   /******************************************************************
@@ -29,29 +30,6 @@ function getArray(EIinfoOut){
     });
     return array;
   }
-  /******************************************************************
-   * 上拉加载
-   ******************************************************************/
-  $scope.loadMore=function(){
-    requestCount.count+=20;
-    var jsTable1 = new EI.sDataTable();
-    jsTable1.addColums("count");
-    jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = 'pmopmma2_app_inq';
-    jsEIinfoIn.SysInfo.Sender = 'admin';
-    jsEIinfoIn.add(jsTable1);
-    services.toService(jsEIinfoIn).then(function (result) {
-      var EIinfoOut=result.Tables[0].Table;
-      if(EIinfoOut.length==0){
-        $scope.run=false;
-      };
-      var array=getArray(EIinfoOut);
-      $scope.resp=$scope.resp.concat(array);
-      $scope.$broadcast('scroll.infiniteScrollComplete');
-    }, function () {
-    });
-  };
 
   /*************************************************************************
    * 隐藏列
@@ -64,35 +42,58 @@ function getArray(EIinfoOut){
    * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
    *************************************************************************/
   var resp = services.getter();
-  if (resp == null) {
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    $ionicLoading.show({
-      template: 'Loading...',
-      noBackdrop:true,
-      duration:10000
-    });
-    var jsTable1 = new EI.sDataTable();
-    jsTable1.addColums("count");
-    jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = 'pmopmma2_app_inq';
-    jsEIinfoIn.SysInfo.Sender = 'admin';
-    jsEIinfoIn.add(jsTable1);
-    services.toService(jsEIinfoIn).then(function (resp) {
-      var EIinfoOut = resp.Tables[0].Table;
-      var array=getArray(EIinfoOut);
-      $scope.resp = array;
-      $scope.run=true;
-      $ionicLoading.hide();
-    }, function () {
-    });
-  } else {
+  if (resp != null) {
+    isSelect=true;
     $scope.flag2 = true;
-    var array=getArray(resp);
-    $scope.resp = array;
-  }
+    if(resp.length>20){
+      var EiInfoOut=getArray(resp.slice(0,20));
+      $scope.resp = EiInfoOut;
+      resp=resp.slice(20);
+    }else{
+      var EiInfoOut=getArray(resp);
+      $scope.resp = EiInfoOut;
+      $scope.run=false;
+    }
+  };
+  /******************************************************************
+   * 上拉加载
+   ******************************************************************/
+  $scope.loadMore=function(){
+    if(isSelect){
+      if(resp.length>20){
+        var EiInfoOut=getArray(resp.slice(0,20));
+        $scope.resp=$scope.resp.concat(EiInfoOut);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+        resp=resp.slice(20);
+      } else{
+        var EiInfoOut=getArray(resp);
+        $scope.resp=$scope.resp.concat(EiInfoOut);
+        $scope.run=false;
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }
+    }else {
+      var jsTable1 = new EI.sDataTable();
+      jsTable1.addColums("count");
+      jsTable1.addOneRow(requestCount.count);
+      requestCount.count += 20;
+      var jsEIinfoIn = new EI.EIinfo();
+      jsEIinfoIn.SysInfo.SvcName = 'pmopmma2_app_inq';
+      jsEIinfoIn.SysInfo.Sender = 'admin';
+      jsEIinfoIn.add(jsTable1);
+      services.toService(jsEIinfoIn).then(function (result) {
+        var EIinfoOut = result.Tables[0].Table;
+        if (EIinfoOut.length == 0) {
+          $scope.run = false;
+        }
+        ;
+        var array = getArray(EIinfoOut);
+        $scope.resp = $scope.resp.concat(array);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }, function () {
+      });
+    }
+  };
+
   /*************************************************************************
    * 点击返回按钮将myFactory清空
    *************************************************************************/

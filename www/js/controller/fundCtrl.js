@@ -2,69 +2,12 @@ angular.module('fundCtrl',[])
   /*******************************************************
    * 客户资金帐信息
    *********************************************************/
-  .controller('FundCtrl', function ($state, $rootScope, $scope,services, $ionicLoading,$location, $ionicPopup, $ionicPopover) {
+  .controller('FundCtrl', function ($state, $rootScope, $scope,services,$location, $ionicPopup, $ionicPopover) {
     $scope.resp=[];//返回的数据
-    $scope.run=false;//上拉加载标志
+    $scope.run=true;//分页查询
+    var isSelect=false;//是否是查询数据分页
     var requestCount={count:0};//上拉加载的条数
     $scope.flag2 = false;//返回按钮路由
-    /*******************************************************
-     * 加减乘除
-     *********************************************************/
-    //function sub(a, b){
-    //  var c, d, e;
-    //  try {
-    //    c = a.toString().split(".")[1].length;
-    //  } catch (f) {
-    //    c = 0;
-    //  }
-    //  try {
-    //    d = b.toString().split(".")[1].length;
-    //  } catch (f) {
-    //    d = 0;
-    //  }
-    //  return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
-    //}
-    function mul(a, b) {
-      var c = 0,
-        d = a.toString(),
-        e = b.toString();
-      try {
-        c += d.split(".")[1].length;
-      } catch (f) {}
-      try {
-        c += e.split(".")[1].length;
-      } catch (f) {}
-      return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
-    }
-    /******************************************************************
-     * 上拉加载
-     ******************************************************************/
-    $scope.loadMore=function(){
-      requestCount.count+=20;
-      var jsTable1 = new EI.sDataTable();
-      jsTable1.addColums("count");
-      jsTable1.addOneRow(requestCount.count);
-      var jsEIinfoIn = new EI.EIinfo();
-      jsEIinfoIn.SysInfo.SvcName = 'pmopb2_app_inq';
-      jsEIinfoIn.SysInfo.Sender = 'admin';
-      jsEIinfoIn.add(jsTable1);
-      services.toService(jsEIinfoIn).then(function (result) {
-        var EIinfoOut=result.Tables[0].Table;
-        if(EIinfoOut.length==0){
-          $scope.run=false;
-        }
-        $scope.resp=$scope.resp.concat(EIinfoOut);
-        /*angular.forEach($scope.resp,function(data){
-          data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
-          data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
-          data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
-          data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
-          data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
-        })*/
-        $scope.$broadcast('scroll.infiniteScrollComplete');
-      }, function () {
-      });
-    };
 
     /*************************************************************************
      * 隐藏列
@@ -77,40 +20,52 @@ angular.module('fundCtrl',[])
      * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
      *************************************************************************/
     var resp = services.getter();
-    if (resp == null) {
-      /******************************************************************
-       * 加载动画
-       ******************************************************************/
-      $ionicLoading.show({
-        template: 'Loading...',
-        noBackdrop:true,
-        duration:10000
-      });
+    if (resp != null) {
+      isSelect=true;
+      $scope.flag2 = true;
+      if(resp.length>20){
+        $scope.resp = resp;
+        resp=resp.slice(20);
+      }else{
+        $scope.resp = resp;
+        $scope.run=false;
+      }
+    };
+    /******************************************************************
+     * 上拉加载
+     ******************************************************************/
+    $scope.loadMore=function(){
+      if(isSelect){
+        if(resp.length>20){
+          $scope.resp=$scope.resp.concat(resp.slice(0,20));
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+          resp=resp.slice(20);
+        } else{
+          $scope.resp=$scope.resp.concat(resp);
+          $scope.run=false;
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        }
+      }else{
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("count");
       jsTable1.addOneRow(requestCount.count);
+      requestCount.count+=20;
       var jsEIinfoIn = new EI.EIinfo();
       jsEIinfoIn.SysInfo.SvcName = 'pmopb2_app_inq';
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
-      services.toService(jsEIinfoIn).then(function (resp) {
-        var EIinfoOut = resp.Tables[0].Table;
-        $scope.resp = EIinfoOut;
-      /*  angular.forEach($scope.resp,function(data){
-          data.ACCVALUE=sub(data.TOTMONEY,data.TOTBALANCE);
-          data.FUNDCLEAR=sub(data.ACCVALUE,data.OCCCUPYMONEY);
-          data.FREEMONEY=sub(sub(data.FUNDCLEAR,data.ORDERAMT),data.BILLOWEAMT);
-          data.PAIDCREDIT=data.FREEMONEY>0?0:-data.FREEMONEY;
-          data.LEFTCREDIT=sub(data.CREDITAMOUNT,data.PAIDCREDIT);
-        })*/
-        $scope.run=true;
-        $ionicLoading.hide();
+      services.toService(jsEIinfoIn).then(function (result) {
+        var EIinfoOut=result.Tables[0].Table;
+        if(EIinfoOut.length==0){
+          $scope.run=false;
+        }
+        $scope.resp=$scope.resp.concat(EIinfoOut);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function () {
       });
-    } else {
-      $scope.flag2 = true;
-      $scope.resp = resp;
-    }
+      }
+    };
+
     /*************************************************************************
      * 点击返回按钮将myFactory清空
      *************************************************************************/

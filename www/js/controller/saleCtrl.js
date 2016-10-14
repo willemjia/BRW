@@ -2,9 +2,10 @@ angular.module('saleCtrl',[])
 /*******************************************************
  * 销售合同进度
  *********************************************************/
-.controller('SaleCtrl', function ($state, $ionicLoading,$timeout,$rootScope,services, $scope, $location, $ionicPopup, $ionicPopover) {
+.controller('SaleCtrl', function ($state,$timeout,$rootScope,services, $scope, $location, $ionicPopup, $ionicPopover) {
   $scope.resp=[];//返回的数据
-  $scope.run=false;//上拉加载标志
+  $scope.run=true;//分页查询
+  var isSelect=false;//是否是查询数据分页
   var requestCount={count:0};//上拉加载的条数
   $scope.flag2 = false;//返回按钮路由
 
@@ -48,15 +49,52 @@ angular.module('saleCtrl',[])
     });
     return EiInfoOut;
   }
+  /*************************************************************************
+   * 隐藏列
+   *************************************************************************/
+  if ($rootScope.sale != null) {
+    $scope.hide = $rootScope.sale;
+    $rootScope.sale=null;
+  }
+  /*************************************************************************
+   * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
+   *************************************************************************/
+  var resp = services.getter();
+  if (resp != null) {
+    isSelect=true;
+    $scope.flag2 = true;
+    if(resp.length>20){
+      var EiInfoOut=appendStatus(resp.slice(0,20));
+      $scope.resp = EiInfoOut;
+      resp=resp.slice(20);
+    }else{
+      var EiInfoOut=appendStatus(resp);
+      $scope.resp = EiInfoOut;
+      $scope.run=false;
+    }
+  }
   /******************************************************************
    * 上拉加载
    ******************************************************************/
   $scope.loadMore=function(){
-    requestCount.count+=20;
+    if(isSelect){
+      if(resp.length>20){
+        var EiInfoOut=appendStatus(resp.slice(0,20));
+        $scope.resp=$scope.resp.concat(EiInfoOut);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+        resp=resp.slice(20);
+      } else{
+        var EiInfoOut=appendStatus(resp);
+        $scope.resp=$scope.resp.concat(EiInfoOut);
+        $scope.run=false;
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }
+    }else{
     var jsTable1 = new EI.sDataTable();
     jsTable1.addColums("count");
     jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
+      requestCount.count+=20;
+      var jsEIinfoIn = new EI.EIinfo();
     jsEIinfoIn.SysInfo.SvcName = 'pmopso2_app_inq';
     jsEIinfoIn.SysInfo.Sender = 'admin';
     jsEIinfoIn.add(jsTable1);
@@ -70,107 +108,9 @@ angular.module('saleCtrl',[])
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, function () {
     });
+    }
   };
 
-  /*************************************************************************
-   * 隐藏列
-   *************************************************************************/
-  if ($rootScope.sale != null) {
-    $scope.hide = $rootScope.sale;
-    $rootScope.sale=null;
-  }
-
-  /*************************************************************************
-   * /获取查询结果，如果为空则不知查询的结果页，反之显示查询结果
-   *************************************************************************/
-  var resp = services.getter();
-  if (resp == null) {
-    /******************************************************************
-     * 加载动画
-     ******************************************************************/
-    $ionicLoading.show({
-      template: 'Loading...',
-      noBackdrop:true,
-      duration:10000
-
-    });
-    var jsTable1 = new EI.sDataTable();
-    jsTable1.addColums("count");
-    jsTable1.addOneRow(requestCount.count);
-    var jsEIinfoIn = new EI.EIinfo();
-    jsEIinfoIn.SysInfo.SvcName = 'pmopso2_app_inq';
-    jsEIinfoIn.SysInfo.Sender = 'admin';
-    jsEIinfoIn.add(jsTable1);
-    services.toService(jsEIinfoIn).then(function (resp) {
-      var EIinfoOut = resp.Tables[0].Table;
-      var EIinfoOut2=appendStatus(EIinfoOut);
-      $scope.resp = EIinfoOut2;
-      $scope.run=true;
-      $ionicLoading.hide();
-    }, function () {
-      $ionicLoading.hide();
-      $scope.resp =[{
-        'ORDERNUM':'54564564',
-        'SALEMAN':'张三',
-        'BILLDATE':'2016-26-58',
-        'ORDERCUSNAME':'lisi',
-        'RECCUSNAME':'wangwu',
-        'TYPE':'钢',
-        'UNIVALENCE':'215100',
-        'STEELGRADE':'aa',
-        'STANDARD':'优良',
-        'CRAFTS':'优良',
-        'NORM':'aa',
-        'ORDERWEIGHT':'51kg',
-        'FINPROWEI':'52kg',
-        'FINWAREWEI':'52kg',
-        'LASTWAREDATE':'2016-26-58',
-        'FINSHIPNUM':'5465',
-        'LASTSHIPDATE':'2016-05-05',
-        'CURRFINNUM':'541',
-        'RAWSUPPLY':'lisi',
-        'DELIVERY':'现金',
-        'DELIVERYDATE':'2016-08-21',
-        'BILLWAY':'现金',
-        'REMARK':'无',
-        'STATUS':'未审核'
-      },
-        {
-          'ORDERNUM':'54564564',
-          'SALEMAN':'张三',
-          'BILLDATE':'2016-26-58',
-          'ORDERCUSNAME':'lisi',
-          'RECCUSNAME':'wangwu',
-          'TYPE':'钢',
-          'UNIVALENCE':'215100',
-          'STEELGRADE':'aa',
-          'STANDARD':'优良',
-          'CRAFTS':'优良',
-          'NORM':'aa',
-          'ORDERWEIGHT':'51kg',
-          'FINPROWEI':'52kg',
-          'FINWAREWEI':'52kg',
-          'LASTWAREDATE':'2016-26-58',
-          'FINSHIPNUM':'5465',
-          'LASTSHIPDATE':'2016-05-05',
-          'CURRFINNUM':'541',
-          'RAWSUPPLY':'lisi',
-          'DELIVERY':'现金',
-          'DELIVERYDATE':'2016-08-21',
-          'BILLWAY':'现金',
-          'REMARK':'无',
-          'STATUS':'未审核'
-        }]
-    });
-    //=============================================================
-
-     //============================================================
-
-  } else {
-    $scope.flag2 = true;
-    var EiInfoOut=appendStatus(resp);
-    $scope.resp = EiInfoOut;
-  }
   /*************************************************************************
    * 点击返回按钮将myFactory清空
    *************************************************************************/
@@ -297,19 +237,25 @@ angular.module('saleCtrl',[])
     /*************************************************************************
      * 日期插件
      *************************************************************************/
+    var disabledDates = [
+      new Date(1437719836326),
+      new Date(),
+      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
+      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
+      new Date("08-14-2015"), //Short format
+      new Date(1439676000000) //UNIX format
+    ];
     $scope.datepickerObject = {
-      titleLabel: 'Title',  //Optional
-      todayLabel: 'Today',  //Optional
-      closeLabel: 'Close',  //Optional
-      setLabel: 'Set',  //Optional
+      titleLabel: '请选择日期',  //Optional
+      todayLabel: '今天',  //Optional
+      closeLabel: '关闭',  //Optional
+      setLabel: '确定',  //Optional
       setButtonType: 'button-assertive',  //Optional
       todayButtonType: 'button-assertive',  //Optional
       closeButtonType: 'button-assertive',  //Optional
       inputDate: new Date(),  //Optional
       mondayFirst: true,  //Optional
       disabledDates: disabledDates, //Optional
-      weekDaysList: weekDaysList, //Optional
-      monthList: monthList, //Optional
       templateType: 'popup', //Optional
       showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional
@@ -323,16 +269,7 @@ angular.module('saleCtrl',[])
       closeOnSelect: false //Optional
     };
 
-    var disabledDates = [
-      new Date(1437719836326),
-      new Date(),
-      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
-      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
-      new Date("08-14-2015"), //Short format
-      new Date(1439676000000) //UNIX format
-    ];
-    var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
-    var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
     var datePickerCallback = function (val) {
       if (typeof(val) === 'undefined') {
         console.log('No date selected');
@@ -343,18 +280,16 @@ angular.module('saleCtrl',[])
     };
     //日期插件
     $scope.datepickerObject2 = {
-      titleLabel: 'Title',  //Optional
-      todayLabel: 'Today',  //Optional
-      closeLabel: 'Close',  //Optional
-      setLabel: 'Set',  //Optional
+      titleLabel: '请选择日期',  //Optional
+      todayLabel: '今天',  //Optional
+      closeLabel: '关闭',  //Optional
+      setLabel: '确定',  //Optional
       setButtonType: 'button-assertive',  //Optional
       todayButtonType: 'button-assertive',  //Optional
       closeButtonType: 'button-assertive',  //Optional
       inputDate: new Date(),  //Optional
       mondayFirst: true,  //Optional
       disabledDates: disabledDates, //Optional
-      weekDaysList: weekDaysList, //Optional
-      monthList: monthList, //Optional
       templateType: 'popup', //Optional
       showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional
