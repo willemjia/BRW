@@ -131,7 +131,7 @@ angular.module('pay_billCtrl', [])
     $state.go('pay_bill_detailed');
   }
 })
-  .controller('pay_bill_searchCtrl', function ($scope,services, $state, $ionicPopup, $timeout) {
+  .controller('pay_bill_searchCtrl', function ($scope,services, $state, $ionicPopup, $timeout,$ionicLoading) {
     $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
@@ -231,6 +231,14 @@ angular.module('pay_billCtrl', [])
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
@@ -241,6 +249,7 @@ angular.module('pay_billCtrl', [])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("pay_bill");
       }, function () {
       });
@@ -357,6 +366,14 @@ angular.module('pay_billCtrl', [])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
@@ -367,6 +384,7 @@ angular.module('pay_billCtrl', [])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("pay_bill");
       }, function () {
       });

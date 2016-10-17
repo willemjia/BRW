@@ -131,13 +131,21 @@ angular.module('fundCtrl',[])
      $state.go('fund-detail');
      }*/
   })
-  .controller('FundSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
+  .controller('FundSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout,$ionicLoading) {
     $scope.req = {CUSNAME: null, CURRENCIES: null,RECORDNAME:null};//查询参数
     var history = [];//存储查询历史数据
     /*************************************************************************
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("cusname", "currencies","RECORDNAME");
       jsTable1.addOneRow($scope.req.CUSNAME, $scope.req.CURRENCIES,$scope.req.RECORDNAME);
@@ -148,6 +156,7 @@ angular.module('fundCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("fund");
       }, function () {
       });
@@ -156,6 +165,14 @@ angular.module('fundCtrl',[])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("CUSNAME", "CURRENCIES","RECORDNAME");
       jsTable1.addOneRow(data.CUSNAME, data.CURRENCIES, null);
@@ -166,6 +183,7 @@ angular.module('fundCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("fund");
       }, function () {
       });

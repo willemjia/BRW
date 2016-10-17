@@ -172,6 +172,14 @@ function getArray(EIinfoOut){
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("area", "username", "injuncnum", "recordName");
       jsTable1.addOneRow($scope.req.AREA, $scope.req.USERNAME, $scope.req.INJUNCNUM, $scope.req.RECORDNAME);
@@ -182,6 +190,7 @@ function getArray(EIinfoOut){
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("tab-stock");
       }, function () {
       });
@@ -190,6 +199,14 @@ function getArray(EIinfoOut){
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("area", "username", "injuncnum", "recordName");
       jsTable1.addOneRow(data.AREA, data.USERNAME, data.INJUNCNUM, data.RECORDNAME);
@@ -200,6 +217,7 @@ function getArray(EIinfoOut){
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("tab-stock");
       }, function () {
       });

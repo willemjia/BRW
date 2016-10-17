@@ -220,7 +220,7 @@ angular.module('team.controllers', [])
     };
     $scope.data = [ pageload ];
   })
-        .controller('teamSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
+        .controller('teamSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout,$ionicLoading) {
           $scope.req = {DATE1:null,DATE2:null,TYPE: null, TEAM: null,RECORDNAME:null};//查询参数
           var history = [];//存储查询历史数据
           $scope.search = {date1: null, date2: null};//显示日期
@@ -268,8 +268,6 @@ angular.module('team.controllers', [])
             inputDate: new Date(),  //Optional
             mondayFirst: true,  //Optional
             disabledDates: disabledDates, //Optional
-            weekDaysList: weekDaysList, //Optional
-            monthList: monthList, //Optional
             templateType: 'popup', //Optional
             showTodayButton: 'true', //Optional
             modalHeaderColor: 'bar-positive', //Optional
@@ -328,6 +326,14 @@ angular.module('team.controllers', [])
            * 查询、跳转到结果页面
            *************************************************************************/
           $scope.commit = function () {
+            /******************************************************************
+             * 加载动画
+             ******************************************************************/
+            $ionicLoading.show({
+              template: '正在查询',
+              noBackdrop:true,
+              duration:10000
+            });
             var jsTable1 = new EI.sDataTable();
             jsTable1.addColums("DATE1","DATE2","TYPE", "TEAM","RECORDNAME");
             jsTable1.addOneRow($scope.req.DATE1,$scope.req.DATE2,$scope.req.TYPE, $scope.req.TEAM,$scope.req.RECORDNAME);
@@ -338,6 +344,7 @@ angular.module('team.controllers', [])
             services.toService(jsEIinfoIn).then(function (resp) {
               var EIinfoOut = resp.Tables[0].Table;
               services.setter(EIinfoOut);
+              $ionicLoading.hide();
               $state.go("tab-team");
             }, function () {
             });
@@ -346,6 +353,14 @@ angular.module('team.controllers', [])
            * 以历史记录查询、跳转到结果页面
            *************************************************************************/
           $scope.hisSearch=function(data){
+            /******************************************************************
+             * 加载动画
+             ******************************************************************/
+            $ionicLoading.show({
+              template: '正在查询',
+              noBackdrop:true,
+              duration:10000
+            });
             var jsTable1 = new EI.sDataTable();
             jsTable1.addColums("DATE1","DATE2","TYPE", "TEAM","RECORDNAME");
             jsTable1.addOneRow(data.DATE1, data.DATE2,data.TYPE,data.TEAM, null);
@@ -356,6 +371,7 @@ angular.module('team.controllers', [])
             services.toService(jsEIinfoIn).then(function (resp) {
               var EIinfoOut = resp.Tables[0].Table;
               services.setter(EIinfoOut);
+              $ionicLoading.hide();
               $state.go("tab-team");
             }, function () {
             });

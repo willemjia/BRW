@@ -131,7 +131,7 @@ angular.module('pay_accountCtrl', [])
   .controller('pay_account_detailedCtrl', function ($scope) {
     $scope.mingxi=$rootScope.mingxi;
   })
-  .controller('pay_account_searchCtrl', function ($scope, services,$ionicPopup, $timeout, $state) {
+  .controller('pay_account_searchCtrl', function ($scope, services,$ionicPopup, $timeout, $state,$ionicLoading) {
     $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
@@ -238,6 +238,14 @@ angular.module('pay_accountCtrl', [])
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
@@ -248,6 +256,7 @@ angular.module('pay_accountCtrl', [])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EiInfoOut=resp.Tables[0].Table;
         services.setter(EiInfoOut);
+        $ionicLoading.hide();
         $state.go("pay_account");
       }, function () {
       });
@@ -256,6 +265,14 @@ angular.module('pay_accountCtrl', [])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
@@ -266,6 +283,7 @@ angular.module('pay_accountCtrl', [])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("pay_account");
       }, function () {
       });

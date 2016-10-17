@@ -212,7 +212,7 @@ angular.module('saleCtrl',[])
 //            // 执行代码
 //        });
   })
-  .controller('SaleSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout) {
+  .controller('SaleSearchCtrl', function ($scope, services, $state, $ionicPopup, $timeout,$ionicLoading) {
     $scope.req = {DATE1: null, DATE2: null,ORDERCUSNAME:null, ORDERNUM: null, RECORDNAME: null};//查询参数
     $scope.search = {date1: null, date2: null};//显示日期
     var history = [];//存储查询历史数据
@@ -314,6 +314,14 @@ angular.module('saleCtrl',[])
      * 查询、跳转到结果页面
      *************************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("date1", "date2","ordernum","username", "recordName");
       jsTable1.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.ORDERNUM,$scope.req.ORDERCUSNAME, $scope.req.RECORDNAME);
@@ -322,6 +330,7 @@ angular.module('saleCtrl',[])
       jsEIinfoIn.SysInfo.Sender = 'admin';
       jsEIinfoIn.add(jsTable1);
       services.toService(jsEIinfoIn).then(function (resp) {
+        $ionicLoading.hide();
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
         $state.go("sale");
@@ -332,6 +341,14 @@ angular.module('saleCtrl',[])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable1 = new EI.sDataTable();
       jsTable1.addColums("date1", "date2", "ordernum","username", "recordName");
       jsTable1.addOneRow(data.DATE1, data.DATE2, data.ORDERNUM,data.USERNAME, null);
@@ -342,6 +359,7 @@ angular.module('saleCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("sale");
       }, function () {
       });

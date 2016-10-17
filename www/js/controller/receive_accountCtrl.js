@@ -117,7 +117,7 @@ angular.module('receive_accountCtrl',[])
     $state.go('receive_account_detailed');
   }
 })
-  .controller('receive_account_searchCtrl', function ($scope,services,  $state, $ionicPopup, $timeout) {
+  .controller('receive_account_searchCtrl', function ($scope,services,  $state, $ionicPopup, $timeout,$ionicLoading) {
     $scope.req = {DATE1: null, DATE2: null, USERNAME: null, RECORDNAME: null};
     $scope.search = {date1: null, date2: null};
     var history = [];
@@ -219,6 +219,14 @@ angular.module('receive_accountCtrl',[])
      *查找并返回到页面
      *********************************************************************/
     $scope.commit = function () {
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow($scope.req.DATE1, $scope.req.DATE2, $scope.req.USERNAME, $scope.req.RECORDNAME);
@@ -229,6 +237,7 @@ angular.module('receive_accountCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("receive_account");
       }, function () {
       });
@@ -346,6 +355,14 @@ angular.module('receive_accountCtrl',[])
      * 以历史记录查询、跳转到结果页面
      *************************************************************************/
     $scope.hisSearch=function(data){
+      /******************************************************************
+       * 加载动画
+       ******************************************************************/
+      $ionicLoading.show({
+        template: '正在查询',
+        noBackdrop:true,
+        duration:10000
+      });
       var jsTable = new EI.sDataTable();
       jsTable.addColums("date1", "date2", "username", "recordName");
       jsTable.addOneRow(data.DATE1, data.DATE2, data.USERNAME, null);
@@ -356,6 +373,7 @@ angular.module('receive_accountCtrl',[])
       services.toService(jsEIinfoIn).then(function (resp) {
         var EIinfoOut = resp.Tables[0].Table;
         services.setter(EIinfoOut);
+        $ionicLoading.hide();
         $state.go("receive_account");
       }, function () {
       });
